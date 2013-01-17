@@ -1,0 +1,39 @@
+# $Revision: 33977 $
+# $Id: play-epsparql-iccs-aishub-05.templ.eprq 33977 2012-10-03 13:52:35Z stuehmer $
+#
+# Title: High speed in windy conditions
+# Description: Emit an event when a specific HighSpeed Vessel (defined by SAN Engine) is speeding in windy conditions, i.e. vessel is speeding (average speed the last 5 minutes) with more than 15 Knots while the wind force is more than 10 knots. 
+#
+# TODO: Which stream should the complex event be in? New topic needed?
+# TODO: aggragate functions MIN, AVG to be tested by FZI
+#
+
+PREFIX ais:    <http://imu.ntua.gr/ais#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX :       <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+    :e rdf:type :VesselHighSpeedInWindyConditions .
+    :e :stream <http://streams.event-processing.org/ids/WHATGOESHERE#stream> .
+	:e ais:MMSI %MMSI_FROM_SAN% .
+	:e ais:course ?course .
+	:e ais:speed ?speed .
+	:e ais:windSpeed ?windSpeed .
+	:e ais:windDirection ?windDirection .
+}
+WHERE {
+    WINDOW {
+        EVENT ?id1 {
+            ?e1 rdf:type :VesselEvent .
+			?e1 :stream <http://streams.event-processing.org/ids/VesselStream#stream> .
+			?e1 ais:MMSI %MMSI_FROM_SAN% .
+			?e1 ais:speed ?speed .
+			?e1 ais:windSpeed ?windSpeed .
+            }
+    } ("PT5M"^^xsd:duration, sliding)
+	BIND(AVG(?speed) AS ?avgSpeed)
+	BIND(AVG(?windSpeed) AS ?avgWindSpeed)
+	FILTER (?avgSpeed >= %AVG_SPEED_FROM_SAN% && ?avgSpeed >= %AVG_WINDSPEED_FROM_SAN%)
+}

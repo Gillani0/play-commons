@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>play-commons</artifactId>
+		<groupId>eu.play-project</groupId>
+		<version>1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>play-commons-eventtypes</artifactId>
+	<groupId>eu.play-project</groupId>
+	<packaging>jar</packaging>
+
+	<name>play-commons-eventtypes</name>
+	<description>Classes (SDK) for creating business events in the platform as RDF.</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.semweb4j</groupId>
+			<artifactId>rdfreactor.runtime</artifactId>
+			<version>4.7.3</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>rdf2go.api</artifactId>
+					<groupId>org.semweb4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.semweb4j</groupId>
+			<artifactId>rdf2go.impl.jena</artifactId>
+			<version>4.8.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>fr.inria.eventcloud</groupId>
+			<artifactId>eventcloud-utils-trigwriter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>eu.play-project</groupId>
+			<artifactId>play-commons-eventformat</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>semweb4j-repo</id>
+			<name>FZI Maven Repository</name>
+			<url>http://mavenrepo.fzi.de/semweb4j.org/repo</url>
+		</pluginRepository>
+		<pluginRepository>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>semweb4j-snapshots</id>
+			<name>FZI Maven Snapshot Repository</name>
+			<url>http://mavenrepo.fzi.de/semweb4j.org/snapshots</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.semweb4j</groupId>
+				<artifactId>maven-rdfreactor-plugin</artifactId>
+				<version>4.7.2</version>
+				<configuration>
+					<schemaFile>src/main/resources/types.n3</schemaFile>
+					<packageName>org.event_processing.events.types</packageName>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>rdfs-classes</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>build-helper-maven-plugin</artifactId>
+			    <version>1.7</version>
+			    <executions>
+			        <execution>
+			            <id>add-generated-sources</id>
+			            <goals>
+			                <goal>add-source</goal>
+			            </goals>
+			            <configuration>
+			                <sources>
+			                    <source>
+			                    ${project.build.directory}/generated-sources/rdfs-classes
+			                    </source>
+			                </sources>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>			
+			-->
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.semweb4j</groupId>
+										<artifactId>maven-rdfreactor-plugin</artifactId>
+										<versionRange>[0.0.6-SNAPSHOT,)</versionRange>
+										<goals>
+											<goal>rdfs-classes</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

@@ -1,0 +1,37 @@
+# $Revision: 33849 $
+# $Id: play-epsparql-iccs-aishub-03.templ.eprq 33849 2012-09-17 22:15:40Z stuehmer $
+#
+# Title: Vessel in Proximity
+# Description: Emit an event when a Proximity event is detected with MMSI = {Defined by SAN} and distance <= 5 miles ( 5 * 1852 meters)
+#
+# TODO: Which stream should the complex event be in? New topic needed?
+# TODO: Yiannis, you asked for "Name", but it is not part of the Proximity event, is it?
+#
+
+PREFIX ais:    <http://imu.ntua.gr/ais#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX :       <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+    :e rdf:type :VesselInProximity .
+    :e :stream <http://streams.event-processing.org/ids/WHATGOESHERE#stream> .
+	:e ais:MMSI %MMSI_FROM_SAN% .
+	:e ais:nearbyMMSI ?nearbymmsi .
+	:e ais:distance ?distance .
+	:e ais:nearbySpeed ?nearbySpeed .
+	:e ais:nearbyShipType ?nearbyShipType .
+}
+WHERE {
+    EVENT ?id1 {
+        ?e1 rdf:type :ProximityInfoEvent .
+		?e1 :stream <http://streams.event-processing.org/ids/ProximityInfoStream#stream> .
+		?e1 ais:distance ?distance .
+		?e1 ais:MMSI %MMSI_FROM_SAN% .
+		?e1 ais:nearbyMMSI ?nearbymmsi .
+		?e1 ais:nearbySpeed ?nearbySpeed .
+		?e1 ais:nearbyShipType ?nearbyShipType .
+        }
+		FILTER (?distance <= 5 * 1852)
+}

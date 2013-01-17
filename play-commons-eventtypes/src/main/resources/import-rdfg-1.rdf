@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfg="http://www.w3.org/2004/03/trix/rdfg-1/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.w3.org/2004/03/trix/rdfg-1/">
+  <owl:Ontology rdf:about=""/>
+  <rdfs:Class rdf:about="http://www.w3.org/2004/03/trix/rdfg-1/Graph">
+    <rdfs:comment>
+An RDF graph (with intensional semantics).
+      </rdfs:comment>
+    <rdfs:label>Graph</rdfs:label>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://www.w3.org/2004/03/trix/rdfg-1/equivalentGraph">
+    <rdfs:range rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <rdfs:comment>
+The graphs associated with the subject and object are equivalent.
+      </rdfs:comment>
+    <rdfs:label>equivalent graph</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/2004/03/trix/rdfg-1/subGraphOf">
+    <rdfs:range rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <rdfs:comment>
+The graph associated with the subject is a subgraph of a graph equivalent
+to that associated with the object.
+      </rdfs:comment>
+    <rdfs:label>subgraph of</rdfs:label>
+  </rdf:Property>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

@@ -1,0 +1,35 @@
+# $Revision: 33849 $
+# $Id: play-epsparql-iccs-aishub-02.templ.eprq 33849 2012-09-17 22:15:40Z stuehmer $
+#
+# Title: High Speed craft has low speed
+# Description: Vessel event average speed<= 10 Knots during past 5 minutes AND vessel type = “High Speed” and MMSI = {Determined by SAN engine}
+#
+# TODO: Which stream should the complex event be in? New topic needed?
+# TODO: AVG must be tested in EP-SPARQL
+#
+
+PREFIX ais:    <http://imu.ntua.gr/ais#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX :       <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+    :e rdf:type :HighSpeedCraftHasLowSpeed .
+    :e :stream <http://streams.event-processing.org/ids/WHATGOESHERE#stream> .
+	:e ais:MMSI %MMSI_FROM_SAN% .
+	:e ais:speed ?speed .
+}
+WHERE {
+    WINDOW {
+        EVENT ?id1 {
+            ?e1 rdf:type :VesselEvent .
+			?e1 :stream <http://streams.event-processing.org/ids/VesselStream#stream> .
+			?e1 ais:speed ?speed .
+			?e1 ais:shipType "High Speed" .
+			?e1 ais:MMSI %MMSI_FROM_SAN% .
+            }
+    } ("PT5M"^^xsd:duration, sliding)
+	BIND(AVG(?speed) AS ?avgSpeed)
+	FILTER (?avgSpeed <= 10)
+}

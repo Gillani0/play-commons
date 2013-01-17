@@ -1,0 +1,65 @@
+# $Revision: 33849 $
+# $Id: play-epsparql-iccs-aishub-04.templ.eprq 33849 2012-09-17 22:15:40Z stuehmer $
+#
+# Title: Speed wasn’t reduced when proximity increased
+# Description:  After we realise that there is a small boat in proximity to the high speed vessel, we want to observe the speed of the Highspeed vessel along with the distance between it and the small boat. So, if we detect that in the last 5 minutes the average speed (highspeed vessel) was not reduced and their distance remains the same or is decreased then trigger the CEPAT.
+#
+# TODO: Which stream should the complex event be in? New topic needed?
+# TODO: Yiannis, is it OK, that I introduced ais:avgSpeed? we can move it to an ICCS namespace, alternatively
+# TODO: I added the constraint "High Speed" to the first event.
+# TODO: aggragate functions MIN, AVG to be tested by FZI
+#
+
+PREFIX ais:    <http://imu.ntua.gr/ais#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX :       <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+    :e rdf:type :VesselSpeedNotReducedWhenProximityIncreased .
+    :e :stream <http://streams.event-processing.org/ids/WHATGOESHERE#stream> .
+	:e ais:MMSI %MMSI_FROM_SAN% .
+	:e ais:nearbyMMSI %NERBY_MMSI_FROM_SAN% .
+	:e ais:distance ?distance .
+	:e ais:avgSpeed ?avgSpeed .
+}
+WHERE {
+    EVENT ?id1 {
+        ?e1 rdf:type :VesselEvent .
+		?e1 :stream <http://streams.event-processing.org/ids/VesselStream#stream> .
+		?e1 ais:speed ?speed .
+		?e1 ais:shipType "High Speed" .
+		?e1 ais:MMSI %MMSI_FROM_SAN% .
+        }
+	SEQ
+    EVENT ?id2 {
+        ?e2 rdf:type :ProximityInfoEvent .
+		?e2 :stream <http://streams.event-processing.org/ids/ProximityInfoStream#stream> .
+		?e2 ais:distance ?distance .
+		?e2 ais:MMSI %MMSI_FROM_SAN% .
+		?e2 ais:nearbyMMSI %NERBY_MMSI_FROM_SAN% .
+		?e2 ais:nearbySpeed ?nearbySpeed .
+		?e2 ais:nearbyShipType ?nearbyShipType .
+        }	
+	SEQ
+    WINDOW {
+        EVENT ?id3 {
+            ?e3 rdf:type :VesselEvent .
+			?e3 :stream <http://streams.event-processing.org/ids/VesselStream#stream> .
+			?e3 ais:speed ?speed .
+			?e3 ais:shipType "High Speed" .
+			?e3 ais:MMSI %MMSI_FROM_SAN% .
+			?e3 ais:distance ?distance .
+            }
+			FILTER (?distance <= %DISTANCE_FROM_SAN%)
+    } ("PT5M"^^xsd:duration, sliding)
+	BIND(AVG(?speed) AS ?avgSpeed)
+	FILTER (?avgSpeed >= %AVG_SPEED_FROM_SAN%)
+}
+
+
+
+
+
+

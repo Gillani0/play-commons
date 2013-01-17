@@ -1,0 +1,30 @@
+# $Revision: 34442 $
+# $Id: play-bdpl-crisis-01a-radiation.eprq 34442 2012-11-15 21:57:25Z stuehmer $
+#
+# The output topic is moved to the default stream namespace because of a bug in cxf
+#
+
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX uccrisis: <http://www.mines-albi.fr/nuclearcrisisevent/>
+PREFIX geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX :        <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+	:e rdf:type uccrisis:AlertEvent .
+	:e :stream <http://streams.event-processing.org/ids/situationalAlertEvent#stream> .
+	:e uccrisis:description "RSN Alert" .
+	:e uccrisis:localisation ?localisation .
+	:e :message "RSN Alert, a high radiation measure was detected." .
+	:e :members ?e1 .
+}
+WHERE {
+	EVENT ?id1 {
+		?e1 rdf:type uccrisis:MeasureEvent .
+		?e1 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
+		?e1 uccrisis:value ?value .
+		?e1 uccrisis:unit "mSv" .
+		?e1 uccrisis:localisation ?localisation
+		}
+		FILTER (?value > 100.0)
+}

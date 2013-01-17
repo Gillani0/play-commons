@@ -1,0 +1,34 @@
+# $Revision: 33849 $
+# $Id: play-epsparql-iccs-telco-02.templ.eprq 33849 2012-09-17 22:15:40Z stuehmer $
+#
+# Title: "Friend’s callee transmits geolocation events"
+# Description: Emit a FRIEND-GEO-EVENT event when a friend (callee) sents a geolocation event or if he has already sent one during the last 2 minutes (combine CEPAT with historical events):
+# FRIEND-GEO-EVENT => “select geolocation event where callee_number = {determined by SAN} during the past 2 minutes” (historical events)
+#
+# TODO: -
+#
+
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX uctelco: <http://events.event-processing.org/uc/telco/>
+PREFIX geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX :        <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+    :e rdf:type :CalleeGeoLocation .
+    :e :stream <http://streams.event-processing.org/ids/Friend_Geo_Event#stream>.
+	:e uctelco:phoneNumber "306946466550" .
+	:e :calleeLocation <blank://1> .
+	<blank://1> geo:lat ?Latitude1 ;
+		geo:long ?Longitude1 .
+	:e :members ?e1 .
+}
+
+WHERE {
+    EVENT ?id1 {
+		?e1 rdf:type :UcTelcoGeoLocation .
+        ?e1 :stream <http://streams.event-processing.org/ids/TaxiUCGeoLocation#stream> .
+		?e1 :location [ geo:lat ?Latitude1; geo:long ?Longitude1 ] .
+		?e1 uctelco:phoneNumber "306946466550" .
+    }
+}

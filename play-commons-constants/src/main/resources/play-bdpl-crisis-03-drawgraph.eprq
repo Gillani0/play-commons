@@ -1,0 +1,34 @@
+# $Revision: 34484 $
+# $Id: play-bdpl-crisis-03-drawgraph.eprq 34484 2012-11-19 02:23:28Z stuehmer $
+#
+# The output topic is moved to the default stream namespace because of a bug in cxf
+#
+# TODO: Stefan, can we aggregate all 5 values of ?value and feed it to an XPATH function e.g. create a long string with all of them?
+# TODO: ROland the variables in the event need narrower scop otherwise all events in the window must the identical
+#
+
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX uccrisis: <http://www.mines-albi.fr/nuclearcrisisevent/>
+PREFIX geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX :        <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+	:e rdf:type uccrisis:DrawGraphEvent .
+	:e :stream <http://streams.event-processing.org/ids/visualizationEvent#stream> .
+	:e uccrisis:unit "mSv" .
+	:e uccrisis:value "TODO" .
+	:e uccrisis:localisation ?localisation .
+	:e :message "A graph representing 5 minutes worth of radiation measurements." .
+}
+WHERE {
+	WINDOW {
+		EVENT ?id1 {
+			?e1 rdf:type uccrisis:MeasureEvent .
+			?e1 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
+			?e1 uccrisis:unit "mSv" .
+			?e1 uccrisis:localisation ?localisation .
+			?e1 uccrisis:value ?value .
+		}
+	} ("PT5M"^^xsd:duration, sliding)
+}
