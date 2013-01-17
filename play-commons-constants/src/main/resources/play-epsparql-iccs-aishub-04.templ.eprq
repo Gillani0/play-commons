@@ -1,7 +1,5 @@
-# $Revision: 33849 $
-# $Id: play-epsparql-iccs-aishub-04.templ.eprq 33849 2012-09-17 22:15:40Z stuehmer $
 #
-# Title: Speed wasn’t reduced when proximity increased
+# Title: Speed wasnï¿½t reduced when proximity increased
 # Description:  After we realise that there is a small boat in proximity to the high speed vessel, we want to observe the speed of the Highspeed vessel along with the distance between it and the small boat. So, if we detect that in the last 5 minutes the average speed (highspeed vessel) was not reduced and their distance remains the same or is decreased then trigger the CEPAT.
 #
 # TODO: Which stream should the complex event be in? New topic needed?

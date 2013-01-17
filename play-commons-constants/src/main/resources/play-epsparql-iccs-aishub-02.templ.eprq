@@ -1,8 +1,6 @@
-# $Revision: 33849 $
-# $Id: play-epsparql-iccs-aishub-02.templ.eprq 33849 2012-09-17 22:15:40Z stuehmer $
 #
 # Title: High Speed craft has low speed
-# Description: Vessel event average speed<= 10 Knots during past 5 minutes AND vessel type = “High Speed” and MMSI = {Determined by SAN engine}
+# Description: Vessel event average speed<= 10 Knots during past 5 minutes AND vessel type = ï¿½High Speedï¿½ and MMSI = {Determined by SAN engine}
 #
 # TODO: Which stream should the complex event be in? New topic needed?
 # TODO: AVG must be tested in EP-SPARQL

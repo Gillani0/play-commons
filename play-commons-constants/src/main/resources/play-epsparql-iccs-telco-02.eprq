@@ -1,9 +1,7 @@
-# $Revision: 34396 $
-# $Id: play-epsparql-iccs-telco-02.eprq 34396 2012-11-08 16:05:24Z stuehmer $
 #
-# Title: "Friend’s callee transmits geolocation events"
+# Title: "Friendï¿½s callee transmits geolocation events"
 # Description: Emit a FRIEND-GEO-EVENT event when a friend (callee) sents a geolocation event or if he has already sent one during the last 2 minutes (combine CEPAT with historical events):
-# FRIEND-GEO-EVENT => “select geolocation event where callee_number = {determined by SAN} during the past 2 minutes” (historical events)
+# FRIEND-GEO-EVENT => ï¿½select geolocation event where callee_number = {determined by SAN} during the past 2 minutesï¿½ (historical events)
 #
 # TODO: -
 #

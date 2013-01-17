@@ -1,5 +1,3 @@
-# $Revision: 33977 $
-# $Id: play-epsparql-iccs-aishub-05.templ.eprq 33977 2012-10-03 13:52:35Z stuehmer $
 #
 # Title: High speed in windy conditions
 # Description: Emit an event when a specific HighSpeed Vessel (defined by SAN Engine) is speeding in windy conditions, i.e. vessel is speeding (average speed the last 5 minutes) with more than 15 Knots while the wind force is more than 10 knots. 

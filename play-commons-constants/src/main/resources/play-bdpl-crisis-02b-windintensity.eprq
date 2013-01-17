@@ -1,5 +1,5 @@
-# $Revision: 34442 $
-# $Id: play-bdpl-crisis-02b-windintensity.eprq 34442 2012-11-15 21:57:25Z stuehmer $
+#
+# Title: Crisis Use Case - 02b - Wind Intensity
 #
 # The output topic is moved to the default stream namespace because of a bug in cxf
 #

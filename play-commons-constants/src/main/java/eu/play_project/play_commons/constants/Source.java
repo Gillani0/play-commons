@@ -9,7 +9,6 @@ import static eu.play_project.play_commons.constants.Namespace.SOURCE;
  * 
  * @author stuehmer
  * 
- * @version $Revision: 34340 $
  */
 public enum Source {
 

@@ -17,8 +17,6 @@ import eu.play_project.play_commons.eventformat.EventFormatHelpers;
  * @author lpellegrino
  * @author stuehmer
  * 
- * @version $Revision: 32617 $
- * 
  */
 public class EventFormatHelpersTest {
 

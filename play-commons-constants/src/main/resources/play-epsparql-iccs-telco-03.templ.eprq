@@ -1,8 +1,6 @@
-# $Revision: 34396 $
-# $Id: play-epsparql-iccs-telco-03.templ.eprq 34396 2012-11-08 16:05:24Z stuehmer $
 #
-# Title: "Friend’s callee transmits geolocation events - 2"
-# Description: “A caller geolocation event AND a callee geolocation event WITHIN 1 min”  (complex event, must include lat/lon of both simple events)
+# Title: "Friendï¿½s callee transmits geolocation events - 2"
+# Description: ï¿½A caller geolocation event AND a callee geolocation event WITHIN 1 minï¿½  (complex event, must include lat/lon of both simple events)
 #
 # TODO: Which stream should the complex event be in? New topic needed?
 #

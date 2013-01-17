@@ -1,5 +1,6 @@
-# $Revision: 34480 $
-# $Id: play-epsparql-clic2call-plus-tweet.eprq 34480 2012-11-16 20:36:15Z sobermeier $
+#
+# Title: Clic2Call plus a historic Tweet
+#
 
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX uctelco: <http://events.event-processing.org/uc/telco/>

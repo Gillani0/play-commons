@@ -1,5 +1,5 @@
-# $Revision: 34484 $
-# $Id: play-bdpl-crisis-03-drawgraph.eprq 34484 2012-11-19 02:23:28Z stuehmer $
+#
+# Title: Crisis Use Case - 03 - Draw a Graph
 #
 # The output topic is moved to the default stream namespace because of a bug in cxf
 #

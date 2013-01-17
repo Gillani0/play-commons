@@ -1,5 +1,6 @@
-# $Revision: 34484 $
-# $Id: play-epsparql-m12-jeans-example-query.eprq 34484 2012-11-19 02:23:28Z stuehmer $
+#
+# Title: M12 Jeans Example
+#
 
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX user:   <http://graph.facebook.com/schema/user#>
