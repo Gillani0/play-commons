@@ -9,7 +9,6 @@
 	</parent>
 
 	<artifactId>play-commons-eventtypes</artifactId>
-	<groupId>eu.play-project</groupId>
 	<packaging>jar</packaging>
 
 	<name>play-commons-eventtypes</name>
