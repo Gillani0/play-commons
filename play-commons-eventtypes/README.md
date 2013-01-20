@@ -18,6 +18,9 @@ An event **must** have a minimum set of features:
 
 ### Example
 ```
+@PREFIX :    &lt;http://events.event-processing.org/types/&gt; .
+@PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
 <http://events.event-processing.org/ids/e1> {
     <http://events.event-processing.org/ids/e1#event>
           a       :TempEvent ;
