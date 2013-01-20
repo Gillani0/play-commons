@@ -4,7 +4,7 @@ Events to be sent to [PLAY](http://www.play-project.eu/) **should** have an RDF 
 
 Modelling Events
 -----------------
-After describing the minimum features of an event in [play-commons-eventformat](../play-commons-eventformat/) here is the same example:
+After describing the minimum features of an event in [play-commons-eventformat](https://github.com/play-project/play-commons/tree/master/play-commons-eventformat/) here is the same example:
 
 ### Example
 ```

@@ -2,7 +2,7 @@ PLAY Events
 ===========
 Events to be sent to [PLAY](http://www.play-project.eu/):
 * Events **must** be RDF format, preferably in [**TriG** serialization syntax](http://www4.wiwiss.fu-berlin.de/bizer/TriG/).
-* Events **should** have an RDF Schema, it is defined in [play-commons-eventtypes](../play-commons-eventtypes/).
+* Events **should** have an RDF Schema, it is defined in [play-commons-eventtypes](https://github.com/play-project/play-commons/tree/master/play-commons-eventtypes/).
 
 Formatting Events
 -----------------
@@ -45,7 +45,7 @@ Modelling Events
 ----------------
 To define event types a schema is optional but recommended. Added value is verification in Unit tests and future use cases for reasoning using RDFS.
 
-See details at [play-commons-eventtypes](../play-commons-eventtypes/).
+See details at [play-commons-eventtypes](https://github.com/play-project/play-commons/tree/master/play-commons-eventtypes/).
 
 
 Sending Events
