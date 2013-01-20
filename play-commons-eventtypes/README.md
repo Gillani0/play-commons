@@ -46,11 +46,11 @@ When sending events to PLAY they must be:
 2. wrapped in an XML `<mt:nativeMessage>` element ([code](https://github.com/play-project/play-commons/blob/master/play-commons-eventformat/src/main/java/eu/play_project/play_commons/eventformat/EventFormatHelpers.java))
 3. wrapped in a WS-Notification SOAP message ([code]())
 
-See [PLAY Abstract RDF Sender](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfsender).
+See details at [PLAY Abstract RDF Sender](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfsender).
 
 Receiving Events
 ----------------
-See [PLAY Abstract RDF Receiver](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfreceiver).
+See details at [PLAY Abstract RDF Receiver](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfreceiver).
 
 
 
