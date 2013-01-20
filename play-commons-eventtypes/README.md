@@ -40,9 +40,17 @@ graph {
 
 Sending Events
 --------------
+When sending events to PLAY they must be:
+
+1. escaped for XML ([code](https://github.com/play-project/play-commons/blob/master/play-commons-eventformat/src/main/java/eu/play_project/play_commons/eventformat/EventFormatHelpers.java))
+2. wrapped in an XML `<mt:nativeMessage>` element ([code](https://github.com/play-project/play-commons/blob/master/play-commons-eventformat/src/main/java/eu/play_project/play_commons/eventformat/EventFormatHelpers.java))
+3. wrapped in a WS-Notification SOAP message ([code]())
+
+See [PLAY Abstract RDF Sender](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfsender).
 
 Receiving Events
 ----------------
+See [PLAY Abstract RDF Receiver](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfreceiver).
 
 
 
@@ -53,4 +61,4 @@ Further reading
 Code
 ----
 * Examples how to **create an event** in Java using the SDK: <a href="src/test/java/eu/play_project/platformservices/eventformat/EventTypesTest.java">EventTypesTest.java</a>
-* Example how to **send an event**: 
+
