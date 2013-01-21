@@ -28,7 +28,7 @@ The event has these features:
 
 ... but the event has no other parameters, its occurrence merely says that it happened (not where it happend nor any useful parameters).
 
-To extend the event with useful parameters (*payload*, *event body*, ...), we give it a new event type and add RDF properties. Properties can be in the default namespace or we can use dedicated namespaces to avoid any name clashes.
+To extend the event with useful parameters ( *payload*, *event body*, ...), we give it a new event type and add RDF properties. Properties can be in the default namespace or we can use dedicated namespaces to avoid any name clashes.
 
 ### Example
 ```
