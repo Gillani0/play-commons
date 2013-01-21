@@ -26,9 +26,9 @@ The event has these features:
 * **stream** `http://streams.event-processing.org/ids/WeatherStream#stream`
 * **time stamp** `2011-08-24T14:40:59.837`
 
-... but the event has no other valuable parameters, its occurrence merely says that it happened (not where it happend nor any useful parameters).
+... but the event has no other parameters, its occurrence merely says that it happened (not where it happend nor any useful parameters).
 
-To extend the event with useful parameters, we give it a new event type and add RDF properties. Properties can be in the deault namespace or we can add and use namespaces.
+To extend the event with useful parameters (*payload*, *event body*, ...), we give it a new event type and add RDF properties. Properties can be in the default namespace or we can use dedicated namespaces to avoid any name clashes.
 
 ### Example
 ```
@@ -50,15 +50,15 @@ To extend the event with useful parameters, we give it a new event type and add 
 }
 ```
 
-* `sioc:content` adds a single attribute with a message content, not datatype is specified so it is the default, `xsd:string`
-* `:location` adds a *structured* attribute using a randomly generated subject with respective properties `a`, `geo:lat`, `geo:long`
+* `sioc:content` adds a single attribute with a message content, no datatype is specified so it is the default, `xsd:string`
+* `:location` adds a *structured* attribute using a randomly generated object with respective properties `a`, `geo:lat`, `geo:long`
 * `geo:lat` and `geo:long` add properties to the randomly generated object (not directly to the event)
 * `geo:lat` and `geo:long` have typed values of `xsd:double`
 
 
 Instantiating Events
 --------------------
-Events can be created in two ways: Using the PLAY SDK in Java an event object can be instantiated and setters can be called conveniently for each event property. If the complexity of the SDK is not needed or not wanted (Maven dependencies) a template approach can be used to create a string like the above examples.
+Events can be created in two ways: Using the PLAY SDK in Java an event object can be instantiated and getters/setters can be called conveniently for each event property. If the complexity of the SDK is not needed or not wanted (Maven dependencies) a template approach can be used to create a string like the above examples.
 
 Examples how to create an event using the SDK: <a href="src/test/java/eu/play_project/platformservices/eventformat/EventTypesTest.java">EventTypesTest.java</a>
 
@@ -85,7 +85,7 @@ An example using a template can look like this:
 
 ... where strings like `%ID%`, `%MYSTATUS%`, `%LAT%` and `%LON%` must be replaced with actual values when the event happens.
 
-### Evaluation of approaches
+### Comparison of approaches
 
 Advantages/disadvantages:
 
@@ -93,7 +93,7 @@ Advantages/disadvantages:
  * PROs: type safety for values, RDF-escaping for values, guidance for new programmers by using clear setters, schema changes will result in clear compile errors, always produces valid/parsable RDF
  * CONs: large Maven footprint, schema is needed at compile time
 2. Using a template approach
- * PROs: light-weight approach e.g. for resource constraint devices, no schema must be created, flexible, no recompilation needed on schema change
+ * PROs: light-weight approach e.g. for resource-constrained devices, schema is optional, no recompilation needed on schema change
  * CONs: no type safety, no checks in case of schema evolution, no RDF-escaping for values, mistakes can lead to unparsable RDF
 
-A **combined approach** can be reasonable where *templates are used at runtime*, but *a schema is maintained for Unit Testing* to compare a template-generated event with a SDK-generated event at compile time. This test will expose any divergence if the schema should change and the template is forgotten or has syntax errors.
+A **combined approach** can be reasonable where *templates are used at runtime*, but *a schema is maintained for Unit Testing* to compare a template-generated event dummy with a SDK-generated event dummy at compile time. This test will expose any divergence if the schema should change and the template is forgotten or has syntax errors.
