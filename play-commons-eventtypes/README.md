@@ -7,7 +7,7 @@ Modelling Events
 After describing the minimum features of an event in [play-commons-eventformat](https://github.com/play-project/play-commons/tree/master/play-commons-eventformat/) here is the same example:
 
 ### Example
-```
+```none
 @PREFIX :    &lt;http://events.event-processing.org/types/&gt; .
 @PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -31,10 +31,10 @@ The event has these features:
 To extend the event with useful parameters ( *payload*, *event body*, ...), we give it a new event type and add RDF properties. Properties can be in the default namespace or we can use dedicated namespaces to avoid any name clashes.
 
 ### Example
-```
+```none
 @PREFIX :     <http://events.event-processing.org/types/> .
 @PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@PREFIX sioc: <http://rdfs.org/sioc/ns#> .
 
 <http://events.event-processing.org/ids/e1> {
     <http://events.event-processing.org/ids/e1#event>
@@ -64,10 +64,10 @@ Examples how to create an event using the SDK: <a href="src/test/java/eu/play_pr
 
 An example using a template can look like this:
 
-```
+```none
 @PREFIX :     <http://events.event-processing.org/types/> .
 @PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@PREFIX sioc: <http://rdfs.org/sioc/ns#> .
 
 <http://events.event-processing.org/ids/%ID%> {
     <http://events.event-processing.org/ids/%ID%#event>
@@ -83,7 +83,8 @@ An example using a template can look like this:
 }
 ```
 
-... where strings like `%ID%`, `%MYSTATUS%`, `%LAT%` and `%LON%` must be replaced with actual values when the event happens.
+* strings like `%ID%`, `%MYSTATUS%`, `%LAT%` and `%LON%` must be replaced with actual values when the event happens.
+* `%TIMESTAMP%` needs a date in `xsd:dateTime`, it should be in UTC and use ISO 8601 with this date formatter: `yyyy-MM-dd'T'HH:mm:ss.SSS'Z'`, find the Java constant here: [code](https://github.com/play-project/play-commons/blob/master/play-commons-constants/src/main/java/eu/play_project/play_commons/constants/Event.java)
 
 ### Comparison of approaches
 

@@ -17,7 +17,7 @@ An event **must** have a minimum set of features:
 * **time stamp** (predicate *:endTime*) in xsd:dateTime format, an optional *:startTime* is supported for events which happened over an interval
 
 ### Example
-```
+```none
 @PREFIX :    &lt;http://events.event-processing.org/types/&gt; .
 @PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -31,7 +31,7 @@ An event **must** have a minimum set of features:
 
 The TriG syntax uses a shorthand for tuples (g,s,p,o) with repeated graph and subject like this:
 
-```
+```none
 graph {
     subject
         predicate object ;
