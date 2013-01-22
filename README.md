@@ -17,3 +17,7 @@
 PLAY Commons
 ============
 Set of commons libraries which will be shared between modules.
+
+Issues
+------
+For issues and bug reporting, please go to https://github.com/play-project/play/issues?labels=&page=1&state=open
