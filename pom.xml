@@ -13,6 +13,7 @@
 
 	<name>play-commons</name>
 	<description>Set of commons libraries which will be shared between modules</description>
+	<inceptionYear>2011</inceptionYear>
 
 	<modules>
 		<module>play-commons-eventformat</module>
@@ -21,7 +22,23 @@
 		<module>play-commons-utils</module>
 	</modules>
 	
+	<scm>
+		<url>https://github.com/play-project/play-commons</url>
+		<connection>scm:git:git://github.com/play-project/play-commons.git</connection>
+		<developerConnection>scm:git:https://github.com/play-project/play-commons.git</developerConnection>
+	</scm>
+	
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/play-project/play/issues?labels=&page=1&state=open</url>
+	</issueManagement>
 
-  <scm>
-  </scm>
+	<licenses>
+		<license>
+			<name>GNU Affero General Public License version 3.0</name>
+			<url>http://www.gnu.org/licenses/agpl-3.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
 </project>
