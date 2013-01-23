@@ -248,7 +248,7 @@
 
 :screenName
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :TwitterEvent , :Telco , uctelco:OpenTwitter ;
+      rdfs:domain :TwitterEvent , :Telco , uctelco:OpenTwitter , nissa:HeatbeatAlert ;
       rdfs:label "twitterScreenName"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -406,7 +406,7 @@ uctelco:payloadJamEvent
 uctelco:phoneNumber
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
-      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , :ContextualizedLatitudeEvent ;
+      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , :ContextualizedLatitudeEvent , nissa:HeatbeatAlert ;
       rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -477,14 +477,14 @@ uctelco:userType
 
 user:id
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , :Telco , uctelco:OpenFacebook ;
+      rdfs:domain :FacebookStatusFeedEvent , :Telco , uctelco:OpenFacebook , nissa:HeatbeatAlert ;
       rdfs:label "facebookId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 user:link
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:domain :FacebookStatusFeedEvent ;
+      rdfs:domain :FacebookStatusFeedEvent , nissa:HeatbeatAlert ;
       rdfs:label "facebookLink"^^xsd:string ;
       owl:maxCardinality "1" .
 

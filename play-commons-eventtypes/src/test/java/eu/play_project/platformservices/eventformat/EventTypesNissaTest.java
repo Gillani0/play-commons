@@ -4,20 +4,9 @@ import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
 import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Random;
 
-import org.event_processing.events.types.EsrShowFriendGeolocation;
-import org.event_processing.events.types.EsrSubscribeTo;
-import org.event_processing.events.types.FacebookStatusFeedEvent;
 import org.event_processing.events.types.NissaHeatbeatAlert;
-import org.event_processing.events.types.TwitterEvent;
-import org.event_processing.events.types.UcTelcoAnswer;
-import org.event_processing.events.types.UcTelcoComposeMail;
-import org.event_processing.events.types.UcTelcoEsrRecom;
-import org.event_processing.events.types.UcTelcoGeoLocation;
-import org.event_processing.events.types.UcTelcoOpenFacebook;
-import org.event_processing.events.types.UcTelcoOpenTwitter;
 import org.junit.Test;
 import org.ontoware.rdf2go.exception.ModelRuntimeException;
 import org.ontoware.rdf2go.model.Model;
@@ -27,7 +16,6 @@ import org.ontoware.rdf2go.model.node.impl.URIImpl;
 import org.ontoware.rdf2go.vocabulary.XSD;
 
 import eu.play_project.play_commons.constants.Stream;
-import eu.play_project.play_commons.eventformat.EventFormatHelpers;
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesNissaTest {
@@ -46,6 +34,7 @@ public class EventTypesNissaTest {
 		m.setNamespace("nissa", "http://www.nissatech.rs/ns/types/");
 
 		int heartRate = 91;
+		String facebookId= "12345";
 				
 		NissaHeatbeatAlert event = new NissaHeatbeatAlert(m, eventId + EVENT_ID_SUFFIX, true);
 		event.setEndTime(new DatatypeLiteralImpl("2012-12-22T13:31:13Z", XSD._dateTime));
@@ -65,7 +54,10 @@ public class EventTypesNissaTest {
 		event.setNissaPressure(0.0);
 		event.setNissaAcc(50.0);
 		EventHelpers.setLocationToEvent(event, "blank://0", 8.401188900000001, 49.008156);
-
+		event.setFacebookId(facebookId);
+		event.setFacebookLink(new URIImpl(String.format("http://graph.facebook.com/%s#", facebookId)));
+		event.setTwitterScreenName("firstname.lastname");
+		event.setUcTelcoPhoneNumber("12345");
 		
 		event.getModel().writeTo(System.out, Syntax.Turtle);
 		System.out.println();
