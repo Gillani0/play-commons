@@ -13,7 +13,7 @@
 
 	<name>play-commons</name>
 	<description>Set of commons libraries which will be shared between modules</description>
-	<inceptionYear>2011</inceptionYear>
+	<inceptionYear>2010</inceptionYear>
 
 	<modules>
 		<module>play-commons-eventformat</module>
