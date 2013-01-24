@@ -20,6 +20,7 @@
 		<module>play-commons-eventtypes</module>
 		<module>play-commons-constants</module>
 		<module>play-commons-utils</module>
+		<module>play-commons-usermanagement</module>
 	</modules>
 	
 	<scm>
