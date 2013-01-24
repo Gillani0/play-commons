@@ -57,6 +57,8 @@
 :     rdf:type owl:Ontology ;
       dc:creator "Andreas Harth"^^xsd:string , "Roland Stühmer"^^xsd:string ;
       owl:imports <http://rdfs.org/sioc/ns> , DUL: , sioc: , dc: , rdfg: , foaf: ;
+	  rdfs:seeAlso <http://www.play-project.eu/> ;
+	  rdfs:seeAlso <http://km.aifb.kit.edu/sites/lodstream/> ;
       owl:versionInfo "1.1-SNAPSHOT"^^xsd:string .
 
 :AisEvent
