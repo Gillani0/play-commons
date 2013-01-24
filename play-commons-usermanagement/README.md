@@ -18,5 +18,4 @@ PLAY User Management
 ====================
 A library for PLAY to model users and permissions in RDF.
 
-
-http://yuml.me/0d2e2aac
+![RDF model](http://yuml.me/0d2e2aac)
