@@ -15,7 +15,6 @@ import org.ontoware.rdf2go.model.node.impl.DatatypeLiteralImpl;
 import org.ontoware.rdf2go.model.node.impl.URIImpl;
 import org.ontoware.rdf2go.vocabulary.XSD;
 
-import eu.play_project.play_commons.constants.Stream;
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesNissaTest {
@@ -38,7 +37,7 @@ public class EventTypesNissaTest {
 				
 		NissaHeatbeatAlert event = new NissaHeatbeatAlert(m, eventId + EVENT_ID_SUFFIX, true);
 		event.setEndTime(new DatatypeLiteralImpl("2012-12-22T13:31:13Z", XSD._dateTime));
-		event.setStream(new URIImpl(Stream.TaxiUCGeoLocation.getUri()));
+		event.setStream(new URIImpl("http://streams.event-processing.org/ids/PersonalMonitoring#stream"));
 		event.setMessage(String.format("This is a heatbeat alert (currently at %s) sent from Android.", heartRate));
 		event.setNissaSessionId(6);
 		event.setNissaHeartRate(heartRate);
