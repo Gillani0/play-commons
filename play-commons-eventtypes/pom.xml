@@ -40,6 +40,12 @@
 		<dependency>
 			<groupId>fr.inria.eventcloud</groupId>
 			<artifactId>eventcloud-utils-trigwriter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>eu.play-project</groupId>
+					<artifactId>play-commons-eventformat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.ow2.play</groupId>
