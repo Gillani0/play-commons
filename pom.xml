@@ -21,7 +21,8 @@
 		<module>play-commons-constants</module>
 		<module>play-commons-utils</module>
 		<module>play-commons-usermanagement</module>
-	</modules>
+    <module>play-commons-security</module>
+  </modules>
 	
 	<scm>
 		<url>https://github.com/play-project/play-commons</url>
