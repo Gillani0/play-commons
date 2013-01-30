@@ -25,7 +25,6 @@ import org.ontoware.rdf2go.model.node.impl.URIImpl;
 import org.ontoware.rdf2go.vocabulary.XSD;
 
 import eu.play_project.play_commons.constants.Stream;
-import eu.play_project.play_commons.eventformat.EventFormatHelpers;
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesTelcoTest {
