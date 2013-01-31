@@ -22,6 +22,7 @@
 		<module>play-commons-utils</module>
 		<module>play-commons-usermanagement</module>
     <module>play-commons-security</module>
+    <module>play-commons-rest</module>
   </modules>
 	
 	<scm>
