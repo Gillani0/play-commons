@@ -18,4 +18,4 @@ PLAY User Management
 ====================
 A library for PLAY to model users and permissions in RDF.
 
-![RDF model](http://yuml.me/diagram/plain;/class/edit/%5Bfoaf:Person%5D-foaf:account%3E%5Bsioc:UserAccount%5D,%20%5Bsioc:UserAccount%5D-owl:sameAs%3E%5Bsioc:UserAccount%5D,%20%5Bsioc:Usergroup%5D-sioc:has_member%3E%5Bsioc:UserAccount%5D,%20%5Bsioc:UserAccount%5D-sioc:function_of%3E%5Bsioc:Role%5D)
+![RDF model](http://yuml.me/diagram/plain;/class/[foaf:Person]-foaf:account>[sioc:UserAccount], [sioc:UserAccount]-owl:sameAs>[sioc:UserAccount], [sioc:Usergroup]-sioc:has_member>[sioc:UserAccount], [sioc:UserAccount]-sioc:function_of>[sioc:Role])
