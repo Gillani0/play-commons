@@ -7,6 +7,7 @@
 		<artifactId>play-commons</artifactId>
 		<groupId>org.ow2.play</groupId>
 		<version>1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>org.ow2.play</groupId>
 	<artifactId>play-commons-security</artifactId>
