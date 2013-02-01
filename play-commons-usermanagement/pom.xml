@@ -8,10 +8,17 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<groupId>org.ow2.play</groupId>
 	<artifactId>play-commons-usermanagement</artifactId>
 	<packaging>jar</packaging>
 
 	<name>play-commons-usermanagement</name>
 	<description>User management of PLAY based on an RDF backend.</description>
+  
+	<scm>
+		<url>https://github.com/play-project/play-commons</url>
+		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
+		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
+	</scm>
 
 </project>

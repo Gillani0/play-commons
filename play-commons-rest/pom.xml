@@ -10,6 +10,7 @@
 	<relativePath>../pom.xml</relativePath>
   </parent>
   
+	<groupId>org.ow2.play</groupId>
   <artifactId>play-commons-rest</artifactId>
   <name>play-commons-rest</name>
   
@@ -29,4 +30,10 @@
 			<version>1.1.1</version>
 		</dependency>
   </dependencies>
+  
+	<scm>
+		<url>https://github.com/play-project/play-commons</url>
+		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
+		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
+	</scm>
 </project>

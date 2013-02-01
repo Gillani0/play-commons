@@ -11,9 +11,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	
+	<groupId>org.ow2.play</groupId>
 	<artifactId>play-commons-utils</artifactId>
 	<name>play-commons-utils</name>
-	<url>http://maven.apache.org</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,13 +27,11 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-	<licenses>
-		<license>
-			<name>Lesser General Public License (LGPL)</name>
-			<url>http://www.gnu.org/copyleft/lesser.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+  
+	<scm>
+		<url>https://github.com/play-project/play-commons</url>
+		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
+		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
+	</scm>
 
 </project>

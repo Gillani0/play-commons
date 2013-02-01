@@ -11,6 +11,7 @@
 	<artifactId>play-commons-eventtypes</artifactId>
 	<packaging>jar</packaging>
 
+	<groupId>org.ow2.play</groupId>
 	<name>play-commons-eventtypes</name>
 	<description>Classes (SDK) for creating business events in the platform as RDF.</description>
 
@@ -151,4 +152,11 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+  
+	<scm>
+		<url>https://github.com/play-project/play-commons</url>
+		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
+		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
+	</scm>
+  
 </project>
