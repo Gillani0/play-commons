@@ -3,11 +3,10 @@ package eu.play_project.play_commons.eventtypes;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
-import java.util.Random;
 
 import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
-import org.event_processing.events.types.Thing;
+import org.event_processing.events.types.Thing1;
 import org.ontoware.rdf2go.RDF2Go;
 import org.ontoware.rdf2go.impl.jena29.TypeConversion;
 import org.ontoware.rdf2go.model.Model;
@@ -28,8 +27,6 @@ import eu.play_project.play_commons.eventformat.EventFormatHelpers;
 import fr.inria.eventcloud.utils.trigwriter.TriGWriter;
 
 public final class EventHelpers {
-
-	private static Random random = new Random();
 
 	/**
 	 * Create an empty RDF2Go model with some useful namespaces predefined.
@@ -154,7 +151,7 @@ public final class EventHelpers {
 	 * 
 	 * Several calls to this method add several {@code geo:location} properties.
 	 */
-	public static void addLocation(Thing thing, double latitude,
+	public static void addLocation(Thing1 thing, double latitude,
 			double longitude) {
 
 		Point p = new Point(thing.getModel(), true);
@@ -169,7 +166,7 @@ public final class EventHelpers {
 	 * 
 	 * @param out
 	 *            A stream to write to.
-	 * @param event
+	 * @param modelSet
 	 */
 	public static void write(OutputStream out, ModelSet modelSet) {
 		Dataset ds = (Dataset) modelSet.getUnderlyingModelSetImplementation();
@@ -181,7 +178,7 @@ public final class EventHelpers {
 	 * 
 	 * @param out
 	 *            A stream to write to.
-	 * @param event
+	 * @param model
 	 */
 	public static void write(OutputStream out, Model model) {
 		com.hp.hpl.jena.rdf.model.Model m = (com.hp.hpl.jena.rdf.model.Model) model
@@ -204,10 +201,10 @@ public final class EventHelpers {
 	}
 
 	/**
-	 * Serialize a model to TriG and enclose the result in an XML wrapping
+	 * Serialize a {@linkplain Model} to TriG and enclose the result in an XML wrapping
 	 * element for use in WS-Notification.
 	 * 
-	 * @param event
+	 * @param model
 	 * @return A string containing the RDF text.
 	 */
 	public static String serialize(Model model) {
@@ -220,9 +217,6 @@ public final class EventHelpers {
 	/**
 	 * Serialize a model to TriG and enclose the result in an XML wrapping
 	 * element for use in WS-Notification.
-	 * 
-	 * @param model
-	 * @return
 	 */
 	public static Element serializeAsDom(Model model) {
 		ByteArrayOutputStream bout = new ByteArrayOutputStream();
@@ -234,9 +228,6 @@ public final class EventHelpers {
 	/**
 	 * Serialize the underlying model to TriG and enclose the result in an XML
 	 * wrapping element for use in WS-Notification.
-	 * 
-	 * @param event
-	 * @return A string containing the RDF text.
 	 */
 	public static String serialize(Event event) {
 		return serialize(event.getModel());
@@ -245,9 +236,6 @@ public final class EventHelpers {
 	/**
 	 * Serialize the underlying model to TriG and enclose the result in an XML
 	 * wrapping element for use in WS-Notification.
-	 * 
-	 * @param event
-	 * @return
 	 */
 	public static Element serializeAsDom(Event event) {
 		return serializeAsDom(event.getModel());

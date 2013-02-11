@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>org.semweb4j</groupId>
 			<artifactId>rdfreactor.runtime</artifactId>
-			<version>4.7.3</version>
+			<version>4.8.2</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>rdf2go.api</artifactId>
@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.semweb4j</groupId>
 			<artifactId>rdf2go.impl.jena</artifactId>
-			<version>4.8.1</version>
+			<version>4.8.2</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -84,8 +84,8 @@
 		<plugins>
 			<plugin>
 				<groupId>org.semweb4j</groupId>
-				<artifactId>maven-rdfreactor-plugin</artifactId>
-				<version>4.7.2</version>
+				<artifactId>rdfreactor-maven-plugin</artifactId>
+				<version>4.8.2</version>
 				<configuration>
 					<schemaFile>src/main/resources/types.n3</schemaFile>
 					<packageName>org.event_processing.events.types</packageName>
@@ -98,7 +98,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- 
 			<plugin>
 			    <groupId>org.codehaus.mojo</groupId>
 			    <artifactId>build-helper-maven-plugin</artifactId>
@@ -119,7 +118,6 @@
 			        </execution>
 			    </executions>
 			</plugin>			
-			-->
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -135,7 +133,7 @@
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>org.semweb4j</groupId>
-										<artifactId>maven-rdfreactor-plugin</artifactId>
+										<artifactId>rdfreactor-maven-plugin</artifactId>
 										<versionRange>[0.0.6-SNAPSHOT,)</versionRange>
 										<goals>
 											<goal>rdfs-classes</goal>

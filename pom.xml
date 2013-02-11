@@ -21,17 +21,17 @@
 		<module>play-commons-constants</module>
 		<module>play-commons-utils</module>
 		<module>play-commons-usermanagement</module>
-    <module>play-commons-security</module>
-    <module>play-commons-rest</module>
-  </modules>
-	
+		<module>play-commons-security</module>
+		<module>play-commons-rest</module>
+	</modules>
+
 	<scm>
 		<url>https://github.com/play-project/play-commons</url>
 		<connection>scm:git:git://github.com/play-project/play-commons.git</connection>
 		<developerConnection>scm:git:https://github.com/play-project/play-commons.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
-	
+		<tag>HEAD</tag>
+	</scm>
+
 	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>https://github.com/play-project/play/issues?labels=;page=1;state=open</url>
