@@ -22,9 +22,9 @@ Data Model
 ----------
 Permissions will be modelled in RDF using the Schemas [WebAccessControl (WAC)](http://www.w3.org/wiki/WebAccessControl), FOAF and SIOC. 
 
-Work in progress:
+Model:
 
-![RDF model](http://yuml.me/diagram/plain;/class/[foaf:Person]-foaf:account>[sioc:UserAccount], [sioc:UserAccount]-owl:sameAs>[sioc:UserAccount], [sioc:Usergroup]-sioc:has_member>[sioc:UserAccount], [sioc:UserAccount]-sioc:function_of>[sioc:Role])
+![RDF model](src/site/resources/accesscontrol.png?raw=true)
 
 Considerations
 --------------

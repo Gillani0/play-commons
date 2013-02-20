@@ -1,11 +1,14 @@
-@prefix acl: <http://www.w3.org/ns/auth/acl#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix acl:     <http://www.w3.org/ns/auth/acl#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix s:       <http://streams.event-processing.org/ids/> .
-@prefix roland: <http://www.roland-stuehmer.de/foaf.rdf#> . 
-@prefix group:       <http://groups.event-processing.org/id/> .
+@prefix roland:  <http://www.roland-stuehmer.de/foaf.rdf#> . 
+@prefix group:   <http://groups.event-processing.org/id/> .
+@prefix notify:  <http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/> .
+@prefix subscribe: <http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/> .
 
 [] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agentClass foaf:Agent .
 [] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agent <urn:cardi> .
@@ -16,4 +19,12 @@
 [] acl:accessTo s:PersonalMonitoring; acl:mode acl:Append; acl:agent roland:me .
 roland:me sioc:member_of group:public .
 roland:me sioc:member_of group:developers .
+
+notify:Notify
+      rdf:type rdfs:Class ;
+	  rdfs:subClassOf acl:Write .
+	  
+subscribe:SubscribeRequest
+      rdf:type rdfs:Class ;
+	  rdfs:subClassOf acl:Read .
 

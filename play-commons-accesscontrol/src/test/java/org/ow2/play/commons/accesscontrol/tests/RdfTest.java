@@ -3,8 +3,6 @@ package org.ow2.play.commons.accesscontrol.tests;
 import java.io.IOException;
 
 import org.junit.Test;
-import org.ontoware.rdf2go.RDF2Go;
-import org.ontoware.rdf2go.Reasoning;
 import org.ontoware.rdf2go.exception.ModelRuntimeException;
 import org.ontoware.rdf2go.impl.jena29.ModelImplJena26;
 import org.ontoware.rdf2go.model.Model;
@@ -12,9 +10,6 @@ import org.ontoware.rdf2go.model.QueryRow;
 import org.ontoware.rdf2go.model.Syntax;
 
 import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.shared.JenaException;
-
-import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class RdfTest {
 
@@ -33,10 +28,9 @@ public class RdfTest {
 		        .createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF));
 		rdf.open();
 		
-		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("foaf.rdf"), Syntax.RdfXml);
-		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("sioc.rdf"), Syntax.RdfXml);
-		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("dc-1.1.ttl"), Syntax.Turtle);
-		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("acl.rdf"), Syntax.RdfXml);
+		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("vocabularies/foaf.rdf"), Syntax.RdfXml);
+		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("vocabularies/sioc.rdf"), Syntax.RdfXml);
+		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("vocabularies/acl.rdf"), Syntax.RdfXml);
 		rdf.readFrom(this.getClass().getClassLoader().getResourceAsStream("permissions.ttl"), Syntax.Turtle);
 		
 		System.out.println("Read:");
