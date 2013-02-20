@@ -2,7 +2,7 @@
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://rdfs.org/sioc/ns
 # imports: http://rdfs.org/sioc/ns#
-# imports: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#
+# imports: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl
 # imports: http://www.w3.org/2004/03/trix/rdfg-1/
 # imports: http://xmlns.com/foaf/0.1/
 
@@ -55,10 +55,9 @@
       :stream <http://streams.event-processing.org/ids/NiceTempStream#stream> .
 
 :     rdf:type owl:Ontology ;
+      rdfs:seeAlso <http://km.aifb.kit.edu/sites/lodstream/> , <http://www.play-project.eu/> ;
       dc:creator "Andreas Harth"^^xsd:string , "Roland Stühmer"^^xsd:string ;
-      owl:imports <http://rdfs.org/sioc/ns> , DUL: , sioc: , dc: , rdfg: , foaf: ;
-	  rdfs:seeAlso <http://www.play-project.eu/> ;
-	  rdfs:seeAlso <http://km.aifb.kit.edu/sites/lodstream/> ;
+      owl:imports <http://rdfs.org/sioc/ns> , sioc: , dc: , <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> , rdfg: , foaf: ;
       owl:versionInfo "1.1-SNAPSHOT"^^xsd:string .
 
 :AisEvent
@@ -408,7 +407,7 @@ uctelco:payloadJamEvent
 uctelco:phoneNumber
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
-      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , :ContextualizedLatitudeEvent , nissa:HeatbeatAlert ;
+      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , nissa:HeatbeatAlert , :ContextualizedLatitudeEvent ;
       rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
