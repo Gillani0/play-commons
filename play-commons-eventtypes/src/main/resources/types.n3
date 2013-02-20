@@ -30,8 +30,18 @@
 @prefix uctelco:  <http://events.event-processing.org/uc/telco/> .
 @prefix user:    <http://graph.facebook.com/schema/user#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+wsnt
 
 <http://docs.oasis-open.org/wsn/b-2/Topic>
+      rdfs:comment "A topic for a topic-based publish/subscribe system. It can be used to access a stream of events."^^xsd:string ;
+      rdf:type rdfs:Class .
+
+<http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/Notify>
+      rdfs:comment "The action of notifying a new event."^^xsd:string ;
+      rdf:type rdfs:Class .
+	  
+<http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/SubscribeRequest>
+      rdfs:comment "The action of subscribing to a topic or stream of events."^^xsd:string ;
       rdf:type rdfs:Class .
 
 <http://events.event-processing.org/ids/e1#event>
