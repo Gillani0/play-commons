@@ -1,0 +1,19 @@
+@prefix acl: <http://www.w3.org/ns/auth/acl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix s:       <http://streams.event-processing.org/ids/> .
+@prefix roland: <http://www.roland-stuehmer.de/foaf.rdf#> . 
+@prefix group:       <http://groups.event-processing.org/id/> .
+
+[] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agentClass foaf:Agent .
+[] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agent <urn:cardi> .
+<urn:cardi2> rdfs:type foaf:Agent .
+<urn:cardi3> sioc:member_of <urn:cards> .
+[] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agent <urn:cards> .
+<urn:cardi4> owl:sameAs <urn:cardi> .
+[] acl:accessTo s:PersonalMonitoring; acl:mode acl:Append; acl:agent roland:me .
+roland:me sioc:member_of group:public .
+roland:me sioc:member_of group:developers .
+

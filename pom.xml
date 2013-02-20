@@ -20,7 +20,7 @@
 		<module>play-commons-eventtypes</module>
 		<module>play-commons-constants</module>
 		<module>play-commons-utils</module>
-		<module>play-commons-usermanagement</module>
+		<module>play-commons-accesscontrol</module>
 		<module>play-commons-security</module>
 		<module>play-commons-rest</module>
 	</modules>
