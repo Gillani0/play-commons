@@ -8,7 +8,6 @@ import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
 import org.event_processing.events.types.Thing1;
 import org.ontoware.rdf2go.RDF2Go;
-import org.ontoware.rdf2go.impl.jena29.TypeConversion;
 import org.ontoware.rdf2go.model.Model;
 import org.ontoware.rdf2go.model.ModelSet;
 import org.ontoware.rdf2go.model.Syntax;
@@ -18,6 +17,7 @@ import org.ontoware.rdf2go.model.node.impl.URIImpl;
 import org.ontoware.rdf2go.vocabulary.XSD;
 import org.w3c.dom.Element;
 
+import com.hp.hpl.jena.datatypes.RDFDatatype;
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.DatasetFactory;
 import com.hp.hpl.jena.sparql.util.NodeFactory;
@@ -258,8 +258,11 @@ public final class EventHelpers {
 		}
 		finally {
 			if (objectNode == null) {
-				if (object.contains("^^")) {
-					objectNode = TypeConversion.toJenaNode(new DatatypeLiteralImpl(object));
+				int i = object.lastIndexOf("^^");
+				if (i != -1) { // Check if the String is Turtle encoded
+					String value = object.substring(0, i);
+					RDFDatatype datatype = com.hp.hpl.jena.graph.Node.getType(object.substring(i + 2));
+					objectNode = com.hp.hpl.jena.graph.Node.createLiteral(value, datatype);
 				}
 				else {
 					objectNode = NodeFactory.createLiteralNode(object, null, null); // TODO sobermeier: support typed literals from Prolog
