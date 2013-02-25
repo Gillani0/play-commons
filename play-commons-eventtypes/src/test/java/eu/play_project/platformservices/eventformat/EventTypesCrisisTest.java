@@ -1,12 +1,10 @@
 package eu.play_project.platformservices.eventformat;
 
 import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
-import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 import static eu.play_project.play_commons.constants.Stream.SituationalEventStream;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Random;
 
 import org.event_processing.events.types.CrisisMeasureEvent;
 import org.junit.Test;
@@ -18,12 +16,10 @@ import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesCrisisTest {
 
-	private static Random random = new Random();
-
 	@Test
 	public void testNotifyModel() throws ModelRuntimeException, IOException {
 		// Create an event ID used in RDF context and RDF subject
-		String eventId = EVENTS.getUri() + "crisis" + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId("crisis");
 
 		CrisisMeasureEvent event = new CrisisMeasureEvent(
 				// set the RDF context part

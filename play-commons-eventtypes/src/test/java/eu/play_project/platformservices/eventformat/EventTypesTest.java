@@ -1,14 +1,12 @@
 package eu.play_project.platformservices.eventformat;
 
 import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
-import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 import org.event_processing.events.types.FacebookCepResult;
@@ -25,16 +23,13 @@ import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesTest {
 	
-	private static Random random = new Random();
-	
 	/**
 	 * An experiment with RDFReactor
 	 */
 	@Test
 	public void testFacebookStatusFeedEvent() throws ModelRuntimeException, IOException {
 		// Create an event ID used in RDF context and RDF subject
-		String eventId = EVENTS.getUri() + "e" + Math.abs(random.nextLong());
-		// TODO stuehmer: devise safer model for uniqueness of event IDs, e.g. incorporating process ID and hostname
+		String eventId = EventHelpers.createRandomEventId();
 
 		FacebookStatusFeedEvent event = new FacebookStatusFeedEvent(
 				// set the RDF context part
@@ -66,7 +61,7 @@ public class EventTypesTest {
 	@Test
 	public void testFacebookCepResult() throws ModelRuntimeException, IOException, CardinalityException {
 		// Create an event ID used in RDF context and RDF subject
-		String eventId = EVENTS.getUri() + "e" + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId();
 		
 		FacebookCepResult event = new FacebookCepResult(EventHelpers.createEmptyModel(eventId),
 				eventId + EVENT_ID_SUFFIX, true);
@@ -98,7 +93,7 @@ public class EventTypesTest {
 	 */
 	@Test
 	public void testTwitterEvent() throws ModelRuntimeException, IOException {
-		String eventId = EVENTS.getUri() + "e" + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId();
 
 		TwitterEvent event = new TwitterEvent(EventHelpers.createEmptyModel(eventId),
 				eventId + EVENT_ID_SUFFIX, true);

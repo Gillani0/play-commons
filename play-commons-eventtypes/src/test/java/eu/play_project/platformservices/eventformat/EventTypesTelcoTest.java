@@ -28,9 +28,6 @@ import eu.play_project.play_commons.constants.Stream;
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesTelcoTest {
-	
-	private static Random random = new Random();
-	
 
 	/**
 	 * An example for the Telco use case.
@@ -121,7 +118,7 @@ public class EventTypesTelcoTest {
 	@Test
 	public void testTwitterTelcoEvent() throws ModelRuntimeException, IOException {
 		String phone = "33492945370";
-		String eventId = EVENTS.getUri() + "taxiUC" + phone + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId("taxiUC" + phone);
 
 		TwitterEvent event = new TwitterEvent(EventHelpers.createEmptyModel(eventId),
 				eventId + EVENT_ID_SUFFIX, true);
@@ -146,7 +143,7 @@ public class EventTypesTelcoTest {
 	@Test
 	public void testFacebookTelcoEvent() throws ModelRuntimeException, IOException {
 		String phone = "33492945370";
-		String eventId = EVENTS.getUri() + "taxiUC" + phone + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId("taxiUC" + phone);
 
 		FacebookStatusFeedEvent event = new FacebookStatusFeedEvent(
 				// set the RDF context part

@@ -1,11 +1,9 @@
 package eu.play_project.platformservices.eventformat;
 
 import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
-import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Random;
 
 import org.event_processing.events.types.ProximityInfoEvent;
 import org.event_processing.events.types.VesselEvent;
@@ -18,16 +16,13 @@ import eu.play_project.play_commons.constants.Stream;
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesAisTest {
-	
-	private static Random random = new Random();
-	
 
 	/**
 	 * An example for the Telco use case.
 	 */
 	@Test
 	public void testAisVesselEvent() throws ModelRuntimeException, IOException {
-		String eventId = EVENTS.getUri() + "testing" + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId("testing");
 		
 		VesselEvent event = new VesselEvent(EventHelpers.createEmptyModel(eventId),
 				eventId + EVENT_ID_SUFFIX, true);
@@ -58,7 +53,7 @@ public class EventTypesAisTest {
 	 */
 	@Test
 	public void testAisProximityEvent() throws ModelRuntimeException, IOException {
-		String eventId = EVENTS.getUri() + "testing" + Math.abs(random.nextLong());
+		String eventId = EventHelpers.createRandomEventId("testing");
 		
 		ProximityInfoEvent event = new ProximityInfoEvent(EventHelpers.createEmptyModel(eventId),
 				eventId + EVENT_ID_SUFFIX, true);
