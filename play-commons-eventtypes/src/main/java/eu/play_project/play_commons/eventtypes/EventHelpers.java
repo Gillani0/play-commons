@@ -1,8 +1,11 @@
 package eu.play_project.play_commons.eventtypes;
 
+import static eu.play_project.play_commons.constants.Namespace.EVENTS;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.util.UUID;
 
 import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
@@ -63,6 +66,36 @@ public final class EventHelpers {
 		modelSet.open();
 
 		return addNamespaces(modelSet);
+	}
+	
+	/**
+	 * Create a random event ID. The returned ID is a URI string in namespace
+	 * {@linkplain EVENTS} and is randomized using
+	 * {@linkplain UUID#randomUUID()}.
+	 * 
+	 * @return a URI string to be used as event ID.
+	 */
+	public static String createRandomEventId() {
+		return createRandomEventId("e");
+	}
+	
+	/**
+	 * Create a random event ID. The returned ID is a URI string in namespace
+	 * {@linkplain EVENTS} and is randomized using
+	 * {@linkplain UUID#randomUUID()}.
+	 * 
+	 * @param prefix
+	 *            an alphabetical(!) string possibly used to identify events by
+	 *            your application in a simple way
+	 * @return a URI string to be used as event ID.
+	 */
+	public static String createRandomEventId(String prefix) {
+		// we are adamant about the prefix because it is important for URI construction:
+		if (prefix == null || prefix.isEmpty()) {
+			throw new IllegalArgumentException("Prefix must not be empty or null, avoiding illegal URIs.");
+		}
+		
+		return EVENTS.getUri() + prefix + "_" + UUID.randomUUID();
 	}
 
 	/**
