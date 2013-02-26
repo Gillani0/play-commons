@@ -258,7 +258,7 @@
 
 :screenName
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :TwitterEvent , :Telco , uctelco:OpenTwitter , nissa:HeatbeatAlert ;
+      rdfs:domain :TwitterEvent , :Telco , uctelco:OpenTwitter , nissa:HeartbeatAlert ;
       rdfs:label "twitterScreenName"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -416,7 +416,7 @@ uctelco:payloadJamEvent
 uctelco:phoneNumber
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
-      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , nissa:HeatbeatAlert , :ContextualizedLatitudeEvent ;
+      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , nissa:HeartbeatAlert , :ContextualizedLatitudeEvent ;
       rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -487,14 +487,14 @@ uctelco:userType
 
 user:id
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , :Telco , uctelco:OpenFacebook , nissa:HeatbeatAlert ;
+      rdfs:domain :FacebookStatusFeedEvent , :Telco , uctelco:OpenFacebook , nissa:HeartbeatAlert ;
       rdfs:label "facebookId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 user:link
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , nissa:HeatbeatAlert ;
+      rdfs:domain :FacebookStatusFeedEvent , nissa:HeartbeatAlert ;
       rdfs:label "facebookLink"^^xsd:string ;
       owl:maxCardinality "1" .
 
@@ -963,86 +963,86 @@ uccrisis:value
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
-nissa:HeatbeatAlert
+nissa:HeartbeatAlert
       rdf:type owl:Class ;
-      rdfs:label "NissaHeatbeatAlert"^^xsd:string ;
+      rdfs:label "NissaHeartbeatAlert"^^xsd:string ;
       rdfs:subClassOf :Event .
 
 nissa:acc
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaAcc"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:battery
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaBattery"^^xsd:string ;
       rdfs:range xsd:integer .
 
 nissa:calories
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaCalories"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:distance
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaDistance"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:duration
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaDuration"^^xsd:string ;
       rdfs:range xsd:integer .
 
 nissa:heartRate
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaHeartRate"^^xsd:string ;
       rdfs:range xsd:integer .
 
 nissa:humidity
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaHumidity"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:pressure
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaPressure"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:sessionId
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaSessionId"^^xsd:string ;
       rdfs:range xsd:integer .
 
 nissa:speed
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaSpeed"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:steps
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaSteps"^^xsd:string ;
       rdfs:range xsd:integer .
 
 nissa:temp
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaTemp"^^xsd:string ;
       rdfs:range xsd:double .
 
 nissa:wind
       rdf:type rdf:Property ;
-      rdfs:domain nissa:HeatbeatAlert ;
+      rdfs:domain nissa:HeartbeatAlert ;
       rdfs:label "nissaWind"^^xsd:string ;
       rdfs:range xsd:double .
 

@@ -6,7 +6,7 @@ import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 import java.io.IOException;
 import java.util.Random;
 
-import org.event_processing.events.types.NissaHeatbeatAlert;
+import org.event_processing.events.types.NissaHeartbeatAlert;
 import org.junit.Test;
 import org.ontoware.rdf2go.exception.ModelRuntimeException;
 import org.ontoware.rdf2go.model.Model;
@@ -26,7 +26,7 @@ public class EventTypesNissaTest {
 	 * An example for the Telco use case.
 	 */
 	@Test
-	public void testHeatbeatAlert() throws ModelRuntimeException, IOException {
+	public void testHeartbeatAlert() throws ModelRuntimeException, IOException {
 		String uniqueId = "nissa1340688541673999872";
 		String eventId = EVENTS.getUri() + uniqueId;
 		Model m = EventHelpers.createEmptyModel(eventId);
@@ -35,10 +35,10 @@ public class EventTypesNissaTest {
 		int heartRate = 91;
 		String facebookId= "12345";
 				
-		NissaHeatbeatAlert event = new NissaHeatbeatAlert(m, eventId + EVENT_ID_SUFFIX, true);
+		NissaHeartbeatAlert event = new NissaHeartbeatAlert(m, eventId + EVENT_ID_SUFFIX, true);
 		event.setEndTime(new DatatypeLiteralImpl("2012-12-22T13:31:13Z", XSD._dateTime));
 		event.setStream(new URIImpl("http://streams.event-processing.org/ids/PersonalMonitoring#stream"));
-		event.setMessage(String.format("This is a heatbeat alert (currently at %s) sent from Android.", heartRate));
+		event.setMessage(String.format("This is a heartbeat alert (currently at %s) sent from Android.", heartRate));
 		event.setNissaSessionId(6);
 		event.setNissaHeartRate(heartRate);
 		event.setNissaDistance(12.5);
