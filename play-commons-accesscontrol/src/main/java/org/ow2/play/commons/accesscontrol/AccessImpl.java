@@ -14,6 +14,13 @@ import com.hp.hpl.jena.ontology.OntModelSpec;
 
 import eu.play_project.play_commons.constants.Namespace;
 
+/**
+ * This class fetches permission data from a Web Service and validates
+ * permissions based on such ACL information.
+ * 
+ * @author Roland Stühmer
+ * 
+ */
 public class AccessImpl implements Access {
 
 	private static String PREFIXES;

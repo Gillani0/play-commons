@@ -5,7 +5,7 @@ package org.ow2.play.commons.accesscontrol.api;
  * and extended for PLAY by reusing publish/subscribe vocabulary from
  * {@link https://www.oasis-open.org/committees/wsn/}.
  * 
- * @author stuehmer
+ * @author Roland Stühmer
  */
 public enum Permission {
 	/**
