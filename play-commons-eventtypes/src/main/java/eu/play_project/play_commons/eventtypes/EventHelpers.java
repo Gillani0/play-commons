@@ -67,7 +67,7 @@ public final class EventHelpers {
 
 		return addNamespaces(modelSet);
 	}
-	
+
 	/**
 	 * Create a random event ID. The returned ID is a URI string in namespace
 	 * {@linkplain EVENTS} and is randomized using
@@ -78,7 +78,7 @@ public final class EventHelpers {
 	public static String createRandomEventId() {
 		return createRandomEventId("e");
 	}
-	
+
 	/**
 	 * Create a random event ID. The returned ID is a URI string in namespace
 	 * {@linkplain EVENTS} and is randomized using
@@ -94,7 +94,7 @@ public final class EventHelpers {
 		if (prefix == null || prefix.isEmpty()) {
 			throw new IllegalArgumentException("Prefix must not be empty or null, avoiding illegal URIs.");
 		}
-		
+
 		return EVENTS.getUri() + prefix + "_" + UUID.randomUUID();
 	}
 
@@ -132,7 +132,7 @@ public final class EventHelpers {
 			double longitude) {
 		setLocationToEvent(event, latitude,	longitude);
 	}
-	
+
 	/**
 	 * Add latitude and longitude to an existing event object. This method
 	 * simplifies the process of creating a random node, etc, for the n-ary
@@ -142,10 +142,10 @@ public final class EventHelpers {
 	 */
 	public static void setLocationToEvent(Event event, double latitude,
 			double longitude) {
-		
+
 		setLocationToEvent(event, null, latitude, longitude);
 	}
-	
+
 	/**
 	 * Add latitude and longitude to an existing event object. This method
 	 * simplifies the process of creating a new node, etc, for the n-ary
@@ -162,7 +162,7 @@ public final class EventHelpers {
 	 */
 	public static void setLocationToEvent(Event event, String locationResource, double latitude,
 			double longitude) {
-		
+
 		Point p;
 		if (locationResource == null) {
 			p = new Point(event.getModel(), true);
@@ -170,10 +170,10 @@ public final class EventHelpers {
 		else {
 			p = new Point(event.getModel(), locationResource, true);
 		}
-		
+
 		p.setGeoLatitude(new DatatypeLiteralImpl(Double.toString(latitude), XSD._double));
 		p.setGeoLongitude(new DatatypeLiteralImpl(Double.toString(longitude), XSD._double));
-		
+
 		event.setLocation(p);
 	}
 
@@ -279,7 +279,7 @@ public final class EventHelpers {
 	 * can be a URI, a literal, etc.
 	 */
 	public static com.hp.hpl.jena.graph.Node toJenaNode(String object) {
-		
+
 		com.hp.hpl.jena.graph.Node objectNode = null;
 		try {
 			@SuppressWarnings("unused")
