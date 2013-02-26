@@ -12,19 +12,14 @@
 @prefix notify:  <http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/> .
 @prefix subscribe: <http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/> .
 
-[] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agent <urn:cardi> .
-<urn:cardi2> rdfs:type foaf:Agent .
-<urn:cardi3> sioc:member_of <urn:cards> .
-[] acl:accessTo <urn:card>; acl:mode acl:Append; acl:agent <urn:cards> .
-<urn:cardi4> owl:sameAs <urn:cardi> .
-[] acl:accessTo s:PersonalMonitoring; acl:mode acl:Write, notify:Notify; acl:agent group:developers .
-roland:me sioc:member_of group:public .
-roland:me sioc:member_of group:developers .
 
-notify:Notify
-      rdf:type rdfs:Class ;
-	  rdfs:subClassOf acl:Write .
-	  
-subscribe:SubscribeRequest
-      rdf:type rdfs:Class ;
-	  rdfs:subClassOf acl:Read .
+[] acl:accessTo <urn:stream01>; acl:mode acl:Write; acl:agent <urn:account01> .
+
+<urn:account03> sioc:member_of <urn:group01> .
+<urn:account04> owl:sameAs <urn:account03> . 
+[] acl:accessTo <urn:stream03>; acl:mode acl:Read; acl:agent <urn:group01> .
+
+<urn:account05> rdf:type <urn:class01> . 
+<urn:account06> rdf:type <urn:class02> . 
+[] acl:accessTo <urn:stream04>; acl:mode notify:Notify; acl:agentClass <urn:class01> .
+

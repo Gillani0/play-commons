@@ -1,3 +1,4 @@
+@prefix :        <http://events.event-processing.org/types/> .
 @prefix acl:     <http://www.w3.org/ns/auth/acl#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix sioc:    <http://rdfs.org/sioc/ns#> .
@@ -18,10 +19,6 @@ notify:Notify
 subscribe:SubscribeRequest
       rdf:type rdfs:Class ;
 	  rdfs:subClassOf acl:Read .
-
-
-# Developers have all rights on all streams:
-[] acl:accessToClass :Stream ; acl:mode acl:Read, acl:Write, notify:Notify, subscribe:SubscribeRequest; acl:agent group:developers .
 
 # Define some agents:
 roland:me sioc:member_of group:public .
