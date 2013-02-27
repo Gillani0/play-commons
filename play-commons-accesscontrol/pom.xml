@@ -37,27 +37,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.semweb4j</groupId>
-			<artifactId>rdfreactor.runtime</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>rdf2go.api</artifactId>
-					<groupId>org.semweb4j</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.ow2.play</groupId>
-			<artifactId>play-commons-eventtypes</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>eventcloud-utils-trigwriter</artifactId>
-					<groupId>fr.inria.eventcloud</groupId>
-				</exclusion>
-			</exclusions>
+			<artifactId>rdf2go.impl.jena</artifactId>
 		</dependency>
 	</dependencies>
 	
