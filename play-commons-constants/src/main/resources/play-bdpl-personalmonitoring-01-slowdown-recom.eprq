@@ -11,28 +11,30 @@ CONSTRUCT {
 	:e uctelco:phoneNumber ?phone .
 	:e uctelco:ackRequired "false"^^xsd:boolean .
 	:e uctelco:answerRequired "false"^^xsd:boolean .
-	:e :message "Slow down, you created two consecutively high hearbeat alerts."^^xsd:string .
+#	:e :message "Slow down, you created two consecutively high hearbeat alerts."^^xsd:string .
+	:e :message "Slow down, you created a high hearbeat alert."^^xsd:string .
 	:e :location <blank://1> .
 	<blank://1> geo:lat ?Latitude1 ;
 		geo:long ?Longitude1 .
 	:e nissa:heartRate ?heartRate02 .			
-	:e :members ?e1, ?e2 .
+#	:e :members ?e1, ?e2 .
+	:e :members ?e2 .
 }
 WHERE {
-	WINDOW {
-		EVENT ?id1 {
-			?e1 rdf:type nissa:HeartbeatAlert .
-			?e1 :stream <http://streams.event-processing.org/ids/TaxiUCCall#stream> .
-			?e1 uctelco:phoneNumber ?phone .
-			?e1 nissa:heartRate ?heartRate01 .
-			}
-		SEQ
+#	WINDOW {
+#		EVENT ?id1 {
+#			?e1 rdf:type nissa:HeartbeatAlert .
+#			?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+#			?e1 uctelco:phoneNumber ?phone .
+#			?e1 nissa:heartRate ?heartRate01 .
+#			}
+#		SEQ
 		EVENT ?id2 {
 			?e2 rdf:type nissa:HeartbeatAlert .
-			?e2 :stream <http://streams.event-processing.org/ids/TaxiUCCall#stream> .
+			?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
 			?e2 uctelco:phoneNumber ?phone .
 			?e2 :location [ geo:lat ?Latitude1; geo:long ?Longitude1 ] .
 			?e2 nissa:heartRate ?heartRate02 .			
 			}
-	} ("PT1M"^^xsd:duration, sliding)
+#	} ("PT1M"^^xsd:duration, sliding)
 }

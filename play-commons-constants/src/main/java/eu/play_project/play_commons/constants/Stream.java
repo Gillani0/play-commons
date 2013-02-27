@@ -21,6 +21,7 @@ public enum Stream {
 	FacebookCepResults(STREAMS, "FacebookCepResults#stream"),
 	PachubeFeed(STREAMS, "PachubeFeed#stream"),
 	TwitterFeed(STREAMS, "TwitterFeed#stream"),
+	PersonalMonitoring(STREAMS, "PersonalMonitoring#stream"),
 	// ARMINES
 	SituationalEventStream(STREAMS, "situationalEvent#stream"),
 	SituationalAlertEventStream(STREAMS, "situationalAlertEvent#stream"),
@@ -55,7 +56,7 @@ public enum Stream {
 	private final QName qname;
 	
 	/**
-	 * Stream IDs usually end in this special suffix (URI fragment identifier). 
+	 * Stream IDs usually end in this special suffix (URI fragment identifier).
 	 */
 	public static final String STREAM_ID_SUFFIX = "#stream";
 	
@@ -110,7 +111,7 @@ public enum Stream {
 	 */
 	public static String toTopicUri(String streamId) {
 		return streamId.substring(0, streamId.lastIndexOf("#"));
-	}	
+	}
 
 	/**
 	 * Obtain short stream IDs for use with the DSB. This representation omits
@@ -131,6 +132,7 @@ public enum Stream {
 				streamId.getPrefix());
 	}
 
+	@Override
 	public String toString() {
 		return getUri();
 	}

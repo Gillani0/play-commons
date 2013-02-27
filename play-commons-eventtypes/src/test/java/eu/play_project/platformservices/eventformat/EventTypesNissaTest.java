@@ -2,9 +2,9 @@ package eu.play_project.platformservices.eventformat;
 
 import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
 import static eu.play_project.play_commons.constants.Namespace.EVENTS;
+import static eu.play_project.play_commons.constants.Stream.PersonalMonitoring;
 
 import java.io.IOException;
-import java.util.Random;
 
 import org.event_processing.events.types.NissaHeartbeatAlert;
 import org.junit.Test;
@@ -18,9 +18,6 @@ import org.ontoware.rdf2go.vocabulary.XSD;
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
 public class EventTypesNissaTest {
-	
-	private static Random random = new Random();
-	
 
 	/**
 	 * An example for the Telco use case.
@@ -37,7 +34,7 @@ public class EventTypesNissaTest {
 				
 		NissaHeartbeatAlert event = new NissaHeartbeatAlert(m, eventId + EVENT_ID_SUFFIX, true);
 		event.setEndTime(new DatatypeLiteralImpl("2012-12-22T13:31:13Z", XSD._dateTime));
-		event.setStream(new URIImpl("http://streams.event-processing.org/ids/PersonalMonitoring#stream"));
+		event.setStream(new URIImpl(PersonalMonitoring.getUri()));
 		event.setMessage(String.format("This is a heartbeat alert (currently at %s) sent from Android.", heartRate));
 		event.setNissaSessionId(6);
 		event.setNissaHeartRate(heartRate);
