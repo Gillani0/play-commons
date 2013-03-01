@@ -18,6 +18,12 @@ PLAY Commons
 ============
 Set of commons libraries which will be shared between modules.
 
+Event Format
+------------
+See:
+* [Formatting Events](play-commons-eventformat) (i.e. syntax)
+* [Modelling Events](play-commons-eventtypes) (i.e. semantics, content)
+
 Issues
 ------
 For issues and bug reporting, please go to https://github.com/play-project/play/issues?labels=&page=1&state=open
