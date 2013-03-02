@@ -51,28 +51,7 @@ public class AccessControlTest {
 		permissions.open();
 
 		permissions.readFrom(this.getClass().getClassLoader().getResourceAsStream("permissions-test.ttl"), Syntax.Turtle);
-
-
-		//		System.out.println("Read:");
-		//		for (QueryRow qr : rdf.sparqlSelect(PREFIXES + "SELECT * WHERE {[acl:accessTo <urn:card>; acl:mode acl:Read;  acl:agent ?s]}")) {
-		//			System.out.format("%s %s%n", qr.getValue("s"), qr.getValue("p"));
-		//		}
-		//
-		//		System.out.println("Write:");
-		//		for (QueryRow qr : rdf.sparqlSelect(PREFIXES + "SELECT * WHERE {[acl:accessTo <urn:card>; acl:mode acl:Write;  acl:agent ?s]}")) {
-		//			System.out.format("%s %s%n", qr.getValue("s"), qr.getValue("p"));
-		//		}
-		//
-		//		System.out.println("Append:");
-		//		for (QueryRow qr : rdf.sparqlSelect(PREFIXES + "SELECT * WHERE { {[acl:accessTo <urn:card>; acl:mode acl:Append;  acl:agent ?s]} UNION {?s2 rdfs:type ?c . [acl:accessTo <urn:card>; acl:mode acl:Append;  acl:agentClass ?c]}}")) {
-		//			System.out.format("%s %s %s%n", qr.getValue("s"), qr.getValue("c"),  qr.getValue("s2"));
-		//		}
-		//
-		//		System.out.println("Append for group:");
-		//		for (QueryRow qr : rdf.sparqlSelect(PREFIXES + "SELECT * WHERE {?s sioc:member_of ?group . [acl:accessTo <urn:card>; acl:mode acl:Append;  acl:agent ?group]}")) {
-		//			System.out.format("%s %s%n", qr.getValue("c"), qr.getValue("s"));
-		//		}
-		
+	
 		return permissions;
 	}
 }
