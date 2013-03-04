@@ -16,12 +16,12 @@ CONSTRUCT {
     :e :stream <http://streams.event-processing.org/ids/WHATGOESHERE#stream>.
 	:e uctelco:callerPhoneNumber %CALLER_NUMBER_FROM_SAN% .
 	:e uctelco:calleePhoneNumber %CALLEE_NUMBER_FROM_SAN% .
-	:e :calleeLocation <blank://1> ;
-		geo:lat ?Latitude1 ;
-		geo:long ?Longitude1 .
-	:e :callerLocation <blank://2> ;
-		geo:lat ?Latitude2 ;
-		geo:long ?Longitude2 .
+	:e :calleeLocation <blank://1> .
+	<blank://1>	geo:lat ?Latitude1 ;
+			geo:long ?Longitude1 .
+	:e :callerLocation <blank://2> .
+	<blank://2>	geo:lat ?Latitude2 ;
+			geo:long ?Longitude2 .
 	:e :members ?e1, ?e2 .
 }
 WHERE {
