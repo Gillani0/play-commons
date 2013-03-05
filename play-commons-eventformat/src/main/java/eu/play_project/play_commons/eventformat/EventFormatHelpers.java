@@ -32,19 +32,19 @@ public class EventFormatHelpers {
     private static String NS_PREFIX_ABREVIATE;
 
     // This instance must be only used to create XML elements
-    // and no element must be append to it
+    // and no element must be appended to it
     private static Document DOCUMENT = DocumentBuilder.createDocument();
 
     private static String NOT_VALID_NATIVE_MESSAGE_MSG = "Specified element is not a valid native message element";
     
-    private static Pattern UNWRAP_NATIVE_MESSAGE_PATTERN =  
-            Pattern.compile("<" + WSN_MSG_ELEMENT.getPrefix() + ":" + WSN_MSG_ELEMENT.getLocalPart() 
-                            + "[^<]*>(.*?)</" + WSN_MSG_ELEMENT.getPrefix() + ":" 
+    private static Pattern UNWRAP_NATIVE_MESSAGE_PATTERN =
+            Pattern.compile("<" + WSN_MSG_ELEMENT.getPrefix() + ":" + WSN_MSG_ELEMENT.getLocalPart()
+                            + "[^<]*>(.*?)</" + WSN_MSG_ELEMENT.getPrefix() + ":"
                             + WSN_MSG_ELEMENT.getLocalPart() + ">", Pattern.MULTILINE | Pattern.DOTALL);
 
     /**
-     * Get the prefix as an abbreviate String format like in TriG and Turtle. 
-     *   
+     * Get the prefix as an abbreviate String format like in TriG and Turtle.
+     * 
      * @return prefix map as String.
      */
     public synchronized static String getNsPrefixAbbreviate() {
@@ -86,12 +86,12 @@ public class EventFormatHelpers {
 
     /**
      * Wraps in a native message XML element a semantic payload that uses
-     * quadruples' serialization format (TriG). This method also 
+     * quadruples' serialization format (TriG). This method also
      * XML-escapes the string body.
      * 
      * @param semanticPayload
      *            the payload to wrap.
-     *            
+     * 
      * @return the wrapped payload.
      */
     public static String wrapWithNativeMessageElement(String semanticPayload) {
@@ -100,7 +100,7 @@ public class EventFormatHelpers {
 
     /**
      * Wraps in a native message XML element a semantic payload that uses
-     * quadruples' serialization format (e.g. TriG, NQuads, etc.). This method also 
+     * quadruples' serialization format (e.g. TriG, NQuads, etc.). This method also
      * XML-escapes the string body.
      * 
      * @param semanticPayload
@@ -181,12 +181,12 @@ public class EventFormatHelpers {
     
     /**
      * Wraps in a native message XML element a semantic payload that uses
-     * quadruples' serialization format (TriG). This method also 
+     * quadruples' serialization format (TriG). This method also
      * XML-escapes the string body.
      * 
      * @param semanticPayload
      *            the payload to wrap.
-     *            
+     * 
      * @return the wrapped payload as an XML element.
      */
     public static Element wrapWithDomNativeMessageElement(String semanticPayload) {
@@ -195,7 +195,7 @@ public class EventFormatHelpers {
 
     /**
      * Wraps in a native message XML element a semantic payload that uses
-     * quadruples' serialization format (e.g. TriG, NQuads, etc.). This method also 
+     * quadruples' serialization format (e.g. TriG, NQuads, etc.). This method also
      * XML-escapes the string body.
      * 
      * @param semanticPayload
@@ -275,7 +275,7 @@ public class EventFormatHelpers {
         } else {
         	return xmlPayload;
         }
-    } 
+    }
     
     /**
      * Unwraps a native message element to return the string body of the message.
@@ -286,7 +286,7 @@ public class EventFormatHelpers {
      * @return the unwrapped and unescaped payload.
      */
     public static String unwrapFromDomNativeMessageElement(Element nativeMessageElt) {
-        if (nativeMessageElt.getNamespaceURI().equals(WSN_MSG_ELEMENT.getNamespaceURI()) 
+        if (nativeMessageElt.getNamespaceURI().equals(WSN_MSG_ELEMENT.getNamespaceURI())
                 && nativeMessageElt.getLocalName().equals(WSN_MSG_ELEMENT.getLocalPart())
                 && !nativeMessageElt.getAttributeNS(WSN_MSG_ELEMENT.getNamespaceURI(), WSN_MSG_SYNTAX_ATTRIBUTE).isEmpty()) {
             return StringEscapeUtils.unescapeXml(nativeMessageElt.getTextContent());
@@ -303,9 +303,9 @@ public class EventFormatHelpers {
      * @return the syntax used.
      */
     public static String getSyntaxFromDomNativeMessageElement(Element nativeMessageElt) {
-        if (nativeMessageElt.getNamespaceURI().equals(WSN_MSG_ELEMENT.getNamespaceURI()) 
+        if (nativeMessageElt.getNamespaceURI().equals(WSN_MSG_ELEMENT.getNamespaceURI())
                 && nativeMessageElt.getLocalName().equals(WSN_MSG_ELEMENT.getLocalPart())) {
-            String syntax = 
+            String syntax =
                     nativeMessageElt.getAttributeNS(
                             WSN_MSG_ELEMENT.getNamespaceURI(), WSN_MSG_SYNTAX_ATTRIBUTE);
             
@@ -318,14 +318,14 @@ public class EventFormatHelpers {
     }
     
     /**
-     * Extracts the graph value specified with {@code nativeMessageElt}. 
+     * Extracts the graph value specified with {@code nativeMessageElt}.
      * 
      * @param nativeMessageElt the native message element to parse.
      * 
      * @return the graph value or {@code null}.
      */
     public static String getGraphFromDomNativeMessageElement(Element nativeMessageElt) {
-        if (nativeMessageElt.getNamespaceURI().equals(WSN_MSG_ELEMENT.getNamespaceURI()) 
+        if (nativeMessageElt.getNamespaceURI().equals(WSN_MSG_ELEMENT.getNamespaceURI())
                 && nativeMessageElt.getLocalName().equals(WSN_MSG_ELEMENT.getLocalPart())
                 && !nativeMessageElt.getAttributeNS(WSN_MSG_ELEMENT.getNamespaceURI(), WSN_MSG_SYNTAX_ATTRIBUTE).isEmpty()) {
             String graphValue = nativeMessageElt.getAttributeNS(
