@@ -7,6 +7,8 @@ import java.util.Properties;
 public class Constants {
 
 	private static Properties properties;
+	private static final String PROPERTIES = "play-commons-constants.properties";
+	private static final String PROPERTIES_DEFAULTS = "play-commons-constants-defaults.properties";
 
 	/**
 	 * Get the default PLAY properties. Several consecutive calls will return
@@ -14,8 +16,8 @@ public class Constants {
 	 */
 	public static Properties getProperties() {
 		if (properties == null) {
-			properties = Constants.getProperties("play-commons-constants.properties",
-					Constants.getProperties("play-commons-constants.default.properties"));
+			properties = Constants.getProperties(PROPERTIES,
+					Constants.getProperties(PROPERTIES_DEFAULTS));
 		}
 		return properties;
 	}
