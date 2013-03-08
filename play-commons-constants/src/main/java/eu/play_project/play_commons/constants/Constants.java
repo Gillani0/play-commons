@@ -4,6 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Properties for the PLAY Project. This class reads the file
+ * {@code play-commons-constants.properties} from the classpath and also has a
+ * default file included in the JAR.
+ * 
+ * @author Roland Stühmer
+ */
 public class Constants {
 
 	private static Properties properties;
