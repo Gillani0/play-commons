@@ -49,5 +49,10 @@ public enum Namespace {
 	public String getPrefix() {
 		return NS_PREFIX;
 	}
+	
+	@Override
+	public String toString() {
+		return getUri();
+	}
 
 }
