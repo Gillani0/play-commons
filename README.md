@@ -32,4 +32,4 @@ Other
 -----
 [Reports](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/project-reports.html) |
 [JavaDoc](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/apidocs/index.html) |
-[DOAP](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/doap_play-commons.rdf)
+[DOAP](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/doap.rdf)
