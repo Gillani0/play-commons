@@ -7,45 +7,38 @@ PREFIX :        <http://events.event-processing.org/types/>
 
 CONSTRUCT {
 	:e rdf:type :UcTelcoEsrRecom .
-	:e :stream <http://streams.event-processing.org/ids/TaxiUCESRRecomDcep#stream>.
+	:e :stream <http://streams.event-processing.org/ids/TaxiUCESRRecomDcep#stream> .
 	:e uctelco:phoneNumber ?phone .
 	:e uctelco:callerPhoneNumber ?phone .
 	:e uctelco:calleePhoneNumber ?phone .
 	:e uctelco:ackRequired "false"^^xsd:boolean .
 	:e uctelco:answerRequired "false"^^xsd:boolean .
-#	:e :message "Slow down, you created two consecutively high hearbeat alerts."^^xsd:string .
-	:e :message "Slow down, you created a high hearbeat alert."^^xsd:string .
+	:e :message "Slow down, you created two high hearbeat alerts."^^xsd:string .
 	:e uctelco:action <blank://action1> .
 	<blank://action1> rdf:type uctelco:OpenTwitter ;
-		:screenName ?screenName .			
+		:screenName ?screenName .
 	:e :location <blank://1> .
-	<blank://1> geo:lat ?Latitude1 ;
-		geo:long ?Longitude1 .
-	:e nissa:heartRate ?heartRate02 .	
-#	:e uctelco:action <blank://action2> .
-#	<blank://action2> rdf:type uctelco:ComposeMail ;
-#		uctelco:mailAddress <mailto:roland.stuehmer@fzi.de> ;
-#		uctelco:mailContent "Hello World." ;
-#		uctelco:mailSubject "Regards" .
-	:e :members ?e2 .
-#	:e :members ?e1, ?e2 .
+	<blank://1> geo:lat ?latitude2 ;
+		geo:long ?longitude2 .
+	:e nissa:heartRate ?heartRate2 .
+	:e :members ?e1, ?e2 .
 }
 WHERE {
-#	WINDOW {
-#		EVENT ?id1 {
-#			?e1 rdf:type nissa:HeatbeatAlert .
-#			?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
-#			?e1 uctelco:phoneNumber ?phone .
-#			?e1 nissa:heartRate ?heartRate01 .
-#			}
-#		SEQ
+	WINDOW {
+		EVENT ?id1 {
+			?e1 rdf:type nissa:HeatbeatAlert .
+			?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+			?e1 uctelco:phoneNumber ?phone .
+			?e1 nissa:heartRate ?heartRate01 .
+			}
+		SEQ
 		EVENT ?id2 {
 			?e2 rdf:type nissa:HeatbeatAlert .
 			?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
 			?e2 uctelco:phoneNumber ?phone .
-			?e2 :location [ geo:lat ?Latitude1; geo:long ?Longitude1 ] .
-			?e2 nissa:heartRate ?heartRate02 .
-			?e2 :screenName ?screenName .			
+			?e2 :location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
+			?e2 nissa:heartRate ?heartRate2 .
+			?e2 :screenName ?screenName .
 			}
-#	} ("PT1M"^^xsd:duration, sliding)
+	} ("PT10S"^^xsd:duration, sliding)
 }
