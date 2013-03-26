@@ -67,7 +67,7 @@ public enum Stream {
 	public static final String STREAM_TITLE = "http://purl.org/dc/elements/1.1/title";
 	/** The stream descriptions attribute. */
 	public static final String STREAM_DESCRIPTION = "http://purl.org/dc/elements/1.1/description";
-	/** The stream icon attribute. Value should be a uri to the image. Size should be like a favicon. */
+	/** The stream icon attribute. Value should be a uri to the image. Size should be like a favicon. The attribute is also used in {@linkplain Event}. */
 	public static final String STREAM_ICON = "http://www.w3.org/2002/06/xhtml2/icon";
 	/** The fully qualified topic URI */
 	public static final String STREAM_TOPIC = "http://www.play-project.eu/xml/ns/topic";
