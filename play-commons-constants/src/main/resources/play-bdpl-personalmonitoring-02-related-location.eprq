@@ -13,32 +13,29 @@ CONSTRUCT {
 	:e uctelco:calleePhoneNumber ?phone .
 	:e uctelco:ackRequired "false"^^xsd:boolean .
 	:e uctelco:answerRequired "false"^^xsd:boolean .
-	:e :message "Slow down, you created two high hearbeat alerts."^^xsd:string .
+	:e :message "More than 10 alerts were caused here in the past week."^^xsd:string .
 	:e uctelco:action <blank://action1> .
 	<blank://action1> rdf:type uctelco:OpenTwitter ;
 		:screenName ?screenName .
 	:e :location <blank://1> .
-	<blank://1> geo:lat ?latitude2 ;
-		geo:long ?longitude2 .
+	<blank://1> geo:lat ?latitude1 ;
+		geo:long ?longitude1 .
 	:e nissa:heartRate ?heartRate2 .
-	:e :members ?e1, ?e2 .
+	:e :members ?e1 .
 }
 WHERE {
-	WINDOW {
-		EVENT ?id1 {
-			?e1 rdf:type nissa:HeartbeatAlert .
-			?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
-			?e1 uctelco:phoneNumber ?phone .
-			?e1 nissa:heartRate ?heartRate01 .
-			}
-		SEQ
-		EVENT ?id2 {
-			?e2 rdf:type nissa:HeartbeatAlert .
-			?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
-			?e2 uctelco:phoneNumber ?phone .
-			?e2 :location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
-			?e2 nissa:heartRate ?heartRate2 .
-			?e2 :screenName ?screenName .
-			}
-	} ("PT10S"^^xsd:duration, sliding)
-}
+	EVENT ?id1 {
+		?e1 rdf:type :UcTelcoGeoLocation .
+		?e1 :stream <http://streams.event-processing.org/ids/TaxiUCGeoLocation#stream> .
+		?e1 :location [ geo:lat ?latitude1; geo:long ?longitude1 ] .
+		?e1 uctelco:phoneNumber ?phone .
+		}
+	GRAPH ?id2 {
+		?e2 rdf:type nissa:HeartbeatAlert .
+		?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+		?e2 :location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
+		?e2 nissa:heartRate ?heartRate2 .
+		?e2 :screenName ?screenName .
+		FILTER (abs(?latitude1 - ?latitude2) < 0.1 && abs(?longitude1 - ?longitude2) < 0.5)
+		}
+} HAVING(COUNT(?e2) >= "10"^^xsd:int)
