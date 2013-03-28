@@ -13,23 +13,32 @@ CONSTRUCT {
 	:e uctelco:calleePhoneNumber ?phone .
 	:e uctelco:ackRequired "false"^^xsd:boolean .
 	:e uctelco:answerRequired "false"^^xsd:boolean .
-	:e :message "Slow down, you created a high heartbeat alert."^^xsd:string .
+	:e :message "Slow down, you created two high heartbeat alerts."^^xsd:string .
 	:e uctelco:action <blank://action1> .
 	<blank://action1> rdf:type uctelco:OpenTwitter ;
-		:screenName ?screenName .			
+		:screenName ?screenName .
 	:e :location <blank://1> .
-	<blank://1> geo:lat ?latitude1 ;
-		geo:long ?longitude1 .
-	:e nissa:heartRate ?heartRate1 .	
-	:e :members ?e1 .
+	<blank://1> geo:lat ?latitude2 ;
+		geo:long ?longitude2 .
+	:e nissa:heartRate ?heartRate2 .
+	:e :members ?e1, ?e2 .
 }
 WHERE {
-	EVENT ?id1 {
-		?e1 rdf:type nissa:HeartbeatAlert .
-		?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
-		?e1 uctelco:phoneNumber ?phone .
-		?e1 :location [ geo:lat ?latitude1; geo:long ?longitude1 ] .
-		?e1 nissa:heartRate ?heartRate1 .
-		?e1 :screenName ?screenName .			
-		}
+	WINDOW {
+		EVENT ?id1 {
+			?e1 rdf:type nissa:HeartbeatAlert .
+			?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+			?e1 uctelco:phoneNumber ?phone .
+			?e1 nissa:heartRate ?heartRate1 .
+			}
+		SEQ
+		EVENT ?id2 {
+			?e2 rdf:type nissa:HeartbeatAlert .
+			?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+			?e2 uctelco:phoneNumber ?phone .
+			?e2 :location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
+			?e2 nissa:heartRate ?heartRate2 .
+			?e2 :screenName ?screenName .
+			}
+	} ("PT10S"^^xsd:duration, sliding)
 }
