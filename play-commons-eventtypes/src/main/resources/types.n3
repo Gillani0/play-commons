@@ -9,13 +9,14 @@
 @prefix :        <http://events.event-processing.org/types/> .
 @prefix DUL:     <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix ais:     <http://imu.ntua.gr/ais#> .
-@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dbpedia:  <http://dbpedia.org/resource/> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix e:       <http://events.event-processing.org/ids/> .
 @prefix esr:     <http://imu.ntua.gr/play/esr/mcm/2#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix gn:      <http://www.geonames.org/ontology#> .
+@prefix mcep:    <http://mcep.fzi.de/pattern/> .
 @prefix ngeo:    <http://geovocab.org/geometry#> .
 @prefix nissa:   <http://www.nissatech.rs/ns/types/> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
@@ -26,23 +27,23 @@
 @prefix sioc:    <http://rdfs.org/sioc/ns#> .
 @prefix spin:    <http://spinrdf.org/spin#> .
 @prefix src:     <http://sources.event-processing.org/ids/> .
-@prefix uccrisis: <http://www.mines-albi.fr/nuclearcrisisevent/> .
-@prefix uctelco: <http://events.event-processing.org/uc/telco/> .
+@prefix uccrisis:  <http://www.mines-albi.fr/nuclearcrisisevent/> .
+@prefix uctelco:  <http://events.event-processing.org/uc/telco/> .
 @prefix user:    <http://graph.facebook.com/schema/user#> .
 @prefix xhtml2:  <http://www.w3.org/2002/06/xhtml2/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 <http://docs.oasis-open.org/wsn/b-2/Topic>
-      rdfs:comment "A topic for a topic-based publish/subscribe system. It can be used to access a stream of events."^^xsd:string ;
-      rdf:type rdfs:Class .
+      rdf:type rdfs:Class ;
+      rdfs:comment "A topic for a topic-based publish/subscribe system. It can be used to access a stream of events."^^xsd:string .
 
 <http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/Notify>
-      rdfs:comment "The action of notifying a new event."^^xsd:string ;
-      rdf:type rdfs:Class .
-      
+      rdf:type rdfs:Class ;
+      rdfs:comment "The action of notifying a new event."^^xsd:string .
+
 <http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/SubscribeRequest>
-      rdfs:comment "The action of subscribing to a topic or stream of events."^^xsd:string ;
-      rdf:type rdfs:Class .
+      rdf:type rdfs:Class ;
+      rdfs:comment "The action of subscribing to a topic or stream of events."^^xsd:string .
 
 <http://events.event-processing.org/ids/e1#event>
       rdf:type :AvgTempEvent ;
@@ -72,8 +73,8 @@
 
 :AisEvent
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> ;
-      rdfs:subClassOf :Event , geo:SpatialThing .
+      rdfs:subClassOf geo:SpatialThing , :Event ;
+      xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> .
 
 :AvgTempEvent
       rdf:type owl:Class ;
@@ -81,39 +82,39 @@
 
 :ContextualizedLatitudeEvent
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :Event
       rdf:type owl:Class ;
       rdfs:comment "Something that happens or is contemplated as happening."^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/famfam_page_white.png> ;
-      rdfs:subClassOf DUL:Event .
+      rdfs:subClassOf DUL:Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/famfam_page_white.png> .
 
 :FacebookCepResult
       rdf:type owl:Class ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> ;
-      rdfs:subClassOf :FacebookEvent .
+      rdfs:subClassOf :FacebookEvent ;
+      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
 
 :FacebookEvent
       rdf:type owl:Class ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> ;
-      rdfs:subClassOf :Event .
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
 
 :FacebookStatusFeedEvent
       rdf:type owl:Class ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> ;
-      rdfs:subClassOf :FacebookEvent .
+      rdfs:subClassOf :FacebookEvent ;
+      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
 
 :PachubeEvent
       rdf:type owl:Class ;
-      xhtml2:icon <https://d2npiipx5ecxt9.cloudfront.net/assets/favicon.ico> ;
-      rdfs:subClassOf :Event .
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <https://d2npiipx5ecxt9.cloudfront.net/assets/favicon.ico> .
 
 :ProximityInfoEvent
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> ;
-      rdfs:subClassOf :AisEvent .
+      rdfs:subClassOf :AisEvent ;
+      xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> .
 
 :Source
       rdf:type owl:Class ;
@@ -127,8 +128,8 @@
 
 :Telco
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Event .
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :TempEvent
       rdf:type owl:Class ;
@@ -136,68 +137,68 @@
 
 :TwitterEvent
       rdf:type owl:Class ;
-      xhtml2:icon <http://twitter.com/favicon.ico> ;
-      rdfs:subClassOf :Event .
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <http://twitter.com/favicon.ico> .
 
 :UcTelcoAnswer
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoAvailability
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoCall
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoClic2Call
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoEsrRecom
       rdf:type owl:Class ;
-      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> .
 
 :UcTelcoGeoLocation
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoOutNetwork
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoPresence
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoSmsCustomerAlert
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoTrafficJam
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :UcTelcoUnexpected
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> ;
-      rdfs:subClassOf :Telco .
+      rdfs:subClassOf :Telco ;
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
 
 :VesselEvent
       rdf:type owl:Class ;
-      xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> ;
-      rdfs:subClassOf :AisEvent .
+      rdfs:subClassOf :AisEvent ;
+      xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> .
 
 :discussionTopic
       rdf:type owl:DatatypeProperty ;
@@ -208,20 +209,20 @@
       rdfs:comment "This is a dummy individual (an event instance) used as placeholder before a final, unique event ID is known e.g. while assembling CONTRUCT query results internally to DCEP."^^xsd:string .
 
 :endTime
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :Event ;
       rdfs:range xsd:dateTime ;
       rdfs:subPropertyOf DUL:hasEventDate ;
       owl:cardinality "1" .
 
 :eventPattern
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "A derived event usually has an event pattern which is responsible for creating it."^^xsd:string ;
       rdfs:domain :Event ;
       owl:maxCardinality "1" .
 
 :followersCount
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:label "twitterFollowersCount"^^xsd:string ;
       rdfs:range xsd:integer ;
@@ -233,7 +234,7 @@
       rdfs:range xsd:string .
 
 :friendsCount
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:label "twitterFriendsCount"^^xsd:string ;
       rdfs:range xsd:integer ;
@@ -246,23 +247,23 @@
       rdfs:range xsd:string .
 
 :isRetweet
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:label "twitterIsRetweet"^^xsd:string ;
       rdfs:range xsd:boolean ;
       owl:maxCardinality "1" .
 
 :location
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "An event can have a location, being a point."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:label "location"^^xsd:string ;
       rdfs:range geo:Point ;
-      rdfs:subPropertyOf geo:location , DUL:hasLocation ;
+      rdfs:subPropertyOf DUL:hasLocation , geo:location ;
       owl:maxCardinality "1" .
 
 :members
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "An event can have member events if the event is complex and the participating events should be made explicit."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:range rdf:List ;
@@ -271,23 +272,23 @@
 
 :message
       rdf:type rdf:Property ;
-      rdfs:domain :Event ;
+      rdfs:domain :Event ,  mcep:DeployPattern ;
       rdfs:range xsd:string .
 
 :rawData
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:domain :PachubeEvent ;
       owl:maxCardinality "1" .
 
 :screenName
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :TwitterEvent , :Telco , uctelco:OpenTwitter , nissa:HeartbeatAlert ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain nissa:HeartbeatAlert , uctelco:OpenTwitter , :Telco , :TwitterEvent ;
       rdfs:label "twitterScreenName"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 :source
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "An event usually has one source."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:range :Source ;
@@ -295,27 +296,27 @@
       owl:maxCardinality "1" .
 
 :startTime
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :Event ;
       rdfs:range xsd:dateTime ;
       rdfs:subPropertyOf DUL:hasEventDate ;
       owl:maxCardinality "1" .
 
 :status
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :FacebookStatusFeedEvent ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 :stream
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "An event usually belongs to a stream."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:range :Stream ;
       owl:cardinality "1" .
 
 :twitterName
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -329,30 +330,30 @@
 uctelco:ComposeMail
       rdf:type owl:Class ;
       rdfs:label "UcTelcoComposeMail"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/famfam_icon_email.gif> ;
-      rdfs:subClassOf esr:Action .
+      rdfs:subClassOf esr:Action ;
+      xhtml2:icon <http://demo.play-project.eu/icons/famfam_icon_email.gif> .
 
 uctelco:OpenFacebook
       rdf:type owl:Class ;
       rdfs:label "UcTelcoOpenFacebook"^^xsd:string ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> ;
-      rdfs:subClassOf esr:Action .
+      rdfs:subClassOf esr:Action ;
+      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
 
 uctelco:OpenTwitter
       rdf:type owl:Class ;
       rdfs:label "UcTelcoOpenTwitter"^^xsd:string ;
-      xhtml2:icon <http://twitter.com/favicon.ico> ;
-      rdfs:subClassOf esr:Action .
+      rdfs:subClassOf esr:Action ;
+      xhtml2:icon <http://twitter.com/favicon.ico> .
 
 uctelco:ackRequired
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoEsrRecom ;
       rdfs:label "ucTelcoAckRequired"^^xsd:string ;
       rdfs:range xsd:boolean ;
       owl:maxCardinality "1" .
 
 uctelco:ackResult
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "A boolean field stating whether the ack is positive or negative."^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoAckResult"^^xsd:string ;
@@ -367,7 +368,7 @@ uctelco:action
       rdfs:range esr:Action .
 
 uctelco:answerRequired
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "A boolean field 'Ack with answer required' (the user has to send an Ack saying he followed the recom or not)."^^xsd:string ;
       rdfs:domain :UcTelcoEsrRecom ;
       rdfs:label "ucTelcoAnswerRequired"^^xsd:string ;
@@ -391,14 +392,14 @@ uctelco:callerPhoneNumber
       owl:maxCardinality "1" .
 
 uctelco:customerNumber
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoSmsCustomerAlert ;
       rdfs:label "ucTelcoCustomerNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:direction
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoCall ;
       rdfs:label "ucTelcoDirection"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -406,34 +407,34 @@ uctelco:direction
       owl:maxCardinality "1" .
 
 uctelco:mailAddress
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:domain :Telco , uctelco:ComposeMail ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdfs:domain uctelco:ComposeMail , :Telco ;
       rdfs:label "ucTelcoMailAddress"^^xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:mailContent
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain uctelco:ComposeMail ;
       rdfs:label "ucTelcoMailContent"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:mailSubject
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain uctelco:ComposeMail ;
       rdfs:label "ucTelcoMailSubject"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:outOfNetwork
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoOutNetwork ;
       rdfs:label "ucTelcoOutOfNetwork"^^xsd:string ;
       rdfs:range xsd:boolean ;
       owl:maxCardinality "1" .
 
 uctelco:payloadJamEvent
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoTrafficJam ;
       rdfs:label "ucTelcoPayloadJamEvent"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -442,26 +443,26 @@ uctelco:payloadJamEvent
 uctelco:phoneNumber
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
-      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , nissa:HeartbeatAlert , :ContextualizedLatitudeEvent ;
+      rdfs:domain :UcTelcoGeoLocation , esr:ShowFriendGeolocation , nissa:HeartbeatAlert , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , :ContextualizedLatitudeEvent ;
       rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:relAction
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "Set of actions (HTTP URI) in the recommendation which generated the ack. (Optional, 0:n)"^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoRelAction"^^xsd:string .
 
 uctelco:relRecommendation
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "The URL identifying the RecomEvent which generated the ack."^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoRelRecommendation"^^xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:relUniqueId
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "The uniqueId of the RecomEvent  which generated the ack."^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoRelUniqueId"^^xsd:string ;
@@ -469,36 +470,36 @@ uctelco:relUniqueId
       owl:maxCardinality "1" .
 
 uctelco:sequenceNumber
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain :Telco , :TwitterEvent ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain :TwitterEvent , :Telco ;
       rdfs:label "ucTelcoSequenceNumber"^^xsd:string ;
       rdfs:range xsd:integer ;
       owl:maxCardinality "1" .
 
 uctelco:signalStrength
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoOutNetwork ;
       rdfs:label "ucTelcoSignalStrength"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:status
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain :UcTelcoPresence , :UcTelcoAvailability , :UcTelcoUnexpected ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain :UcTelcoUnexpected , :UcTelcoAvailability , :UcTelcoPresence ;
       rdfs:label "ucTelcoStatus"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:unexpectedMessage
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoUnexpected ;
       rdfs:label "ucTelcoUnexpectedMessage"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:uniqueId
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain :Telco , :TwitterEvent ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain :TwitterEvent , :Telco ;
       rdfs:label "ucTelcoUniqueId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -512,27 +513,27 @@ uctelco:userType
       owl:maxCardinality "1" .
 
 user:id
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , :Telco , uctelco:OpenFacebook , nissa:HeartbeatAlert ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain nissa:HeartbeatAlert , uctelco:OpenFacebook , :Telco , :FacebookStatusFeedEvent ;
       rdfs:label "facebookId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 user:link
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , nissa:HeartbeatAlert ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdfs:domain nissa:HeartbeatAlert , :FacebookStatusFeedEvent ;
       rdfs:label "facebookLink"^^xsd:string ;
       owl:maxCardinality "1" .
 
 user:location
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :FacebookStatusFeedEvent ;
       rdfs:label "facebookLocation"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 user:name
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :FacebookStatusFeedEvent ;
       rdfs:label "facebookName"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -681,45 +682,55 @@ ais:windSpeed
 esr:Action
       rdf:type owl:Class ;
       rdfs:comment "Action to be recommended by ESR."^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> ;
-      rdfs:label "EsrAction"^^xsd:string .
+      rdfs:label "EsrAction"^^xsd:string ;
+      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> .
 
 esr:ShowFriendGeolocation
       rdf:type owl:Class ;
       rdfs:label "EsrShowFriendGeolocation"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> ;
-      rdfs:subClassOf geo:Point , esr:Action .
+      rdfs:subClassOf esr:Action , geo:Point ;
+      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> .
 
 esr:SubscribeTo
       rdf:type owl:Class ;
       rdfs:label "EsrSubscribeTo"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> ;
-      rdfs:subClassOf esr:Action .
+      rdfs:subClassOf esr:Action ;
+      xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> .
 
 esr:UnsubscribeFrom
       rdf:type owl:Class ;
       rdfs:label "EsrUnsubscribeFrom"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/fam_fam_comment_yellow.gif> ;
-      rdfs:subClassOf esr:Action .
+      rdfs:subClassOf esr:Action ;
+      xhtml2:icon <http://demo.play-project.eu/icons/fam_fam_comment_yellow.gif> .
 
 esr:fromStream
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:domain esr:UnsubscribeFrom ;
       rdfs:range :Stream ;
       owl:maxCardinality "1" .
 
 esr:recommendation
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "A link with a unique identifier for each recommendation."^^xsd:string ;
       rdfs:domain :UcTelcoEsrRecom ;
       rdfs:label "esrRecommendation"^^xsd:string ;
       owl:maxCardinality "1" .
 
 esr:toStream
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:domain esr:SubscribeTo ;
       rdfs:range :Stream ;
       owl:maxCardinality "1" .
+
+mcep:DeployPattern
+      rdf:type owl:Class ;
+      rdfs:label "Manage an event pattern in MCEP."^^xsd:string ;
+      rdfs:subClassOf :Event .
+
+mcep:pattern
+      rdf:type rdf:Property ;
+      rdfs:domain mcep:DeployPattern ;
+      rdfs:label "mcepPattern"^^xsd:string .
 
 dc:desciption
       rdf:type owl:DatatypeProperty ;
@@ -734,14 +745,14 @@ dc:title
       rdfs:range xsd:string .
 
 sioc:content
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 sioc:links_to
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain :TwitterEvent , :FacebookStatusFeedEvent .
+      rdfs:domain :FacebookStatusFeedEvent , :TwitterEvent .
 
 <http://sources.event-processing.org/ids/Facebook#source>
       rdf:type :Source .
@@ -767,92 +778,92 @@ sioc:links_to
 uccrisis:ActivityEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisActivityEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:Event .
+      rdfs:subClassOf uccrisis:Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:ActivityStatusEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisActivityStatusEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:ActivityEvent .
+      rdfs:subClassOf uccrisis:ActivityEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:AlertEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisAlertEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:SituationEvent .
+      rdfs:subClassOf uccrisis:SituationEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:ConsequenceEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisConsequenceEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:Event .
+      rdfs:subClassOf uccrisis:Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:DemandEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisDemandEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:ResourcesEvent .
+      rdfs:subClassOf uccrisis:ResourcesEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:DrawGraphEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisDrawGraphEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:VisualizationEvent .
+      rdfs:subClassOf uccrisis:VisualizationEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:Event
       rdf:type owl:Class ;
       rdfs:label "CrisisEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf :Event .
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:InstructionEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisInstructionEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:ConsequenceEvent .
+      rdfs:subClassOf uccrisis:ConsequenceEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:MeasureEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisMeasureEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:SituationEvent .
+      rdfs:subClassOf uccrisis:SituationEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:OfferEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisOfferEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:ResourcesEvent .
+      rdfs:subClassOf uccrisis:ResourcesEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:ReportEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisReportEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:ConsequenceEvent .
+      rdfs:subClassOf uccrisis:ConsequenceEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:ResourcesEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisResourcesEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:Event .
+      rdfs:subClassOf uccrisis:Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:ResourcesStatusEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisResourcesStatusEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:ResourcesEvent .
+      rdfs:subClassOf uccrisis:ResourcesEvent ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:SituationEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisSituationEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:Event .
+      rdfs:subClassOf uccrisis:Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:VisualizationEvent
       rdf:type owl:Class ;
       rdfs:label "CrisisVisualizationEvent"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> ;
-      rdfs:subClassOf uccrisis:Event .
+      rdfs:subClassOf uccrisis:Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/nuclear.ico> .
 
 uccrisis:activity
       rdf:type owl:DatatypeProperty ;
@@ -863,14 +874,14 @@ uccrisis:activity
 
 uccrisis:activityId
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ActivityEvent , uccrisis:ConsequenceEvent ;
+      rdfs:domain uccrisis:ConsequenceEvent , uccrisis:ActivityEvent ;
       rdfs:label "crisisActivityId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:capability
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:DemandEvent , uccrisis:OfferEvent ;
+      rdfs:domain uccrisis:OfferEvent , uccrisis:DemandEvent ;
       rdfs:label "crisisCapability"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -891,7 +902,7 @@ uccrisis:componentSeid
 
 uccrisis:consequence
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:InstructionEvent , uccrisis:ReportEvent ;
+      rdfs:domain uccrisis:ReportEvent , uccrisis:InstructionEvent ;
       rdfs:label "crisisConsequence"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -926,14 +937,14 @@ uccrisis:instructionMessage
 
 uccrisis:localisation
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:DrawGraphEvent , uccrisis:SituationEvent , uccrisis:ResourcesEvent ;
+      rdfs:domain uccrisis:ResourcesEvent , uccrisis:SituationEvent , uccrisis:DrawGraphEvent ;
       rdfs:label "crisisLocalisation"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:provider
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:OfferEvent , uccrisis:ResourcesStatusEvent ;
+      rdfs:domain uccrisis:ResourcesStatusEvent , uccrisis:OfferEvent ;
       rdfs:label "crisisProvider"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -947,7 +958,7 @@ uccrisis:quantity
 
 uccrisis:resources
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:DemandEvent , uccrisis:OfferEvent , uccrisis:ResourcesStatusEvent ;
+      rdfs:domain uccrisis:ResourcesStatusEvent , uccrisis:OfferEvent , uccrisis:DemandEvent ;
       rdfs:label "crisisResources"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -961,14 +972,14 @@ uccrisis:resultMessage
 
 uccrisis:situation
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:MeasureEvent , uccrisis:AlertEvent ;
+      rdfs:domain uccrisis:AlertEvent , uccrisis:MeasureEvent ;
       rdfs:label "crisisSituation"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:state
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:DemandEvent , uccrisis:ResourcesStatusEvent , uccrisis:ActivityStatusEvent ;
+      rdfs:domain uccrisis:ActivityStatusEvent , uccrisis:ResourcesStatusEvent , uccrisis:DemandEvent ;
       rdfs:label "crisisState"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -981,7 +992,7 @@ uccrisis:type
       owl:cardinality "1" .
 
 uccrisis:uid
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:domain uccrisis:Event ;
       rdfs:label "crisisUid"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -996,14 +1007,14 @@ uccrisis:uncertainty
 
 uccrisis:unit
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:DrawGraphEvent , uccrisis:MeasureEvent ;
+      rdfs:domain uccrisis:MeasureEvent , uccrisis:DrawGraphEvent ;
       rdfs:label "crisisUnit"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:value
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:DrawGraphEvent , uccrisis:MeasureEvent ;
+      rdfs:domain uccrisis:MeasureEvent , uccrisis:DrawGraphEvent ;
       rdfs:label "crisisValue"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -1011,8 +1022,8 @@ uccrisis:value
 nissa:HeartbeatAlert
       rdf:type owl:Class ;
       rdfs:label "NissaHeartbeatAlert"^^xsd:string ;
-      xhtml2:icon <http://demo.play-project.eu/icons/cardio.ico> ;
-      rdfs:subClassOf :Event .
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/cardio.ico> .
 
 nissa:acc
       rdf:type rdf:Property ;
@@ -1113,28 +1124,28 @@ DUL:hasLocation
       owl:maxCardinality "1" .
 
 <http://www.play-project.eu/xml/ns/topic>
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:domain :Stream ;
       rdfs:label "StreamTopic"^^xsd:string ;
       rdfs:range <http://docs.oasis-open.org/wsn/b-2/Topic> ;
       owl:maxCardinality "1" .
 
 xhtml2:icon
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:label "Icon"^^xsd:string ;
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:comment "A small icon (favicon) describing stream instances, event classes, event instances, etc." ;
+      rdfs:label "Icon"^^xsd:string ;
       owl:maxCardinality "1" .
 
 geo:Point
       rdf:type rdfs:Class ;
-      rdfs:comment """A point, typically described using a coordinate system relative to Earth, such as WGS84.
-  """ , """ 
+      rdfs:comment """ 
 Uniquely identified by lat/long/alt. i.e.
 
 spaciallyIntersects(P1, P2) :- lat(P1, LAT), long(P1, LONG), alt(P1, ALT),
   lat(P2, LAT), long(P2, LONG), alt(P2, ALT).
 
 sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
+  """ , """A point, typically described using a coordinate system relative to Earth, such as WGS84.
   """ ;
       rdfs:label "point" ;
       rdfs:subClassOf geo:SpatialThing .
