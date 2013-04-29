@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>org.ow2.play</groupId>
 		<artifactId>play-parent</artifactId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>play-commons</artifactId>
-	<version>1.1</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>play-commons</name>
@@ -30,7 +30,7 @@
 		<url>https://github.com/play-project/play-commons</url>
 		<connection>scm:git:git://github.com/play-project/play-commons.git</connection>
 		<developerConnection>scm:git:https://github.com/play-project/play-commons.git</developerConnection>
-		<tag>play-commons-1.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
