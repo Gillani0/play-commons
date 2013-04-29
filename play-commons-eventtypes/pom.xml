@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.ow2.play</groupId>
 		<artifactId>play-commons</artifactId>
-		<version>1.1-SNAPSHOT</version>
+		<version>1.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -110,14 +110,27 @@
 			            </goals>
 			            <configuration>
 			                <sources>
-			                    <source>
-			                    ${project.build.directory}/generated-sources/rdfs-classes
-			                    </source>
+			                    <source>${project.build.directory}/generated-sources/rdfs-classes</source>
 			                </sources>
 			            </configuration>
 			        </execution>
 			    </executions>
-			</plugin>			
+			</plugin>
+			<!-- To get the generated sources from RDFReactor in the compiler: Order 
+				is important, so that the build-helper gets invoked before the compiler. 
+				See bug http://jira.codehaus.org/browse/MCOMPILER-157 -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -155,7 +168,7 @@
 		<url>https://github.com/play-project/play-commons</url>
 		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
 		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>play-commons-1.1</tag>
   </scm>
   
 </project>
