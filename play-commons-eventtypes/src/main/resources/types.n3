@@ -32,18 +32,11 @@
 @prefix user:    <http://graph.facebook.com/schema/user#> .
 @prefix xhtml2:  <http://www.w3.org/2002/06/xhtml2/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix wsnt:     <http://docs.oasis-open.org/wsn/b-2/> .
 
-<http://docs.oasis-open.org/wsn/b-2/Topic>
+wsnt:Topic
       rdf:type rdfs:Class ;
       rdfs:comment "A topic for a topic-based publish/subscribe system. It can be used to access a stream of events."^^xsd:string .
-
-<http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/Notify>
-      rdf:type rdfs:Class ;
-      rdfs:comment "The action of notifying a new event."^^xsd:string .
-
-<http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/SubscribeRequest>
-      rdf:type rdfs:Class ;
-      rdfs:comment "The action of subscribing to a topic or stream of events."^^xsd:string .
 
 <http://events.event-processing.org/ids/e1#event>
       rdf:type :AvgTempEvent ;
@@ -1127,7 +1120,7 @@ DUL:hasLocation
       rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
       rdfs:domain :Stream ;
       rdfs:label "StreamTopic"^^xsd:string ;
-      rdfs:range <http://docs.oasis-open.org/wsn/b-2/Topic> ;
+      rdfs:range wsnt:Topic ;
       owl:maxCardinality "1" .
 
 xhtml2:icon

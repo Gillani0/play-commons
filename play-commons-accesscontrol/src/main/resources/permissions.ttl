@@ -9,14 +9,13 @@
 @prefix roland:  <http://www.roland-stuehmer.de/foaf.rdf#> . 
 @prefix group:   <http://groups.event-processing.org/id/> .
 @prefix permission: <http://permissions.event-processing.org/id/> .
-@prefix notify:  <http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/> .
-@prefix subscribe: <http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/> .
+@prefix wsnt:    <http://docs.oasis-open.org/wsn/b-2/> .
 
-notify:Notify
+wsnt:Notify
       rdf:type rdfs:Class ;
 	  rdfs:subClassOf acl:Write .
 	  
-subscribe:SubscribeRequest
+wsnt:Subscribe
       rdf:type rdfs:Class ;
 	  rdfs:subClassOf acl:Read .
 
