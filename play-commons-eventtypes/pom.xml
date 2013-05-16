@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.ow2.play</groupId>
@@ -35,16 +36,6 @@
 				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>fr.inria.eventcloud</groupId>
-			<artifactId>eventcloud-utils-trigwriter</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>eu.play-project</groupId>
-					<artifactId>play-commons-eventformat</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -99,25 +90,25 @@
 				</executions>
 			</plugin>
 			<plugin>
-			    <groupId>org.codehaus.mojo</groupId>
-			    <artifactId>build-helper-maven-plugin</artifactId>
-			    <version>1.7</version>
-			    <executions>
-			        <execution>
-			            <id>add-generated-sources</id>
-			            <goals>
-			                <goal>add-source</goal>
-			            </goals>
-			            <configuration>
-			                <sources>
-			                    <source>
-			                    ${project.build.directory}/generated-sources/rdfs-classes
-			                    </source>
-			                </sources>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>			
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-generated-sources</id>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>
+									${project.build.directory}/generated-sources/rdfs-classes
+								</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- To get the generated sources from RDFReactor in the compiler: Order 
 				is important, so that the build-helper gets invoked before the compiler. 
 				See bug http://jira.codehaus.org/browse/MCOMPILER-157 -->
@@ -158,6 +149,25 @@
 										<execute />
 									</action>
 								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											build-helper-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.7,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -165,12 +175,12 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-  
+
 	<scm>
 		<url>https://github.com/play-project/play-commons</url>
 		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
 		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
-  
+		<tag>HEAD</tag>
+	</scm>
+
 </project>

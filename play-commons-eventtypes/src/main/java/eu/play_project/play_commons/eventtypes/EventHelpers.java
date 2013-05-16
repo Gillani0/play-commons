@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFFormat;
 import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
 import org.event_processing.events.types.Thing1;
@@ -21,13 +23,13 @@ import org.ontoware.rdf2go.vocabulary.XSD;
 import org.w3c.dom.Element;
 
 import com.hp.hpl.jena.datatypes.RDFDatatype;
+import com.hp.hpl.jena.graph.Node;
+import com.hp.hpl.jena.graph.NodeFactory;
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.DatasetFactory;
-import com.hp.hpl.jena.sparql.util.NodeFactory;
 
 import eu.play_project.play_commons.constants.Namespace;
 import eu.play_project.play_commons.eventformat.EventFormatHelpers;
-import fr.inria.eventcloud.utils.trigwriter.TriGWriter;
 
 public final class EventHelpers {
 
@@ -203,7 +205,7 @@ public final class EventHelpers {
 	 */
 	public static void write(OutputStream out, ModelSet modelSet) {
 		Dataset ds = (Dataset) modelSet.getUnderlyingModelSetImplementation();
-		TriGWriter.write(out, ds);
+		RDFDataMgr.write(out, ds, RDFFormat.TRIG_BLOCKS);
 	}
 
 	/**
@@ -219,7 +221,7 @@ public final class EventHelpers {
 		Dataset ds = DatasetFactory.createMem();
 		ds.getDefaultModel().setNsPrefixes(m.getNsPrefixMap());
 		ds.addNamedModel(model.getContextURI().toString(), m);
-		TriGWriter.write(out, ds);
+		RDFDataMgr.write(out, ds, RDFFormat.TRIG_BLOCKS);
 	}
 
 	/**
@@ -278,14 +280,14 @@ public final class EventHelpers {
 	 * Create a Jena node from a string. This makes a few checks if the string
 	 * can be a URI, a literal, etc.
 	 */
-	public static com.hp.hpl.jena.graph.Node toJenaNode(String object) {
+	public static Node toJenaNode(String object) {
 
-		com.hp.hpl.jena.graph.Node objectNode = null;
+		Node objectNode = null;
 		try {
 			@SuppressWarnings("unused")
 			java.net.URI u = new java.net.URI(object);
 			if (object.contains(":")) { // extra check so that numbers and single words don't become URIs
-				objectNode = com.hp.hpl.jena.graph.Node.createURI(object);
+				objectNode = NodeFactory.createURI(object);
 			}
 		} catch(URISyntaxException e) {
 		}
@@ -294,11 +296,11 @@ public final class EventHelpers {
 				int i = object.lastIndexOf("^^");
 				if (i != -1) { // Check if the String is Turtle encoded
 					String value = object.substring(0, i);
-					RDFDatatype datatype = com.hp.hpl.jena.graph.Node.getType(object.substring(i + 2));
-					objectNode = com.hp.hpl.jena.graph.Node.createLiteral(value, datatype);
+					RDFDatatype datatype = NodeFactory.getType(object.substring(i + 2));
+					objectNode = NodeFactory.createLiteral(value, datatype);
 				}
 				else {
-					objectNode = NodeFactory.createLiteralNode(object, null, null); // TODO sobermeier: support typed literals from Prolog
+					objectNode = NodeFactory.createLiteral(object, null, null); // TODO sobermeier: support typed literals from Prolog
 				}
 			}
 		}
