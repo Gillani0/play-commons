@@ -3,9 +3,12 @@ package eu.play_project.platformservices.eventformat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+
 import org.junit.Test;
 import org.ontoware.rdf2go.model.Model;
 import org.ontoware.rdf2go.model.ModelSet;
+import org.ontoware.rdf2go.model.node.impl.URIImpl;
 
 import eu.play_project.play_commons.eventtypes.EventHelpers;
 
@@ -33,6 +36,18 @@ public class EventHelpersTest {
 		assertTrue("Some namespaces should be defined for PLAY.", !m
 				.getNamespaces().isEmpty());
 		assertTrue("The new Model should be empty.", m.isEmpty());
+		
+		// Add at least one (dummy) statement to the model so that the graph is nonempty (might not be serialized otherwise)
+		m.addStatement(new URIImpl("urn:something"), new URIImpl("urn:something"), new URIImpl("urn:something"));
+		
+		ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		EventHelpers.write(bout, m);
+		assertTrue("The expected context URI was not properly serialized to TriG syntax.", bout.toString().contains(uri));
+
+		m.setNamespace("lala", "urn:lala");
+		bout = new ByteArrayOutputStream();
+		EventHelpers.write(bout, m);
+		assertTrue("The expected namespace prefix was not properly serialized to TriG syntax.", bout.toString().contains("lala"));
 	}
 
 	/**
@@ -45,6 +60,11 @@ public class EventHelpersTest {
 		assertTrue("Some namespaces should be defined for PLAY.", !m
 				.getNamespaces().isEmpty());
 		assertTrue("The new ModelSet should be empty.", m.isEmpty());
+		
+		m.setNamespace("lala", "urn:lala");
+		ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		EventHelpers.write(bout, m);
+		assertTrue("The expected namespace prefix was not properly serialized to TriG syntax.", bout.toString().contains("lala"));
 	}
 
 }
