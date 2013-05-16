@@ -19,11 +19,11 @@ public enum Permission {
 	/**
 	 * The right to notify a new event on a stream resource i.e., to publish events.
 	 */
-	Notify("http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/", "Notify"),
+	Notify("http://docs.oasis-open.org/wsn/b-2/", "Notify"),
 	/**
 	 * The right to subscribe to a stream resource i.e., to receive events in real-time.
 	 */
-	Subscribe("http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/", "SubscribeRequest");
+	Subscribe(Notify.getNsUri(), "Subscribe");
 
 	private final String name;
 	private final String nsUri;

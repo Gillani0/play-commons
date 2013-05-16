@@ -9,8 +9,7 @@
 @prefix roland:  <http://www.roland-stuehmer.de/foaf.rdf#> . 
 @prefix group:   <http://groups.event-processing.org/id/> .
 @prefix permission: <http://permissions.event-processing.org/id/> .
-@prefix notify:  <http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/> .
-@prefix subscribe: <http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/> .
+@prefix wsnt:    <http://docs.oasis-open.org/wsn/b-2/> .
 
 
 [] acl:accessTo <urn:stream01>; acl:mode acl:Write; acl:agent <urn:account01> .
@@ -21,5 +20,5 @@
 
 <urn:account05> rdf:type <urn:class01> . 
 <urn:account06> rdf:type <urn:class02> . 
-[] acl:accessTo <urn:stream04>; acl:mode notify:Notify; acl:agentClass <urn:class01> .
+[] acl:accessTo <urn:stream04>; acl:mode wsnt:Notify; acl:agentClass <urn:class01> .
 
