@@ -31,8 +31,8 @@ WHERE {
 		?e1 uctelco:phoneNumber ?phone .
 		}
 	GRAPH ?id2 {
-		?e2 rdf:type nissa:HeartbeatAlert .
-		?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+		?e2 rdf:type nissa:AlarmEvent .
+		?e2 :stream <http://streams.event-processing.org/ids/PersonalStream1#stream> .
 		?e2 :location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
 		?e2 nissa:heartRate ?heartRate2 .
 		?e2 :screenName ?screenName .

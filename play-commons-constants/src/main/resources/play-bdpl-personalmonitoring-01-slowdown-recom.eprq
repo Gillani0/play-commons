@@ -25,8 +25,8 @@ CONSTRUCT {
 }
 WHERE {
 	EVENT ?id1 {
-		?e1 rdf:type nissa:HeartbeatAlert .
-		?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+		?e1 rdf:type nissa:AlarmEvent .
+		?e1 :stream <http://streams.event-processing.org/ids/PersonalStream1#stream> .
 		?e1 uctelco:phoneNumber ?phone .
 		?e1 :location [ geo:lat ?latitude1; geo:long ?longitude1 ] .
 		?e1 nissa:heartRate ?heartRate1 .

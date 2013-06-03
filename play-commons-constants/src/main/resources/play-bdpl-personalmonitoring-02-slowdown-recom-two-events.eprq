@@ -26,15 +26,15 @@ CONSTRUCT {
 WHERE {
 	WINDOW {
 		EVENT ?id1 {
-			?e1 rdf:type nissa:HeartbeatAlert .
-			?e1 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+			?e1 rdf:type nissa:AlarmEvent .
+			?e1 :stream <http://streams.event-processing.org/ids/PersonalStream1#stream> .
 			?e1 uctelco:phoneNumber ?phone .
 			?e1 nissa:heartRate ?heartRate1 .
 			}
 		SEQ
 		EVENT ?id2 {
-			?e2 rdf:type nissa:HeartbeatAlert .
-			?e2 :stream <http://streams.event-processing.org/ids/PersonalMonitoring#stream> .
+			?e2 rdf:type nissa:AlarmEvent .
+			?e2 :stream <http://streams.event-processing.org/ids/PersonalStream1#stream> .
 			?e2 uctelco:phoneNumber ?phone .
 			?e2 :location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
 			?e2 nissa:heartRate ?heartRate2 .
