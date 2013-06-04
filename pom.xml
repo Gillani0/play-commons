@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>org.ow2.play</groupId>
 		<artifactId>play-parent</artifactId>
-		<version>1.1</version>
+		<version>1.2-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>play-commons</artifactId>
-	<version>1.1</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>play-commons</name>
