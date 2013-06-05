@@ -6,7 +6,7 @@ import static eu.play_project.play_commons.constants.Stream.PersonalMonitoring;
 
 import java.io.IOException;
 
-import org.event_processing.events.types.NissaHeartbeatAlert;
+import org.event_processing.events.types.NissaAlarmEvent;
 import org.junit.Test;
 import org.ontoware.rdf2go.exception.ModelRuntimeException;
 import org.ontoware.rdf2go.model.Model;
@@ -32,7 +32,7 @@ public class EventTypesNissaTest {
 		int heartRate = 91;
 		String facebookId= "12345";
 				
-		NissaHeartbeatAlert event = new NissaHeartbeatAlert(m, eventId + EVENT_ID_SUFFIX, true);
+		NissaAlarmEvent event = new NissaAlarmEvent(m, eventId + EVENT_ID_SUFFIX, true);
 		event.setEndTime(new DatatypeLiteralImpl("2012-12-22T13:31:13Z", XSD._dateTime));
 		event.setStream(new URIImpl(PersonalMonitoring.getUri()));
 		event.setMessage(String.format("This is a heartbeat alert (currently at %s) sent from Android.", heartRate));
@@ -52,7 +52,7 @@ public class EventTypesNissaTest {
 		EventHelpers.setLocationToEvent(event, "blank://0", 8.401188900000001, 49.008156);
 		event.setFacebookId(facebookId);
 		event.setFacebookLink(new URIImpl(String.format("http://graph.facebook.com/%s#", facebookId)));
-		event.setTwitterScreenName("firstname.lastname");
+		event.setTwitterScreenName("firstnamelastname");
 		event.setUcTelcoPhoneNumber("12345");
 		
 		event.getModel().writeTo(System.out, Syntax.Turtle);
