@@ -216,6 +216,10 @@ public final class EventHelpers {
 	 * @param model
 	 */
 	public static void write(OutputStream out, Model model) {
+		if (model.getContextURI() == null) {
+			throw new IllegalArgumentException("Context was not defined. We need quadruples.");
+		}
+		
 		com.hp.hpl.jena.rdf.model.Model m = (com.hp.hpl.jena.rdf.model.Model) model
 				.getUnderlyingModelImplementation();
 		Dataset ds = DatasetFactory.createMem();
