@@ -1,0 +1,471 @@
+# baseURI: http://rpm.event-processing.org/types/
+# imports: http://events.event-processing.org/types/
+# imports: http://purl.oclc.org/NET/ssnx/ssn
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl
+
+@prefix :        <http://events.event-processing.org/types/> .
+@prefix DUL:     <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rpm:     <http://events.event-processing.org/rpm/> .
+@prefix ssn:     <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix uctelco:  <http://events.event-processing.org/uc/telco/> .
+@prefix user:    <http://graph.facebook.com/schema/user#> .
+@prefix xhtml2:  <http://www.w3.org/2002/06/xhtml2/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+:screenName
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "twitterScreenName"^^xsd:string ;
+      rdfs:range xsd:string ;
+      owl:maxCardinality "1" .
+
+uctelco:phoneNumber
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
+      rdfs:range xsd:string ;
+      owl:maxCardinality "1" .
+
+user:id
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "facebookId"^^xsd:string ;
+      rdfs:range xsd:string ;
+      owl:maxCardinality "1" .
+
+user:link
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "facebookLink"^^xsd:string ;
+      owl:maxCardinality "1" .
+
+rpm:  rdf:type owl:Ontology ;
+      rdfs:seeAlso <http://www.play-project.eu/> , <http://km.aifb.kit.edu/sites/lodstream/> ;
+      dc:creator "Roland Stühmer"^^xsd:string ;
+      owl:imports <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> , dc: , : , <http://purl.oclc.org/NET/ssnx/ssn> ;
+      owl:versionInfo "1.1-SNAPSHOT"^^xsd:string .
+
+rpm:AlarmEvent
+      rdf:type owl:Class ;
+      rdfs:label "RpmAlarmEvent"^^xsd:string ;
+      rdfs:subClassOf :Event ;
+      xhtml2:icon <http://demo.play-project.eu/icons/cardio.ico> .
+
+rpm:AlarmSensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:Sensor .
+
+rpm:AlcoholReporting
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:SelfreportingSensor .
+
+rpm:AlcoholReportingValue
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf ssn:ObservationValue .
+
+rpm:BloodPressureReporting
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:SelfreportingSensor .
+
+rpm:BloodPressureReportingValue
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf ssn:ObservationValue .
+
+rpm:CigaretteReporting
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:SelfreportingSensor .
+
+rpm:CigaretteReportingValue
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf ssn:ObservationValue .
+
+rpm:EcgSensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:Sensor ;
+      rdfs:subclassOf rpm:Sensor .
+
+rpm:EkgSensorXY
+      rdf:type rpm:EcgSensor ;
+      rpm:parameter rpm:EkgValue ;
+      rpm:sensorId "EKG" ;
+      rpm:sensorType "..." ;
+      rpm:vendor "..." .
+
+rpm:EkgValue
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf ssn:ObservationValue .
+
+rpm:EventdrivenAlarmSensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:AlarmSensor .
+
+rpm:EventdrivenAlarmValue
+      rdf:type owl:Class ;
+      rdfs:subClassOf ssn:ObservationValue .
+
+rpm:GpsSensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:Sensor .
+
+rpm:GpsValue
+      rdf:type owl:Class ;
+      rdfs:subClassOf geo:SpatialThing , rpm:SensorValue .
+
+rpm:HeartrateSensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:Sensor .
+
+rpm:HxMSensor
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf rpm:Sensor .
+
+rpm:HxMSensorXY
+      rdf:type rpm:HxMSensor ;
+      rpm:parameter rpm:HxMValue ;
+      rpm:sensorId "HxM xxx" ;
+      rpm:sensorType "..." ;
+      rpm:vendor "..." .
+
+rpm:HxMValue
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf ssn:ObservationValue .
+
+rpm:SelfreportingSensor
+      rdf:type owl:Class , rdfs:Class ;
+      rdfs:subClassOf rpm:Sensor ;
+      rdfs:subclassOf rpm:Sensor .
+
+rpm:Sensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf DUL:PhysicalArtifact .
+
+rpm:SensorProperty
+      rdfs:subClassOf rdfs:Property .
+
+rpm:SensorValue
+      rdf:type owl:Class ;
+      rdfs:subClassOf ssn:ObservationValue .
+
+rpm:SoftSensor
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf rpm:Sensor ;
+      rpm:formula xsd:string .
+
+rpm:TimebasedAlarmSensor
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:AlarmSensor .
+
+rpm:TimebasedAlarmValue
+      rdf:type rdfs:Class ;
+      rdfs:subclassOf ssn:ObservationValue .
+
+rpm:WeightReporting
+      rdf:type owl:Class ;
+      rdfs:subClassOf rpm:SelfreportingSensor .
+
+rpm:acc
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmAcc"^^xsd:string ;
+      rdfs:range xsd:double .
+
+rpm:alarmId
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmSensor .
+
+rpm:alarmMethod
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:TimebasedAlarmSensor .
+
+rpm:alarmTask
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:TimebasedAlarmValue ;
+      rdfs:range rpm:SelfreportingSensor ;
+      rpm:propertyType "alarm" .
+
+rpm:alarmTime
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmSensor .
+
+rpm:alcoholPerDay
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:AlcoholReportingValue ;
+      rdfs:range xsd:int ;
+      rpm:minValue "0" ;
+      rpm:propertyType "lifestyle" ;
+      rpm:unit :milliliters .
+
+rpm:battery
+      rdf:type rpm:SensorProperty , rdf:Property ;
+      rdfs:domain rpm:AlarmEvent , rpm:EkgValue , rpm:HxMEcgValue ;
+      rdfs:label "rpmBattery"^^xsd:string ;
+      rdfs:range xsd:integer , xsd:int ;
+      rpm:maxValue "100" ;
+      rpm:minValue "0" ;
+      rpm:propertyType "system" ;
+      rpm:unit :percent .
+
+rpm:bloodPressureLower
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:BloodPressureReportingValue ;
+      rdfs:range xsd:int ;
+      rpm:method "" ;
+      rpm:minValue "20" , "120" ;
+      rpm:propertyType "lifestyle" ;
+      rpm:unit :someUnit .
+
+rpm:bloodPressureUpper
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:BloodPressureReportingValue ;
+      rdfs:range xsd:int ;
+      rpm:method "" ;
+      rpm:minValue "70" , "220" ;
+      rpm:propertyType "lifestyle" ;
+      rpm:unit :someUnit .
+
+rpm:calories
+      rdf:type rdf:Property , rpm:SensorProperty ;
+      rdfs:domain rpm:AlarmEvent , rpm:SoftSensorValue ;
+      rdfs:label "rpmCalories"^^xsd:string ;
+      rdfs:range xsd:int , xsd:double ;
+      rpm:formula "steps / speed" ;
+      rpm:minValue "0" ;
+      rpm:propertyType "activity" ;
+      rpm:unit :none .
+
+rpm:cepAlarmType
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:EventdrivenAlarmSensor .
+
+rpm:cepPatternId
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:EventdrivenAlarmValue ;
+      rdfs:range xsd:int ;
+      rpm:propertyType "alarm" .
+
+rpm:cepPatternValue
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:EventdrivenAlarmValue ;
+      rdfs:range xsd:int ;
+      rpm:propertyType "alarm" .
+
+rpm:cigarettesPerDay
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:CigaretteReportingValue ;
+      rdfs:range xsd:int ;
+      rpm:minValue "0" ;
+      rpm:propertyType "lifestyle" ;
+      rpm:unit :none .
+
+rpm:distance
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmDistance"^^xsd:string ;
+      rdfs:range xsd:double .
+
+rpm:duration
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmDuration"^^xsd:string ;
+      rdfs:range xsd:integer .
+
+rpm:heartRate
+      rdf:type rdf:Property , rpm:SensorProperty ;
+      rdfs:domain rpm:AlarmEvent , rpm:EkgValue , rpm:HxMEcgValue ;
+      rdfs:label "rpmHeartRate"^^xsd:string ;
+      rdfs:range xsd:int , xsd:integer ;
+      rpm:maxValue "220" ;
+      rpm:minValue "30" ;
+      rpm:observationFrequency
+              "1" ;
+      rpm:propertyType "body" ;
+      rpm:unit :frequency .
+
+rpm:humidity
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmHumidity"^^xsd:string ;
+      rdfs:range xsd:double .
+
+rpm:observationFrequency
+      rdfs:domain ssn:ObservationValue ;
+      rdfs:range xsd:int .
+
+rpm:parameterId
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:Sensor .
+
+rpm:pressure
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmPressure"^^xsd:string ;
+      rdfs:range xsd:double .
+
+rpm:rrInterval
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:HxMEcgValue , rpm:EkgValue ;
+      rdfs:range xsd:int ;
+      rpm:maxValue "200" ;
+      rpm:minValue "10" ;
+      rpm:observationFrequency
+              "1" ;
+      rpm:propertyType "body" ;
+      rpm:unit :milliseconds .
+
+rpm:selfreportingMethod
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:SelfreportingSensor .
+
+rpm:sensorId
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:Sensor ;
+      rdfs:range xsd:string .
+
+rpm:sensorType
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:Sensor ;
+      rdfs:range xsd:string .
+
+rpm:sessionId
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmSessionId"^^xsd:string ;
+      rdfs:range xsd:integer .
+
+rpm:speed
+      rdf:type rpm:SensorProperty , rdf:Property ;
+      rdfs:domain rpm:AlarmEvent , rpm:HxMEcgValue ;
+      rdfs:label "rpmSpeed"^^xsd:string ;
+      rdfs:range xsd:double , xsd:float ;
+      rpm:maxValue "20" ;
+      rpm:minValue "0.5" ;
+      rpm:observationFrequency
+              "5" ;
+      rpm:propertyType "activity" ;
+      rpm:unit :meterspersecond .
+
+rpm:steps
+      rdf:type rpm:SensorProperty , rdf:Property ;
+      rdfs:domain rpm:AlarmEvent , rpm:HxMEcgValue ;
+      rdfs:label "rpmSteps"^^xsd:string ;
+      rdfs:range xsd:int , xsd:integer ;
+      rpm:minValue "0" ;
+      rpm:propertyType "activity" ;
+      rpm:unit :none .
+
+rpm:temp
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmTemp"^^xsd:string ;
+      rdfs:range xsd:double .
+
+rpm:vendor
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:Sensor .
+
+rpm:weight
+      rdf:type rpm:SensorProperty ;
+      rdfs:domain rpm:WeightReportingValue ;
+      rdfs:range xsd:int ;
+      rpm:method "" ;
+      rpm:minValue "20" , "220" ;
+      rpm:propertyType "lifestyle" ;
+      rpm:unit :kilogramme .
+
+rpm:wind
+      rdf:type rdf:Property ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "rpmWind"^^xsd:string ;
+      rdfs:range xsd:double .
+
+DUL:Event
+      rdfs:label "DulEvent"^^xsd:string .
+
+DUL:hasLocation
+      rdfs:label "dulLocation"^^xsd:string .
+
+[]    rdf:type ssn:Observation ;
+      ssn:featureOfInterest
+              <mailto:nstojano@fzi.de> ;
+      ssn:observationResult
+              [ ssn:hasValue
+                        [ rdf:type rpm:HxMValue ;
+                          rpm:battery "98"^^xsd:int ;
+                          rpm:distance "22.0"^^xsd:double ;
+                          rpm:heartRate "55"^^xsd:int ;
+                          rpm:speed "0.8"^^xsd:double ;
+                          rpm:steps "2000"^^xsd:int
+                        ]
+              ] ;
+      ssn:observationSamplingTime
+              "2013-04-19T12:13:35.246Z"^^xsd:dateTime ;
+      ssn:observedProperty
+              rpm:HxMSensorXY .
+
+[]    rdf:type ssn:Observation ;
+      ssn:featureOfInterest
+              <mailto:nstojano@fzi.de> ;
+      ssn:observationResult
+              [ ssn:hasValue
+                        [ rdf:type rpm:BloodPressureReportingValue ;
+                          rpm:bloodPressureLower
+                                  "55"^^xsd:int ;
+                          rpm:bloodPressureUpper
+                                  "90"^^xsd:int
+                        ]
+              ] ;
+      ssn:observationSamplingTime
+              "2013-04-19T12:13:35.246Z"^^xsd:dateTime ;
+      ssn:observedProperty
+              rpm:BloodPressureReporting .
+
+[]    rdf:type ssn:Observation ;
+      ssn:featureOfInterest
+              <mailto:nstojano@fzi.de> ;
+      ssn:observationResult
+              [ ssn:hasValue
+                        [ rdf:type rpm:AlcoholReportingValue ;
+                          rpm:alcoholPerDay "10"^^xsd:int
+                        ]
+              ] ;
+      ssn:observationSamplingTime
+              "2013-04-19T12:13:35.246Z"^^xsd:dateTime ;
+      ssn:observedProperty
+              rpm:AlcoholReporting .
+
+[]    rdf:type ssn:Observation ;
+      ssn:featureOfInterest
+              <mailto:nstojano@fzi.de> ;
+      ssn:observationResult
+              [ ssn:hasValue
+                        [ rdf:type rpm:TimebasedAlarmValue ;
+                          rpm:alarmTask rpm:AlcoholReporting
+                        ]
+              ] ;
+      ssn:observationSamplingTime
+              "2013-04-19T12:13:35.246Z"^^xsd:dateTime ;
+      ssn:observedProperty
+              rpm:TimebasedAlarmSensor .
+
+[]    rdf:type ssn:Observation ;
+      ssn:featureOfInterest
+              <mailto:nstojano@fzi.de> ;
+      ssn:observationResult
+              [ ssn:hasValue
+                        [ rdf:type rpm:EventdrivenAlarmValue ;
+                          rpm:cepPatternId "125" ;
+                          rpm:cepPatternValue "20"
+                        ]
+              ] ;
+      ssn:observationSamplingTime
+              "2013-04-19T12:13:35.246Z"^^xsd:dateTime ;
+      ssn:observedProperty
+              rpm:EventdrivenAlarmSensor .

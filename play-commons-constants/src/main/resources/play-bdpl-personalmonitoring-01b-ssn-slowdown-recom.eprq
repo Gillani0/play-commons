@@ -1,0 +1,37 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX uctelco: <http://events.event-processing.org/uc/telco/>
+PREFIX geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX ssn:     <http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX rpm:     <http://events.event-processing.org/rpm/>
+
+PREFIX :        <http://events.event-processing.org/types/>
+
+CONSTRUCT {
+	:e rdf:type :UcTelcoEsrRecom .
+	:e :stream <http://streams.event-processing.org/ids/TaxiUCESRRecomDcep#stream> .
+	:e uctelco:phoneNumber ?phone .
+	:e uctelco:callerPhoneNumber ?phone .
+	:e uctelco:calleePhoneNumber ?phone .
+	:e uctelco:ackRequired "false"^^xsd:boolean .
+	:e uctelco:answerRequired "false"^^xsd:boolean .
+	:e :message "Slow down, you created a high heartbeat alert."^^xsd:string .
+	:e uctelco:action <blank://action1> .
+	<blank://action1> rdf:type uctelco:OpenTwitter .
+	:e rpm:value ?rpmValue .	
+	:e :members ?e1 .
+}
+WHERE {
+	EVENT ?id1 {
+		?e1 rdf:type rpm:AlarmEvent ;
+			:stream <http://streams.event-processing.org/ids/PersonalStream1#stream> ;
+			uctelco:phoneNumber ?phone ;
+			ssn:observedProperty rpm:EventdrivenAlarmSensor ;
+			ssn:observationResult [ ssn:hasValue [
+#				rdf:type rpm:EventdrivenAlarmValue ;
+				rpm:cepPatternValue [
+					rpm:value ?rpmValue 
+				]
+			] ] .
+	}
+}

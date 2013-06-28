@@ -16,9 +16,7 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix gn:      <http://www.geonames.org/ontology#> .
-@prefix mcep:    <http://mcep.fzi.de/pattern/> .
 @prefix ngeo:    <http://geovocab.org/geometry#> .
-@prefix nissa:   <http://www.nissatech.rs/ns/types/> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfg:    <http://www.w3.org/2004/03/trix/rdfg-1/> .
@@ -66,7 +64,7 @@ wsnt:Topic
 
 :AisEvent
       rdf:type owl:Class ;
-      rdfs:subClassOf geo:SpatialThing , :Event ;
+      rdfs:subClassOf :Event , geo:SpatialThing ;
       xhtml2:icon <http://www.kinetic.co.uk/favicon.ico> .
 
 :AvgTempEvent
@@ -202,20 +200,20 @@ wsnt:Topic
       rdfs:comment "This is a dummy individual (an event instance) used as placeholder before a final, unique event ID is known e.g. while assembling CONTRUCT query results internally to DCEP."^^xsd:string .
 
 :endTime
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :Event ;
       rdfs:range xsd:dateTime ;
       rdfs:subPropertyOf DUL:hasEventDate ;
       owl:cardinality "1" .
 
 :eventPattern
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "A derived event usually has an event pattern which is responsible for creating it."^^xsd:string ;
       rdfs:domain :Event ;
       owl:maxCardinality "1" .
 
 :followersCount
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:label "twitterFollowersCount"^^xsd:string ;
       rdfs:range xsd:integer ;
@@ -227,7 +225,7 @@ wsnt:Topic
       rdfs:range xsd:string .
 
 :friendsCount
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:label "twitterFriendsCount"^^xsd:string ;
       rdfs:range xsd:integer ;
@@ -240,23 +238,23 @@ wsnt:Topic
       rdfs:range xsd:string .
 
 :isRetweet
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:label "twitterIsRetweet"^^xsd:string ;
       rdfs:range xsd:boolean ;
       owl:maxCardinality "1" .
 
 :location
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "An event can have a location, being a point."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:label "location"^^xsd:string ;
       rdfs:range geo:Point ;
-      rdfs:subPropertyOf DUL:hasLocation , geo:location ;
+      rdfs:subPropertyOf geo:location , DUL:hasLocation ;
       owl:maxCardinality "1" .
 
 :members
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "An event can have member events if the event is complex and the participating events should be made explicit."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:range rdf:List ;
@@ -265,24 +263,24 @@ wsnt:Topic
 
 :message
       rdf:type rdf:Property ;
-      rdfs:domain :Event , mcep:DeployPattern ;
+      rdfs:domain :Event ;
       rdfs:label "message"^^xsd:string ;
       rdfs:range xsd:string .
 
 :rawData
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:domain :PachubeEvent ;
       owl:maxCardinality "1" .
 
 :screenName
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain uctelco:OpenTwitter , :Telco , :TwitterEvent , nissa:AlarmEvent ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain  :TwitterEvent , :Telco , uctelco:OpenTwitter ;
       rdfs:label "twitterScreenName"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 :source
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "An event usually has one source."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:range :Source ;
@@ -290,27 +288,27 @@ wsnt:Topic
       owl:maxCardinality "1" .
 
 :startTime
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :Event ;
       rdfs:range xsd:dateTime ;
       rdfs:subPropertyOf DUL:hasEventDate ;
       owl:maxCardinality "1" .
 
 :status
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :FacebookStatusFeedEvent ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 :stream
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "An event usually belongs to a stream."^^xsd:string ;
       rdfs:domain :Event ;
       rdfs:range :Stream ;
       owl:cardinality "1" .
 
 :twitterName
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -340,14 +338,14 @@ uctelco:OpenTwitter
       xhtml2:icon <http://twitter.com/favicon.ico> .
 
 uctelco:ackRequired
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoEsrRecom ;
       rdfs:label "ucTelcoAckRequired"^^xsd:string ;
       rdfs:range xsd:boolean ;
       owl:maxCardinality "1" .
 
 uctelco:ackResult
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:comment "A boolean field stating whether the ack is positive or negative."^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoAckResult"^^xsd:string ;
@@ -362,7 +360,7 @@ uctelco:action
       rdfs:range esr:Action .
 
 uctelco:answerRequired
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:comment "A boolean field 'Ack with answer required' (the user has to send an Ack saying he followed the recom or not)."^^xsd:string ;
       rdfs:domain :UcTelcoEsrRecom ;
       rdfs:label "ucTelcoAnswerRequired"^^xsd:string ;
@@ -386,14 +384,14 @@ uctelco:callerPhoneNumber
       owl:maxCardinality "1" .
 
 uctelco:customerNumber
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoSmsCustomerAlert ;
       rdfs:label "ucTelcoCustomerNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:direction
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoCall ;
       rdfs:label "ucTelcoDirection"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -401,34 +399,34 @@ uctelco:direction
       owl:maxCardinality "1" .
 
 uctelco:mailAddress
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
-      rdfs:domain uctelco:ComposeMail , :Telco ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdfs:domain :Telco , uctelco:ComposeMail ;
       rdfs:label "ucTelcoMailAddress"^^xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:mailContent
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain uctelco:ComposeMail ;
       rdfs:label "ucTelcoMailContent"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:mailSubject
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain uctelco:ComposeMail ;
       rdfs:label "ucTelcoMailSubject"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:outOfNetwork
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoOutNetwork ;
       rdfs:label "ucTelcoOutOfNetwork"^^xsd:string ;
       rdfs:range xsd:boolean ;
       owl:maxCardinality "1" .
 
 uctelco:payloadJamEvent
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :UcTelcoTrafficJam ;
       rdfs:label "ucTelcoPayloadJamEvent"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -437,26 +435,26 @@ uctelco:payloadJamEvent
 uctelco:phoneNumber
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
-      rdfs:domain nissa:AlarmEvent , :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , :ContextualizedLatitudeEvent ;
+      rdfs:domain  :UcTelcoGeoLocation , esr:ShowFriendGeolocation , :UcTelcoAvailability , :FacebookStatusFeedEvent , :UcTelcoPresence , :UcTelcoUnexpected , :TwitterEvent , :UcTelcoAnswer , :ContextualizedLatitudeEvent ;
       rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:relAction
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "Set of actions (HTTP URI) in the recommendation which generated the ack. (Optional, 0:n)"^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoRelAction"^^xsd:string .
 
 uctelco:relRecommendation
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "The URL identifying the RecomEvent which generated the ack."^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoRelRecommendation"^^xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:relUniqueId
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:comment "The uniqueId of the RecomEvent  which generated the ack."^^xsd:string ;
       rdfs:domain :UcTelcoAnswer ;
       rdfs:label "ucTelcoRelUniqueId"^^xsd:string ;
@@ -464,36 +462,36 @@ uctelco:relUniqueId
       owl:maxCardinality "1" .
 
 uctelco:sequenceNumber
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :TwitterEvent , :Telco ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain :Telco , :TwitterEvent ;
       rdfs:label "ucTelcoSequenceNumber"^^xsd:string ;
       rdfs:range xsd:integer ;
       owl:maxCardinality "1" .
 
 uctelco:signalStrength
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoOutNetwork ;
       rdfs:label "ucTelcoSignalStrength"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:status
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :UcTelcoUnexpected , :UcTelcoAvailability , :UcTelcoPresence ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain :UcTelcoPresence , :UcTelcoAvailability , :UcTelcoUnexpected ;
       rdfs:label "ucTelcoStatus"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:unexpectedMessage
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       rdfs:domain :UcTelcoUnexpected ;
       rdfs:label "ucTelcoUnexpectedMessage"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 uctelco:uniqueId
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:domain :TwitterEvent , :Telco ;
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:domain :Telco , :TwitterEvent ;
       rdfs:label "ucTelcoUniqueId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
@@ -507,27 +505,27 @@ uctelco:userType
       owl:maxCardinality "1" .
 
 user:id
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain uctelco:OpenFacebook , :Telco , :FacebookStatusFeedEvent , nissa:AlarmEvent ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain  :FacebookStatusFeedEvent , :Telco , uctelco:OpenFacebook ;
       rdfs:label "facebookId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 user:link
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , nissa:AlarmEvent ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdfs:domain  :FacebookStatusFeedEvent ;
       rdfs:label "facebookLink"^^xsd:string ;
       owl:maxCardinality "1" .
 
 user:location
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :FacebookStatusFeedEvent ;
       rdfs:label "facebookLocation"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 user:name
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :FacebookStatusFeedEvent ;
       rdfs:label "facebookName"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -682,7 +680,7 @@ esr:Action
 esr:ShowFriendGeolocation
       rdf:type owl:Class ;
       rdfs:label "EsrShowFriendGeolocation"^^xsd:string ;
-      rdfs:subClassOf esr:Action , geo:Point ;
+      rdfs:subClassOf geo:Point , esr:Action ;
       xhtml2:icon <http://demo.play-project.eu/icons/famfam_comment_yellow.gif> .
 
 esr:SubscribeTo
@@ -698,33 +696,24 @@ esr:UnsubscribeFrom
       xhtml2:icon <http://demo.play-project.eu/icons/fam_fam_comment_yellow.gif> .
 
 esr:fromStream
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:domain esr:UnsubscribeFrom ;
       rdfs:range :Stream ;
       owl:maxCardinality "1" .
 
 esr:recommendation
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "A link with a unique identifier for each recommendation."^^xsd:string ;
       rdfs:domain :UcTelcoEsrRecom ;
       rdfs:label "esrRecommendation"^^xsd:string ;
       owl:maxCardinality "1" .
 
 esr:toStream
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:domain esr:SubscribeTo ;
       rdfs:range :Stream ;
       owl:maxCardinality "1" .
 
-mcep:DeployPattern
-      rdf:type owl:Class ;
-      rdfs:label "Manage an event pattern in MCEP."^^xsd:string ;
-      rdfs:subClassOf :Event .
-
-mcep:pattern
-      rdf:type rdf:Property ;
-      rdfs:domain mcep:DeployPattern ;
-      rdfs:label "mcepPattern"^^xsd:string .
 
 dc:desciption
       rdf:type owl:DatatypeProperty ;
@@ -739,14 +728,14 @@ dc:title
       rdfs:range xsd:string .
 
 sioc:content
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain :TwitterEvent ;
       rdfs:range xsd:string ;
       owl:maxCardinality "1" .
 
 sioc:links_to
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain :FacebookStatusFeedEvent , :TwitterEvent .
+      rdfs:domain :TwitterEvent , :FacebookStatusFeedEvent .
 
 <http://sources.event-processing.org/ids/Facebook#source>
       rdf:type :Source .
@@ -868,14 +857,14 @@ uccrisis:activity
 
 uccrisis:activityId
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ConsequenceEvent , uccrisis:ActivityEvent ;
+      rdfs:domain uccrisis:ActivityEvent , uccrisis:ConsequenceEvent ;
       rdfs:label "crisisActivityId"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:capability
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:OfferEvent , uccrisis:DemandEvent ;
+      rdfs:domain uccrisis:DemandEvent , uccrisis:OfferEvent ;
       rdfs:label "crisisCapability"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -896,7 +885,7 @@ uccrisis:componentSeid
 
 uccrisis:consequence
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ReportEvent , uccrisis:InstructionEvent ;
+      rdfs:domain uccrisis:InstructionEvent , uccrisis:ReportEvent ;
       rdfs:label "crisisConsequence"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -931,14 +920,14 @@ uccrisis:instructionMessage
 
 uccrisis:localisation
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ResourcesEvent , uccrisis:SituationEvent , uccrisis:DrawGraphEvent ;
+      rdfs:domain uccrisis:DrawGraphEvent , uccrisis:SituationEvent , uccrisis:ResourcesEvent ;
       rdfs:label "crisisLocalisation"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:provider
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ResourcesStatusEvent , uccrisis:OfferEvent ;
+      rdfs:domain uccrisis:OfferEvent , uccrisis:ResourcesStatusEvent ;
       rdfs:label "crisisProvider"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -952,7 +941,7 @@ uccrisis:quantity
 
 uccrisis:resources
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ResourcesStatusEvent , uccrisis:OfferEvent , uccrisis:DemandEvent ;
+      rdfs:domain uccrisis:DemandEvent , uccrisis:OfferEvent , uccrisis:ResourcesStatusEvent ;
       rdfs:label "crisisResources"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -966,14 +955,14 @@ uccrisis:resultMessage
 
 uccrisis:situation
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:AlertEvent , uccrisis:MeasureEvent ;
+      rdfs:domain uccrisis:MeasureEvent , uccrisis:AlertEvent ;
       rdfs:label "crisisSituation"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:state
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:ActivityStatusEvent , uccrisis:ResourcesStatusEvent , uccrisis:DemandEvent ;
+      rdfs:domain uccrisis:DemandEvent , uccrisis:ResourcesStatusEvent , uccrisis:ActivityStatusEvent ;
       rdfs:label "crisisState"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
@@ -986,7 +975,7 @@ uccrisis:type
       owl:cardinality "1" .
 
 uccrisis:uid
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:domain uccrisis:Event ;
       rdfs:label "crisisUid"^^xsd:string ;
       rdfs:range xsd:string ;
@@ -1001,101 +990,17 @@ uccrisis:uncertainty
 
 uccrisis:unit
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:MeasureEvent , uccrisis:DrawGraphEvent ;
+      rdfs:domain uccrisis:DrawGraphEvent , uccrisis:MeasureEvent ;
       rdfs:label "crisisUnit"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
 
 uccrisis:value
       rdf:type owl:DatatypeProperty ;
-      rdfs:domain uccrisis:MeasureEvent , uccrisis:DrawGraphEvent ;
+      rdfs:domain uccrisis:DrawGraphEvent , uccrisis:MeasureEvent ;
       rdfs:label "crisisValue"^^xsd:string ;
       rdfs:range xsd:string ;
       owl:cardinality "1" .
-
-nissa:AlarmEvent
-      rdf:type owl:Class ;
-      rdfs:label "NissaAlarmEvent"^^xsd:string ;
-      rdfs:subClassOf :Event ;
-      xhtml2:icon <http://demo.play-project.eu/icons/cardio.ico> .
-
-nissa:acc
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaAcc"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:battery
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaBattery"^^xsd:string ;
-      rdfs:range xsd:integer .
-
-nissa:calories
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaCalories"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:distance
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaDistance"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:duration
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaDuration"^^xsd:string ;
-      rdfs:range xsd:integer .
-
-nissa:heartRate
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaHeartRate"^^xsd:string ;
-      rdfs:range xsd:integer .
-
-nissa:humidity
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaHumidity"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:pressure
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaPressure"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:sessionId
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaSessionId"^^xsd:string ;
-      rdfs:range xsd:integer .
-
-nissa:speed
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaSpeed"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:steps
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaSteps"^^xsd:string ;
-      rdfs:range xsd:integer .
-
-nissa:temp
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaTemp"^^xsd:string ;
-      rdfs:range xsd:double .
-
-nissa:wind
-      rdf:type rdf:Property ;
-      rdfs:domain nissa:AlarmEvent ;
-      rdfs:label "nissaWind"^^xsd:string ;
-      rdfs:range xsd:double .
 
 DUL:Event
       rdfs:label "DulEvent"^^xsd:string .
@@ -1118,28 +1023,28 @@ DUL:hasLocation
       owl:maxCardinality "1" .
 
 <http://www.play-project.eu/xml/ns/topic>
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:domain :Stream ;
       rdfs:label "StreamTopic"^^xsd:string ;
       rdfs:range wsnt:Topic ;
       owl:maxCardinality "1" .
 
 xhtml2:icon
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:comment "A small icon (favicon) describing stream instances, event classes, event instances, etc." ;
       rdfs:label "Icon"^^xsd:string ;
       owl:maxCardinality "1" .
 
 geo:Point
       rdf:type rdfs:Class ;
-      rdfs:comment """ 
+      rdfs:comment """A point, typically described using a coordinate system relative to Earth, such as WGS84.
+  """ , """ 
 Uniquely identified by lat/long/alt. i.e.
 
 spaciallyIntersects(P1, P2) :- lat(P1, LAT), long(P1, LONG), alt(P1, ALT),
   lat(P2, LAT), long(P2, LONG), alt(P2, ALT).
 
 sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
-  """ , """A point, typically described using a coordinate system relative to Earth, such as WGS84.
   """ ;
       rdfs:label "point" ;
       rdfs:subClassOf geo:SpatialThing .
