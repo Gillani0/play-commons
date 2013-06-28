@@ -1,8 +1,9 @@
-# baseURI: http://rpm.event-processing.org/types/
+# baseURI: http://events.event-processing.org/rpm/
 # imports: http://events.event-processing.org/types/
 # imports: http://purl.oclc.org/NET/ssnx/ssn
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl
+# imports: http://www.w3.org/2003/01/geo/wgs84_pos
 
 @prefix :        <http://events.event-processing.org/types/> .
 @prefix DUL:     <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
@@ -19,52 +20,24 @@
 @prefix xhtml2:  <http://www.w3.org/2002/06/xhtml2/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-:screenName
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain rpm:AlarmEvent ;
-      rdfs:label "twitterScreenName"^^xsd:string ;
-      rdfs:range xsd:string ;
-      owl:maxCardinality "1" .
-
-uctelco:phoneNumber
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
-      rdfs:domain rpm:AlarmEvent ;
-      rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
-      rdfs:range xsd:string ;
-      owl:maxCardinality "1" .
-
-user:id
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:domain rpm:AlarmEvent ;
-      rdfs:label "facebookId"^^xsd:string ;
-      rdfs:range xsd:string ;
-      owl:maxCardinality "1" .
-
-user:link
-      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
-      rdfs:domain rpm:AlarmEvent ;
-      rdfs:label "facebookLink"^^xsd:string ;
-      owl:maxCardinality "1" .
-
 rpm:  rdf:type owl:Ontology ;
-      rdfs:seeAlso <http://www.play-project.eu/> , <http://km.aifb.kit.edu/sites/lodstream/> ;
+      rdfs:seeAlso <http://km.aifb.kit.edu/sites/lodstream/> , <http://www.play-project.eu/> ;
       dc:creator "Roland Stühmer"^^xsd:string ;
-      owl:imports <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> , dc: , : , <http://purl.oclc.org/NET/ssnx/ssn> ;
+      owl:imports <http://purl.oclc.org/NET/ssnx/ssn> , : , dc: , <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> ;
       owl:versionInfo "1.1-SNAPSHOT"^^xsd:string .
 
 rpm:AlarmEvent
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:label "RpmAlarmEvent"^^xsd:string ;
       rdfs:subClassOf :Event ;
       xhtml2:icon <http://demo.play-project.eu/icons/cardio.ico> .
 
 rpm:AlarmSensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:Sensor .
 
 rpm:AlcoholReporting
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:SelfreportingSensor .
 
 rpm:AlcoholReportingValue
@@ -72,7 +45,7 @@ rpm:AlcoholReportingValue
       rdfs:subclassOf ssn:ObservationValue .
 
 rpm:BloodPressureReporting
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:SelfreportingSensor .
 
 rpm:BloodPressureReportingValue
@@ -80,7 +53,7 @@ rpm:BloodPressureReportingValue
       rdfs:subclassOf ssn:ObservationValue .
 
 rpm:CigaretteReporting
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:SelfreportingSensor .
 
 rpm:CigaretteReportingValue
@@ -88,7 +61,7 @@ rpm:CigaretteReportingValue
       rdfs:subclassOf ssn:ObservationValue .
 
 rpm:EcgSensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:Sensor ;
       rdfs:subclassOf rpm:Sensor .
 
@@ -104,23 +77,23 @@ rpm:EkgValue
       rdfs:subclassOf ssn:ObservationValue .
 
 rpm:EventdrivenAlarmSensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:AlarmSensor .
 
 rpm:EventdrivenAlarmValue
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf ssn:ObservationValue .
 
 rpm:GpsSensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:Sensor .
 
 rpm:GpsValue
-      rdf:type owl:Class ;
-      rdfs:subClassOf geo:SpatialThing , rpm:SensorValue .
+      rdf:type rdfs:Class ;
+      rdfs:subClassOf rpm:SensorValue , geo:SpatialThing .
 
 rpm:HeartrateSensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:Sensor .
 
 rpm:HxMSensor
@@ -139,19 +112,19 @@ rpm:HxMValue
       rdfs:subclassOf ssn:ObservationValue .
 
 rpm:SelfreportingSensor
-      rdf:type owl:Class , rdfs:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:Sensor ;
       rdfs:subclassOf rpm:Sensor .
 
 rpm:Sensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf DUL:PhysicalArtifact .
 
 rpm:SensorProperty
       rdfs:subClassOf rdfs:Property .
 
 rpm:SensorValue
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf ssn:ObservationValue .
 
 rpm:SoftSensor
@@ -160,7 +133,7 @@ rpm:SoftSensor
       rpm:formula xsd:string .
 
 rpm:TimebasedAlarmSensor
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:AlarmSensor .
 
 rpm:TimebasedAlarmValue
@@ -168,7 +141,7 @@ rpm:TimebasedAlarmValue
       rdfs:subclassOf ssn:ObservationValue .
 
 rpm:WeightReporting
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class ;
       rdfs:subClassOf rpm:SelfreportingSensor .
 
 rpm:acc
@@ -218,7 +191,7 @@ rpm:bloodPressureLower
       rdfs:domain rpm:BloodPressureReportingValue ;
       rdfs:range xsd:int ;
       rpm:method "" ;
-      rpm:minValue "20" , "120" ;
+      rpm:minValue "120" , "20" ;
       rpm:propertyType "lifestyle" ;
       rpm:unit :someUnit .
 
@@ -227,12 +200,12 @@ rpm:bloodPressureUpper
       rdfs:domain rpm:BloodPressureReportingValue ;
       rdfs:range xsd:int ;
       rpm:method "" ;
-      rpm:minValue "70" , "220" ;
+      rpm:minValue "220" , "70" ;
       rpm:propertyType "lifestyle" ;
       rpm:unit :someUnit .
 
 rpm:calories
-      rdf:type rdf:Property , rpm:SensorProperty ;
+      rdf:type rpm:SensorProperty , rdf:Property ;
       rdfs:domain rpm:AlarmEvent , rpm:SoftSensorValue ;
       rdfs:label "rpmCalories"^^xsd:string ;
       rdfs:range xsd:int , xsd:double ;
@@ -279,9 +252,9 @@ rpm:duration
 
 rpm:heartRate
       rdf:type rdf:Property , rpm:SensorProperty ;
-      rdfs:domain rpm:AlarmEvent , rpm:EkgValue , rpm:HxMEcgValue ;
+      rdfs:domain rpm:HxMEcgValue , rpm:EkgValue , rpm:AlarmEvent ;
       rdfs:label "rpmHeartRate"^^xsd:string ;
-      rdfs:range xsd:int , xsd:integer ;
+      rdfs:range xsd:integer , xsd:int ;
       rpm:maxValue "220" ;
       rpm:minValue "30" ;
       rpm:observationFrequency
@@ -311,7 +284,7 @@ rpm:pressure
 
 rpm:rrInterval
       rdf:type rpm:SensorProperty ;
-      rdfs:domain rpm:HxMEcgValue , rpm:EkgValue ;
+      rdfs:domain rpm:EkgValue , rpm:HxMEcgValue ;
       rdfs:range xsd:int ;
       rpm:maxValue "200" ;
       rpm:minValue "10" ;
@@ -344,7 +317,7 @@ rpm:speed
       rdf:type rpm:SensorProperty , rdf:Property ;
       rdfs:domain rpm:AlarmEvent , rpm:HxMEcgValue ;
       rdfs:label "rpmSpeed"^^xsd:string ;
-      rdfs:range xsd:double , xsd:float ;
+      rdfs:range xsd:float , xsd:double ;
       rpm:maxValue "20" ;
       rpm:minValue "0.5" ;
       rpm:observationFrequency
@@ -354,9 +327,9 @@ rpm:speed
 
 rpm:steps
       rdf:type rpm:SensorProperty , rdf:Property ;
-      rdfs:domain rpm:AlarmEvent , rpm:HxMEcgValue ;
+      rdfs:domain rpm:HxMEcgValue , rpm:AlarmEvent ;
       rdfs:label "rpmSteps"^^xsd:string ;
-      rdfs:range xsd:int , xsd:integer ;
+      rdfs:range xsd:integer , xsd:int ;
       rpm:minValue "0" ;
       rpm:propertyType "activity" ;
       rpm:unit :none .
@@ -376,7 +349,7 @@ rpm:weight
       rdfs:domain rpm:WeightReportingValue ;
       rdfs:range xsd:int ;
       rpm:method "" ;
-      rpm:minValue "20" , "220" ;
+      rpm:minValue "220" , "20" ;
       rpm:propertyType "lifestyle" ;
       rpm:unit :kilogramme .
 
@@ -385,6 +358,38 @@ rpm:wind
       rdfs:domain rpm:AlarmEvent ;
       rdfs:label "rpmWind"^^xsd:string ;
       rdfs:range xsd:double .
+
+:screenName
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "twitterScreenName"^^xsd:string ;
+      rdfs:range xsd:string ;
+      owl:maxCardinality "1" .
+
+uctelco:phoneNumber
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      rdfs:comment "String, composed of numerical chars only. The length is variable. Example: 33000000000"^^xsd:string ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "ucTelcoPhoneNumber"^^xsd:string ;
+      rdfs:range xsd:string ;
+      owl:maxCardinality "1" .
+
+user:id
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "facebookId"^^xsd:string ;
+      rdfs:range xsd:string ;
+      owl:maxCardinality "1" .
+
+user:link
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdfs:domain rpm:AlarmEvent ;
+      rdfs:label "facebookLink"^^xsd:string ;
+      owl:maxCardinality "1" .
+
+rpm:
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos> , <http://purl.oclc.org/NET/ssnx/ssn> , <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> , : , dc: .
 
 DUL:Event
       rdfs:label "DulEvent"^^xsd:string .
