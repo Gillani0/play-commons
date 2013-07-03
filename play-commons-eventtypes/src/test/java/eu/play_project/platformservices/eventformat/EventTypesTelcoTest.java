@@ -5,7 +5,6 @@ import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Random;
 
 import org.event_processing.events.types.EsrShowFriendGeolocation;
 import org.event_processing.events.types.EsrSubscribeTo;
@@ -157,7 +156,7 @@ public class EventTypesTelcoTest {
 		event.setStream(new URIImpl(Stream.FacebookStatusFeed.getUri()));
 
 		event.setUcTelcoPhoneNumber(phone);
-		event.setUcTelcoUserType("Customer");	
+		event.setUcTelcoUserType("Customer");
 		event.setFacebookName("Antonio Aversa");
 		event.setFacebookLink(new URIImpl("http://graph.facebook.com/100004102810379#"));
 		event.setFacebookId("100004102810379");
