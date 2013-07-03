@@ -17,39 +17,35 @@ CONSTRUCT {
 	:e :message "Slow down, you created two high heartbeat alerts."^^xsd:string .
 	:e uctelco:action <blank://action1> .
 	<blank://action1> rdf:type uctelco:OpenTwitter .
-	:e :location <blank://1> .
-	<blank://1> geo:lat ?latitude2 ;
-		geo:long ?longitude2 .
-	:e rpm:heartRate ?heartRate2 .
+	:e rpm:value ?rpmValue2 .	
 	:e :members ?e1, ?e2 .
 }
 WHERE {
 	WINDOW {
 		EVENT ?id1 {
-		?e1 rdf:type rpm:AlarmEvent ;
-			:stream <http://streams.event-processing.org/ids/PersonalStream1#stream> ;
-			uctelco:phoneNumber ?phone ;
-			ssn:observedProperty rpm:EventdrivenAlarmSensor ;
-			ssn:observationResult [ ssn:hasValue [
-#				rdf:type rpm:EventdrivenAlarmValue ;
-				rpm:cepPatternValue [
-					rpm:value ?heartRate1
-				]
-			] ] .
+			?e1 rdf:type rpm:AlarmEvent ;
+				:stream <http://streams.event-processing.org/ids/PersonalStream1#stream> ;
+				uctelco:phoneNumber ?phone ;
+				ssn:observedProperty rpm:EventdrivenAlarmSensor ;
+				ssn:observationResult [ ssn:hasValue [
+#					rdf:type rpm:EventdrivenAlarmValue ;
+					rpm:cepPatternValue [
+						rpm:value ?rpmValue 
+					]
+				] ] .
 		}
 		SEQ
 		EVENT ?id2 {
-		?e2 rdf:type rpm:AlarmEvent ;
-			:stream <http://streams.event-processing.org/ids/PersonalStream1#stream> ;
-			:location [ geo:lat ?latitude2; geo:long ?longitude2 ] .
-			uctelco:phoneNumber ?phone ;
-			ssn:observedProperty rpm:EventdrivenAlarmSensor ;
-			ssn:observationResult [ ssn:hasValue [
-#				rdf:type rpm:EventdrivenAlarmValue ;
-				rpm:cepPatternValue [
-					rpm:value ?heartRate2
-				]
-			] ] .
-			}
+			?e2 rdf:type rpm:AlarmEvent ;
+				:stream <http://streams.event-processing.org/ids/PersonalStream1#stream> ;
+				uctelco:phoneNumber ?phone ;
+				ssn:observedProperty rpm:EventdrivenAlarmSensor ;
+				ssn:observationResult [ ssn:hasValue [
+#					rdf:type rpm:EventdrivenAlarmValue ;
+					rpm:cepPatternValue [
+						rpm:value ?rpmValue2 
+					]
+				] ] .
+		}
 	} ("PT10S"^^xsd:duration, sliding)
 }
