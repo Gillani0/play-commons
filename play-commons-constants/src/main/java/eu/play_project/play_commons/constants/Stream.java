@@ -21,7 +21,7 @@ public enum Stream {
 	FacebookCepResults(STREAMS, "FacebookCepResults#stream"),
 	PachubeFeed(STREAMS, "PachubeFeed#stream"),
 	TwitterFeed(STREAMS, "TwitterFeed#stream"),
-	PersonalMonitoring(STREAMS, "PersonalMonitoring#stream"),
+	PersonalStream1(STREAMS, "PersonalStream1#stream"),
 	// ARMINES
 	SituationalEventStream(STREAMS, "situationalEvent#stream"),
 	SituationalAlertEventStream(STREAMS, "situationalAlertEvent#stream"),
