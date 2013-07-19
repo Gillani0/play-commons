@@ -29,7 +29,6 @@ public class EventHelpersTest {
 		String uri = "http://teststring";
 
 		Model m = EventHelpers.createEmptyModel(uri);
-		System.out.println("context:" + m.getContextURI() + uri);
 		assertEquals(
 				"The expected context URI was not properly added to the model.",
 				uri, m.getContextURI().toString());
@@ -42,12 +41,14 @@ public class EventHelpersTest {
 		
 		ByteArrayOutputStream bout = new ByteArrayOutputStream();
 		EventHelpers.write(bout, m);
-		assertTrue("The expected context URI was not properly serialized to TriG syntax.", bout.toString().contains(uri));
+		String outputString = bout.toString();
+		assertTrue("The expected context URI was not properly serialized to TriG syntax.", outputString.contains(uri));
 
 		m.setNamespace("lala", "urn:lala");
 		bout = new ByteArrayOutputStream();
 		EventHelpers.write(bout, m);
-		assertTrue("The expected namespace prefix was not properly serialized to TriG syntax.", bout.toString().contains("lala"));
+		outputString = bout.toString();
+		assertTrue("The expected namespace prefix was not properly serialized to TriG syntax.", outputString.contains("lala"));
 	}
 
 	/**

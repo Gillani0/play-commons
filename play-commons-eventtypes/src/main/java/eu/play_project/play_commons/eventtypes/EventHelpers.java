@@ -1,18 +1,20 @@
 package eu.play_project.play_commons.eventtypes;
 
+import static eu.play_project.play_commons.constants.Event.WSN_MSG_DEFAULT_SYNTAX;
 import static eu.play_project.play_commons.constants.Namespace.EVENTS;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.riot.RDFFormat;
 import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
 import org.event_processing.events.types.Thing1;
 import org.ontoware.rdf2go.RDF2Go;
+import org.ontoware.rdf2go.exception.ModelRuntimeException;
+import org.ontoware.rdf2go.exception.SyntaxNotSupportedException;
 import org.ontoware.rdf2go.model.Model;
 import org.ontoware.rdf2go.model.ModelSet;
 import org.ontoware.rdf2go.model.Syntax;
@@ -25,8 +27,6 @@ import org.w3c.dom.Element;
 import com.hp.hpl.jena.datatypes.RDFDatatype;
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.NodeFactory;
-import com.hp.hpl.jena.query.Dataset;
-import com.hp.hpl.jena.query.DatasetFactory;
 
 import eu.play_project.play_commons.constants.Namespace;
 import eu.play_project.play_commons.eventformat.EventFormatHelpers;
@@ -197,19 +197,26 @@ public final class EventHelpers {
 	}
 
 	/**
-	 * Print a {@linkplain ModelSet} to TriG.
+	 * Print a {@linkplain ModelSet} to syntax {@link #WSN_MSG_DEFAULT_SYNTAX}.
 	 * 
 	 * @param out
 	 *            A stream to write to.
 	 * @param modelSet
 	 */
 	public static void write(OutputStream out, ModelSet modelSet) {
-		Dataset ds = (Dataset) modelSet.getUnderlyingModelSetImplementation();
-		RDFDataMgr.write(out, ds, RDFFormat.TRIG_BLOCKS);
+		try {
+			modelSet.writeTo(out, Syntax.forMimeType(WSN_MSG_DEFAULT_SYNTAX));
+		} catch (SyntaxNotSupportedException e) {
+			e.printStackTrace();
+		} catch (ModelRuntimeException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Print a {@linkplain Model} to TriG.
+	 * Print a {@linkplain Model} to syntax {@link #WSN_MSG_DEFAULT_SYNTAX}.
 	 * 
 	 * @param out
 	 *            A stream to write to.
@@ -219,17 +226,21 @@ public final class EventHelpers {
 		if (model.getContextURI() == null) {
 			throw new IllegalArgumentException("Context was not defined. We need quadruples.");
 		}
-		
-		com.hp.hpl.jena.rdf.model.Model m = (com.hp.hpl.jena.rdf.model.Model) model
-				.getUnderlyingModelImplementation();
-		Dataset ds = DatasetFactory.createMem();
-		ds.getDefaultModel().setNsPrefixes(m.getNsPrefixMap());
-		ds.addNamedModel(model.getContextURI().toString(), m);
-		RDFDataMgr.write(out, ds, RDFFormat.TRIG_BLOCKS);
+
+		ModelSet ms = EventHelpers.createEmptyModelSet();
+		ms.addModel(model);
+
+		try {
+			ms.writeTo(out, Syntax.forMimeType(WSN_MSG_DEFAULT_SYNTAX));
+		} catch (ModelRuntimeException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Print the underlying {@linkplain Model} to TriG.
+	 * Print the underlying {@linkplain Model} to syntax {@link #WSN_MSG_DEFAULT_SYNTAX}.
 	 * 
 	 * @param out
 	 *            A stream to write to.
@@ -240,7 +251,7 @@ public final class EventHelpers {
 	}
 
 	/**
-	 * Serialize a {@linkplain Model} to TriG and enclose the result in an XML wrapping
+	 * Serialize a {@linkplain Model} to syntax {@link #WSN_MSG_DEFAULT_SYNTAX} and enclose the result in an XML wrapping
 	 * element for use in WS-Notification.
 	 * 
 	 * @param model
@@ -250,22 +261,22 @@ public final class EventHelpers {
 		ByteArrayOutputStream bout = new ByteArrayOutputStream();
 		EventHelpers.write(bout, model);
 		return EventFormatHelpers.wrapWithNativeMessageElement(bout.toString(),
-				Syntax.Trig.getMimeType());
+				WSN_MSG_DEFAULT_SYNTAX);
 	}
 
 	/**
-	 * Serialize a model to TriG and enclose the result in an XML wrapping
+	 * Serialize a model to syntax {@link #WSN_MSG_DEFAULT_SYNTAX} and enclose the result in an XML wrapping
 	 * element for use in WS-Notification.
 	 */
 	public static Element serializeAsDom(Model model) {
 		ByteArrayOutputStream bout = new ByteArrayOutputStream();
 		EventHelpers.write(bout, model);
 		return EventFormatHelpers.wrapWithDomNativeMessageElement(
-				bout.toString(), Syntax.Trig.getMimeType());
+				bout.toString(), WSN_MSG_DEFAULT_SYNTAX);
 	}
 
 	/**
-	 * Serialize the underlying model to TriG and enclose the result in an XML
+	 * Serialize the underlying model to syntax {@link #WSN_MSG_DEFAULT_SYNTAX} and enclose the result in an XML
 	 * wrapping element for use in WS-Notification.
 	 */
 	public static String serialize(Event event) {
@@ -273,7 +284,7 @@ public final class EventHelpers {
 	}
 
 	/**
-	 * Serialize the underlying model to TriG and enclose the result in an XML
+	 * Serialize the underlying model to syntax {@link #WSN_MSG_DEFAULT_SYNTAX} and enclose the result in an XML
 	 * wrapping element for use in WS-Notification.
 	 */
 	public static Element serializeAsDom(Event event) {
