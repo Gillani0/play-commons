@@ -15,7 +15,7 @@ public enum Namespace {
 	SOURCE("src", "http://sources.event-processing.org/ids/"),
 	GROUP("group", "http://groups.event-processing.org/id/"),
 	PERMISSION("permission", "http://permissions.event-processing.org/id/"),
-	PATTERN("pattern", "http://patterns.event-processing.org/id/"),
+	PATTERN("pattern", "http://patterns.event-processing.org/patterns/"),
 	UCCRISIS("uccrisis", "http://www.mines-albi.fr/nuclearcrisisevent/"),
 	UCTELCO("uctelco", "http://events.event-processing.org/uc/telco/"),
 	ESR("esr", "http://imu.ntua.gr/play/esr/mcm/2#"),
