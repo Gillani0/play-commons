@@ -1,12 +1,17 @@
 package eu.play_project.play_commons.eventtypes;
 
+import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
 import static eu.play_project.play_commons.constants.Event.WSN_MSG_DEFAULT_SYNTAX;
 import static eu.play_project.play_commons.constants.Namespace.EVENTS;
+import static eu.play_project.play_commons.constants.Stream.STREAM_ID_SUFFIX;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.UUID;
 
 import org.event_processing.events.types.Event;
@@ -20,6 +25,7 @@ import org.ontoware.rdf2go.model.ModelSet;
 import org.ontoware.rdf2go.model.Syntax;
 import org.ontoware.rdf2go.model.node.URI;
 import org.ontoware.rdf2go.model.node.impl.DatatypeLiteralImpl;
+import org.ontoware.rdf2go.model.node.impl.PlainLiteralImpl;
 import org.ontoware.rdf2go.model.node.impl.URIImpl;
 import org.ontoware.rdf2go.vocabulary.XSD;
 import org.w3c.dom.Element;
@@ -29,6 +35,8 @@ import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.NodeFactory;
 
 import eu.play_project.play_commons.constants.Namespace;
+import eu.play_project.play_commons.constants.Source;
+import eu.play_project.play_commons.constants.Stream;
 import eu.play_project.play_commons.eventformat.EventFormatHelpers;
 
 public final class EventHelpers {
@@ -320,5 +328,357 @@ public final class EventHelpers {
 			}
 		}
 		return objectNode;
+	}
+	
+
+	/**
+	 * Set the event ID URI.
+	 * 
+	 * DEFAULT: {@link EventHelpers#createRandomEventId()}
+	 */
+	public static Builder builder(URI eventId) {
+		return new Builder(eventId);
+	}
+	
+	/**
+	 * Set the event ID URI.
+	 * 
+	 * DEFAULT: {@link EventHelpers#createRandomEventId()}
+	 */
+	public static Builder builder(String eventId) {
+		return new Builder(eventId);
+	}
+	
+	/**
+	 * Set no event ID URI. The default is used.
+	 * 
+	 * DEFAULT: {@link EventHelpers#createRandomEventId()}
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+	
+	/**
+	 * Set a known prefix for a randomized event ID URI.
+	 * 
+	 * DEFAULT: none
+	 */
+	public static Builder builder(String eventIdPrefix, boolean usePrefix) {
+		return new Builder(eventIdPrefix, usePrefix);
+	}
+	
+	
+	public static class Builder {
+		
+		private final URI eventId;
+		private URI stream;
+		private URI source;
+		private Calendar endTime;
+		private Calendar startTime;
+		private URI type;
+		private Double latitude;
+		private Double longitude;
+		private final Model additionalProperties = RDF2Go.getModelFactory().createModel().open();
+
+		/**
+		 * Set the event ID URI.
+		 * 
+		 * DEFAULT: {@link EventHelpers#createRandomEventId()}
+		 */
+		public Builder(URI eventId) {
+			String s = eventId.toString();
+			if (s.endsWith(EVENT_ID_SUFFIX)) {
+				eventId = new URIImpl(s.substring(0, s.indexOf(EVENT_ID_SUFFIX)));
+			}
+			this.eventId = eventId;
+		}
+		/**
+		 * Set the event ID URI.
+		 * 
+		 * DEFAULT: {@link EventHelpers#createRandomEventId()}
+		 */
+		public Builder(String eventId) {
+			this(new URIImpl(eventId));
+		}
+		/**
+		 * Set no event ID URI. The default is used.
+		 * 
+		 * DEFAULT: {@link EventHelpers#createRandomEventId()}
+		 */
+		public Builder() {
+			this(EventHelpers.createRandomEventId());
+		}
+		/**
+		 * Set a known prefix for a randomized event ID URI.
+		 * 
+		 * DEFAULT: none
+		 */
+		public Builder(String eventIdPrefix, boolean usePrefix) {
+			this(EventHelpers.createRandomEventId(eventIdPrefix));
+		}
+
+	
+		/**
+		 * Set the stream including '#stream' suffix.
+		 * 
+		 * DEFAULT: none. MANDATORY.
+		 */
+		public Builder stream(Stream stream) {
+			return stream(stream.getUri());
+		}
+
+		/**
+		 * Set the stream including '#stream' suffix.
+		 * 
+		 * DEFAULT: none. MANDATORY.
+		 */
+		public Builder stream(String stream) {
+			return stream(new URIImpl(stream));
+		}
+		
+		/**
+		 * Set the stream.
+		 * 
+		 * DEFAULT: none. MANDATORY.
+		 */
+		public Builder stream(URI stream) {
+			if (!stream.toString().endsWith(STREAM_ID_SUFFIX)) {
+				stream = new URIImpl(stream + STREAM_ID_SUFFIX);
+			}
+			this.stream = stream;
+			return this;
+		}
+		
+		/**
+		 * Set the end time.
+		 * 
+		 * DEFAULT: current time
+		 */
+		public Builder endTime(Date endTime) {
+			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+			cal.setTime(endTime);
+			return endTime(cal);
+		}
+		
+		/**
+		 * Set the end time.
+		 * 
+		 * DEFAULT: current time
+		 */
+		public Builder endTime(Calendar endTime) {
+			this.endTime = endTime;
+			return this;
+		}
+
+		/**
+		 * Set the timestamp. Synonymous to {@link #endTime(Date)}.
+		 * 
+		 * DEFAULT: current time
+		 */
+		public Builder timestamp(Date timestamp) {
+			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+			cal.setTime(timestamp);
+			return timestamp(cal);
+		}
+		
+		/**
+		 * Set the timestamp. Synonymous to {@link #endTime(Calendar)}.
+		 * 
+		 * DEFAULT: current time
+		 */
+		public Builder timestamp(Calendar timestamp) {
+			return endTime(timestamp);
+		}
+		
+		/**
+		 * Set the start time.
+		 * 
+		 * DEFAULT: none
+		 */
+		public Builder startTime(Date startTime) {
+			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+			cal.setTime(startTime);
+			return startTime(cal);
+		}
+		
+		/**
+		 * Set the start time.
+		 * 
+		 * DEFAULT: none
+		 */
+		public Builder startTime(Calendar startTime) {
+			this.startTime = startTime;
+			return this;
+		}
+		
+		public Builder source(Source source) {
+			return source(source.getUri());
+		}
+
+		public Builder source(String source) {
+			return source(new URIImpl(source));
+		}
+		
+		public Builder source(URI source) {
+			this.source = source;
+			return this;
+		}
+
+		/**
+		 * Set the event type.
+		 * 
+		 * DEFAULT: {@link Event#RDFS_CLASS}
+		 */
+		public Builder type(String type) {
+			return type(new URIImpl(type));
+		}
+		
+		/**
+		 * Set the event type.
+		 * 
+		 * DEFAULT: {@link Event#RDFS_CLASS}
+		 */
+		public Builder type(URI type) {
+			this.type = type;
+			return this;
+		}
+
+		/**
+		 * Set the event location.
+		 * 
+		 * DEFAULT: none
+		 */
+		public Builder location(double latitude, double longitude) {
+			latitude(latitude);
+			longitude(longitude);
+			return this;
+		}
+		
+		/**
+		 * Set the event latitude.
+		 * 
+		 * DEFAULT: none
+		 */
+		public Builder latitude(double latitude) {
+			this.latitude = latitude;
+			return this;
+		}
+
+		/**
+		 * Set the event longitude.
+		 * 
+		 * DEFAULT: none
+		 */
+		public Builder longitude(double longitude) {
+			this.longitude = longitude;
+			return this;
+		}
+
+		/**
+		 * Set arbitrary String property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @param property the name of the property (URI)
+		 * @param value the string literal value
+		 */
+		public Builder addProperty(String property, String value) {
+			return addProperty(new URIImpl(property), value);
+		}
+
+		/**
+		 * Set arbitrary String property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @param property the name of the property (URI)
+		 * @param value the string literal value
+		 */
+		public Builder addProperty(URI property, String value) {
+			return addRdf(new URIImpl(eventId + EVENT_ID_SUFFIX), property, value);
+		}
+
+		/**
+		 * Set arbitrary String property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @param subject the name of the subject (URI)
+		 * @param property the name of the property (URI)
+		 * @param value the string literal value
+		 */
+		public Builder addRdf(String subject, String property, String value) {
+			return addRdf(new URIImpl(subject), new URIImpl(property), value);
+		}
+
+		/**
+		 * Set arbitrary String property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @param subject the name of the subject (URI)
+		 * @param property the name of the property (URI)
+		 * @param value the string literal value
+		 */
+		public Builder addRdf(URI subject, URI property, String value) {
+			return addRdf(subject, property, new PlainLiteralImpl(value));
+		}
+
+		/**
+		 * Set arbitrary property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @param subject the name of the subject (URI)
+		 * @param property the name of the property (URI)
+		 * @param value the object (can be literal value or URI)
+		 */
+		public Builder addRdf(URI subject, URI property, org.ontoware.rdf2go.model.node.Node value) {
+			additionalProperties.addStatement(subject, property, value);
+			return this;
+		}
+		
+		/**
+		 * Build {@link Event}.
+		 * 
+		 * @throws IllegalStateException when the event is missing mandatory properties.
+		 */
+		public Event build() {
+			if (endTime == null) {
+				this.endTime = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+			}
+			if (type == null) {
+				this.type = Event.RDFS_CLASS;
+			}
+			
+			validate();
+			
+			Event event = new Event(EventHelpers.createEmptyModel(eventId), eventId + EVENT_ID_SUFFIX, false);
+			event.setStream(stream);
+			event.setType(type);
+			event.setEndTime(endTime);
+			if (startTime != null) {
+				event.setStartTime(startTime);
+			}
+			if (source != null) {
+				event.setSource(source);
+			}
+			if (latitude != null && longitude != null) {
+				EventHelpers.setLocationToEvent(event, latitude, longitude);
+			}
+
+			event.getModel().addModel(additionalProperties);
+			
+			return event;
+		}
+		
+		/**
+		 * Check for ENDTIME, STREAM
+		 */
+		private void validate() {
+			if (stream == null) {
+				throw new IllegalStateException("stream was not set on builder.");
+			}
+		}
 	}
 }
