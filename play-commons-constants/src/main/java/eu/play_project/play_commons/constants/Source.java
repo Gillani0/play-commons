@@ -19,7 +19,8 @@ public enum Source {
 	WebApp(SOURCE.getUri() + "WebApp#source"),
 	FacebookAdapter(SOURCE.getUri() + "FacebookAdapter#source"),
 	TwitterAdapter(SOURCE.getUri() + "TwitterAdapter#source"),
-	PachubeAdapter(SOURCE.getUri() + "PachubeAdapter#source");
+	PachubeAdapter(SOURCE.getUri() + "PachubeAdapter#source"),
+	UnitTest(SOURCE.getUri() + "UnitTest#source");
 
 	private final String source;
 
@@ -32,6 +33,11 @@ public enum Source {
 		this.source = source;
 	}
 
+	public String getUri() {
+		return source;
+	}
+	
+	@Override
 	public String toString() {
 		return source;
 	}
