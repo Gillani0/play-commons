@@ -48,20 +48,9 @@ To define event types a schema is optional but recommended. Added value is verif
 See details at [play-commons-eventtypes](https://github.com/play-project/play-commons/tree/master/play-commons-eventtypes/).
 
 
-Sending Events
---------------
-When sending events to PLAY they must be:
-
-1. in RDF format, TriG syntax (see above)
-2. escaped for XML ([code](https://github.com/play-project/play-commons/blob/master/play-commons-eventformat/src/main/java/eu/play_project/play_commons/eventformat/EventFormatHelpers.java))
-3. wrapped in an XML `<mt:nativeMessage>` element ([code](https://github.com/play-project/play-commons/blob/master/play-commons-eventformat/src/main/java/eu/play_project/play_commons/eventformat/EventFormatHelpers.java))
-4. wrapped in a WS-Notification SOAP message
-
-See details at [PLAY Abstract RDF Sender](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfsender).
-
-Receiving Events
-----------------
-See details at [PLAY Abstract RDF Receiver](https://github.com/play-project/play-eventadapters/tree/master/play-eventadapter-abstractrdfreceiver).
+Sending Events and Receiving Events
+-----------------------------------
+See details at [play-eventadapters](https://github.com/play-project/play-eventadapters).
 
 
 Further reading

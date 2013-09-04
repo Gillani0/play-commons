@@ -60,7 +60,7 @@ Instantiating Events
 --------------------
 Events can be created in two ways: Using the PLAY SDK in Java an event object can be instantiated and getters/setters can be called conveniently for each event property. If the complexity of the SDK is not needed or not wanted (Maven dependencies) a template approach can be used to create a string like the above examples.
 
-Examples how to create an event using the SDK: <a href="src/test/java/eu/play_project/platformservices/eventformat/EventTypesTest.java">EventTypesTest.java</a>
+Examples how to create an event using the SDK: <a href="src/test/java/eu/play_project/platformservices/eventformat/EventTypesTest.java">EventTypesTest.java</a> or see our new fluent interface builder in action: [EventBuilderTest.java](src/test/java/eu/play_project/platformservices/eventformat/EventBuilderTest.java)
 
 An example using a template can look like this:
 
