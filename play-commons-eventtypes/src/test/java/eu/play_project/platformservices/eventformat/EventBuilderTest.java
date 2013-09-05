@@ -116,6 +116,7 @@ public class EventBuilderTest {
 	public void testCompatibilityWithSdk() {
 		
 		String eventId = EventHelpers.createRandomEventId("crisis");
+		Calendar time = Calendar.getInstance();
 
 		CrisisMeasureEvent event = new CrisisMeasureEvent(
 				// set the RDF context part
@@ -125,7 +126,7 @@ public class EventBuilderTest {
 				// automatically write the rdf:type statement
 				true);
 		event.setStream(new URIImpl(SituationalEventStream.getUri()));
-		event.setEndTime(Calendar.getInstance());
+		event.setEndTime(time);
 		event.setCrisisFrequency("1000");
 		event.setCrisisComponentName("Component-101");
 		event.setCrisisLocalisation("somewhere");
@@ -139,7 +140,7 @@ public class EventBuilderTest {
 		Event event2 = EventHelpers.builder(eventId)
 				.type(CrisisMeasureEvent.RDFS_CLASS)
 				.stream(SituationalEventStream)
-				.endTime(Calendar.getInstance())
+				.endTime(time)
 				.addProperty(CrisisMeasureEvent.CRISISFREQUENCY, "1000")
 				.addProperty(CrisisMeasureEvent.CRISISCOMPONENTNAME, "Component-101")
 				.addProperty(CrisisMeasureEvent.CRISISLOCALISATION, "somewhere")
