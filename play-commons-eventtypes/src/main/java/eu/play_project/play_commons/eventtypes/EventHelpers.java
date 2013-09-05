@@ -549,31 +549,11 @@ public final class EventHelpers {
 		 * DEFAULT: none
 		 */
 		public Builder location(double latitude, double longitude) {
-			latitude(latitude);
-			longitude(longitude);
-			return this;
-		}
-		
-		/**
-		 * Set the event latitude.
-		 * 
-		 * DEFAULT: none
-		 */
-		public Builder latitude(double latitude) {
 			this.latitude = latitude;
-			return this;
-		}
-
-		/**
-		 * Set the event longitude.
-		 * 
-		 * DEFAULT: none
-		 */
-		public Builder longitude(double longitude) {
 			this.longitude = longitude;
 			return this;
 		}
-
+		
 		/**
 		 * Set arbitrary String property.
 		 * 
@@ -641,7 +621,9 @@ public final class EventHelpers {
 		/**
 		 * Build {@link Event}.
 		 * 
-		 * @throws IllegalStateException when the event is missing mandatory properties.
+		 * @throws IllegalStateException
+		 *             when the event builder is missing mandatory properties,
+		 *             mainly {@link Builder#stream(Stream)}
 		 */
 		public Event build() {
 			if (endTime == null) {

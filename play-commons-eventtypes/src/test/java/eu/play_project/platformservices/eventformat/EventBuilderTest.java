@@ -96,7 +96,6 @@ public class EventBuilderTest {
 	public void testLocationAndMore() {
 
 		Event event = EventHelpers.builder()
-				.type(UcTelcoCall.RDFS_CLASS)
 				.stream(Stream.TaxiUCCall)
 				.source(Source.UnitTest)
 				.startTime(Calendar.getInstance())
@@ -107,6 +106,7 @@ public class EventBuilderTest {
 		assertTrue(event.getModel().contains(Variable.ANY, Point.GEOLATITUDE, Variable.ANY));
 		assertTrue(event.getModel().contains(Variable.ANY, Point.GEOLONGITUDE, Variable.ANY));
 
+		assertTrue(event.getModel().contains(Variable.ANY, RDF.type, Event.RDFS_CLASS));
 	}
 
 	/**
