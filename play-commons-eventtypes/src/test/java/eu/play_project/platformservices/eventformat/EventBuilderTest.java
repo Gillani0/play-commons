@@ -1,6 +1,7 @@
 package eu.play_project.platformservices.eventformat;
 
 import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
+import static eu.play_project.play_commons.constants.Stream.SituationalEventStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,6 +9,7 @@ import static org.junit.Assert.fail;
 
 import java.util.Calendar;
 
+import org.event_processing.events.types.CrisisMeasureEvent;
 import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
 import org.event_processing.events.types.UcTelcoCall;
@@ -107,5 +109,49 @@ public class EventBuilderTest {
 
 	}
 
+	/**
+	 * Create an event using the builder and also using the SDK. Comapre results.
+	 */
+	@Test
+	public void testCompatibilityWithSdk() {
+		
+		String eventId = EventHelpers.createRandomEventId("crisis");
+
+		CrisisMeasureEvent event = new CrisisMeasureEvent(
+				// set the RDF context part
+				EventHelpers.createEmptyModel(eventId),
+				// set the RDF subject
+				eventId + EVENT_ID_SUFFIX,
+				// automatically write the rdf:type statement
+				true);
+		event.setStream(new URIImpl(SituationalEventStream.getUri()));
+		event.setEndTime(Calendar.getInstance());
+		event.setCrisisFrequency("1000");
+		event.setCrisisComponentName("Component-101");
+		event.setCrisisLocalisation("somewhere");
+		event.setCrisisSituation("Sit-01");
+		event.setCrisisUid(eventId);
+		event.setCrisisUnit("MHz");
+		event.setCrisisValue("123");
+		event.setCrisisComponentSeid("someSEID");
+
+		
+		Event event2 = EventHelpers.builder(eventId)
+				.type(CrisisMeasureEvent.RDFS_CLASS)
+				.stream(SituationalEventStream)
+				.endTime(Calendar.getInstance())
+				.addProperty(CrisisMeasureEvent.CRISISFREQUENCY, "1000")
+				.addProperty(CrisisMeasureEvent.CRISISCOMPONENTNAME, "Component-101")
+				.addProperty(CrisisMeasureEvent.CRISISLOCALISATION, "somewhere")
+				.addProperty(CrisisMeasureEvent.CRISISSITUATION, "Sit-01")
+				.addProperty(CrisisMeasureEvent.CRISISUID, eventId)
+				.addProperty(CrisisMeasureEvent.CRISISUNIT, "MHz")
+				.addProperty(CrisisMeasureEvent.CRISISVALUE, "123")
+				.addProperty(CrisisMeasureEvent.CRISISCOMPONENTSEID, "someSEID")
+				.build();
+		
+		
+		assertTrue(event.getModel().isIsomorphicWith(event2.getModel()));
+	}
 	
 }
