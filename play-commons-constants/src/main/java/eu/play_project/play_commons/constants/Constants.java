@@ -7,7 +7,10 @@ import java.util.Properties;
 /**
  * Properties for the PLAY Project. This class reads the file
  * {@code play-commons-constants.properties} from the classpath and also has a
- * default file included in the JAR.
+ * default file included in the JAR. You can create you own properties file by
+ * adapting
+ * <a href="https://github.com/play-project/play-commons/blob/master/play-commons-constants/src/main/resources/play-commons-constants-defaults.properties">
+ * the defaults</a>.
  * 
  * @author Roland Stühmer
  */
