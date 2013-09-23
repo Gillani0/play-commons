@@ -17,6 +17,7 @@ import java.util.UUID;
 import org.event_processing.events.types.Event;
 import org.event_processing.events.types.Point;
 import org.event_processing.events.types.Thing1;
+import org.event_processing.events.types.UcTelcoGeoLocation;
 import org.ontoware.rdf2go.RDF2Go;
 import org.ontoware.rdf2go.exception.ModelRuntimeException;
 import org.ontoware.rdf2go.exception.SyntaxNotSupportedException;
@@ -27,6 +28,7 @@ import org.ontoware.rdf2go.model.node.URI;
 import org.ontoware.rdf2go.model.node.impl.DatatypeLiteralImpl;
 import org.ontoware.rdf2go.model.node.impl.PlainLiteralImpl;
 import org.ontoware.rdf2go.model.node.impl.URIImpl;
+import org.ontoware.rdf2go.vocabulary.RDFS;
 import org.ontoware.rdf2go.vocabulary.XSD;
 import org.w3c.dom.Element;
 
@@ -555,12 +557,17 @@ public final class EventHelpers {
 		}
 		
 		/**
-		 * Set arbitrary String property.
+		 * Set arbitrary String property. There are many useful properties
+		 * defined as constants e.g. here: {@link Event#EVENTPATTERN}, ...,
+		 * {@link UcTelcoGeoLocation#UCTELCOPHONENUMBER}, ..., or
+		 * {@link RDFS#label}.
 		 * 
 		 * DEFAULT: none
 		 * 
-		 * @param property the name of the property (URI)
-		 * @param value the string literal value
+		 * @param property
+		 *            the name of the property (URI)
+		 * @param value
+		 *            the string literal value
 		 */
 		public Builder addProperty(String property, String value) {
 			return addProperty(new URIImpl(property), value);
@@ -570,6 +577,8 @@ public final class EventHelpers {
 		 * Set arbitrary String property.
 		 * 
 		 * DEFAULT: none
+		 * 
+		 * @see #addProperty(String, String)
 		 * 
 		 * @param property the name of the property (URI)
 		 * @param value the string literal value
@@ -582,6 +591,22 @@ public final class EventHelpers {
 		 * Set arbitrary String property.
 		 * 
 		 * DEFAULT: none
+		 * 
+		 * @see #addProperty(String, String)
+		 * 
+		 * @param property the name of the property (URI)
+		 * @param value the string literal value
+		 */
+		public Builder addProperty(URI property, org.ontoware.rdf2go.model.node.Node value) {
+			return addRdf(new URIImpl(eventId + EVENT_ID_SUFFIX), property, value);
+		}
+		
+		/**
+		 * Set arbitrary String property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @see #addProperty(String, String)
 		 * 
 		 * @param subject the name of the subject (URI)
 		 * @param property the name of the property (URI)
@@ -596,6 +621,8 @@ public final class EventHelpers {
 		 * 
 		 * DEFAULT: none
 		 * 
+		 * @see #addRdf(String, String, String)
+		 * 
 		 * @param subject the name of the subject (URI)
 		 * @param property the name of the property (URI)
 		 * @param value the string literal value
@@ -608,6 +635,8 @@ public final class EventHelpers {
 		 * Set arbitrary property.
 		 * 
 		 * DEFAULT: none
+		 * 
+		 * @see #addRdf(String, String, String)
 		 * 
 		 * @param subject the name of the subject (URI)
 		 * @param property the name of the property (URI)
