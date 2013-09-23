@@ -85,22 +85,22 @@ wsnt:Topic
 :FacebookCepResult
       rdf:type owl:Class ;
       rdfs:subClassOf :FacebookEvent ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
+      xhtml2:icon <http://www.facebook.com/favicon.ico> .
 
 :FacebookEvent
       rdf:type owl:Class ;
       rdfs:subClassOf :Event ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
+      xhtml2:icon <http://www.facebook.com/favicon.ico> .
 
 :FacebookStatusFeedEvent
       rdf:type owl:Class ;
       rdfs:subClassOf :FacebookEvent ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
+      xhtml2:icon <http://www.facebook.com/favicon.ico> .
 
 :PachubeEvent
       rdf:type owl:Class ;
       rdfs:subClassOf :Event ;
-      xhtml2:icon <https://d2npiipx5ecxt9.cloudfront.net/assets/favicon.ico> .
+      xhtml2:icon <http://xively.com/favicon.ico> .
 
 :ProximityInfoEvent
       rdf:type owl:Class ;
@@ -120,7 +120,7 @@ wsnt:Topic
 :Telco
       rdf:type owl:Class ;
       rdfs:subClassOf :Event ;
-      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.ico> .
+      xhtml2:icon <http://www.orange.com/extension/orange/design/orangecom/images/favicon.png> .
 
 :TempEvent
       rdf:type owl:Class ;
@@ -329,7 +329,7 @@ uctelco:OpenFacebook
       rdf:type owl:Class ;
       rdfs:label "UcTelcoOpenFacebook"^^xsd:string ;
       rdfs:subClassOf esr:Action ;
-      xhtml2:icon <https://fbstatic-a.akamaihd.net/rsrc.php/yP/r/Ivn-CVe5TGK.ico> .
+      xhtml2:icon <http://www.facebook.com/favicon.ico> .
 
 uctelco:OpenTwitter
       rdf:type owl:Class ;
