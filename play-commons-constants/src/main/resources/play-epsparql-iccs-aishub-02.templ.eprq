@@ -3,7 +3,7 @@
 # Description: Vessel event average speed<= 10 Knots during past 5 minutes AND vessel type = �High Speed� and MMSI = {Determined by SAN engine}
 #
 # TODO: Which stream should the complex event be in? New topic needed?
-# TODO: AVG must be tested in EP-SPARQL
+# TODO: AVG must be tested in BDPL
 #
 
 PREFIX ais:    <http://imu.ntua.gr/ais#>

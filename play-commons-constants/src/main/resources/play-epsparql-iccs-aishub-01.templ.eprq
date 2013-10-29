@@ -3,8 +3,8 @@
 # Description:  Emit an event when you detect a Vessel event with average speed> 10 Knots during the past 5 minutes AND vessel type = �High Speed�
 #
 # TODO: Which stream should the complex event be in? New topic needed?
-# TODO: AVG must be tested in EP-SPARQL
-# TOTO: stefan: does this work with events of varying ?speed but identical ?mmsi? my syntax seems ambiguous. do we need to extend EP-SPARQL?
+# TODO: AVG must be tested in BDPL
+# TOTO: stefan: does this work with events of varying ?speed but identical ?mmsi? my syntax seems ambiguous. do we need to extend BDPL?
 #
 
 PREFIX ais:    <http://imu.ntua.gr/ais#>

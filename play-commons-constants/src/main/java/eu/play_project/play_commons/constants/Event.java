@@ -17,7 +17,7 @@ public class Event {
 
 	
 	/**
-	 * In EP-SPARQL queries the ID of an unfinished complex event is depicted by
+	 * In BDPL queries the ID of an unfinished complex event is depicted by
 	 * this string before it is replaced by a unique identifyer.
 	 */
 	public static final String EVENT_ID_PLACEHOLDER = Namespace.TYPES.getUri() + "e";
