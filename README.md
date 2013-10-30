@@ -30,6 +30,6 @@ For issues and bug reporting, please go to https://github.com/play-project/play/
 
 Other
 -----
-[Reports](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/project-reports.html) |
-[JavaDoc](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/apidocs/index.html) |
-[DOAP](http://play-project.github.com/play-commons/site/1.1-SNAPSHOT/doap.rdf)
+[Reports](http://play-project.github.com/play-commons/site/1.2-SNAPSHOT/project-reports.html) |
+[JavaDoc](http://play-project.github.com/play-commons/site/1.2-SNAPSHOT/apidocs/index.html) |
+[DOAP](http://play-project.github.com/play-commons/site/1.2-SNAPSHOT/doap.rdf)
