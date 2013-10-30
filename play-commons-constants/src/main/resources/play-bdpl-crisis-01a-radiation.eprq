@@ -26,5 +26,5 @@ WHERE {
 		?e1 uccrisis:unit "mSv" .
 		?e1 uccrisis:localisation ?localisation
 		}
-		FILTER (?value > 100.0)
+		FILTER (?value > "100")
 }
