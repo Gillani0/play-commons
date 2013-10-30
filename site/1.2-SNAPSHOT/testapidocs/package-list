@@ -1,0 +1,7 @@
+eu.play_project.platformservices.eventformat
+eu.play_project.play_commons.constants.tests
+eu.play_project.play_commons.eventformat.tests
+org.ow2.play.commons.accesscontrol.tests
+org.ow2.play.commons.rest.error
+org.ow2.play.commons.security
+org.ow2.play.commons.utils
