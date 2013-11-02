@@ -58,7 +58,7 @@ To extend the event with useful parameters ( *payload*, *event body*, ...), we g
 
 User guide
 ----------
-Events can be created in three ways: (1) Using the **PLAY SDK** in Java an event object can be instantiated and getters/setters can be called conveniently for each event property. (2) Using the **builder** class in Java to create events quickly e.g., without a schema. (3) If the complexity of the SDK is not needed or not wanted (Maven dependencies) a template approach can be used to create a string.
+Events can be created in three ways: (1) Using the **PLAY SDK** in Java an event object can be instantiated and getters/setters can be called conveniently for each event property. (2) Using the **builder** class in Java to create events quickly e.g., without a schema. (3) If the complexity of the SDK is not needed or not wanted (Maven dependencies) a **template approach** can be used to create a string:
 
 ### Creating events using the PLAY SDK
 The PLAY SDK provides Java event classes which are generated using [RDFReactor](http://semanticweb.org/wiki/RDFReactor) to match the schema mentioned above. Example use:
