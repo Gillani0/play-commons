@@ -73,7 +73,7 @@ public enum Stream {
 	public static final String STREAM_TOPIC = "http://www.play-project.eu/xml/ns/topic";
 	/** Whether a stream has complex or not. Defaults to false. Boolean. */
 	public static final String STREAM_COMPLEXEVENTS = "http://www.play-project.eu/xml/ns/complexEvents";
-	/** Whether DSB needs to subscribe to the event cloud, i.e. EC->DSB. Defaults to false (DSB->EC). Boolean. */
+	/** Whether DSB needs to subscribe to the EventCloud, i.e. EC->DSB. Defaults to false (DSB->EC). Boolean. */
 	public static final String STREAM_DSBNEEDSTOSUBSCRIBE = "http://www.play-project.eu/xml/ns/dsbneedstosubscribe";
 	
 
