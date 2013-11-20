@@ -4,7 +4,7 @@
 # The output topic is moved to the default stream namespace because of a bug in cxf
 #
 # TODO: Stefan, can we see all variables where the filters need them?
-#
+# TODO: re-add ?value1 + 10 in last FILTER
 
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX uccrisis: <http://www.mines-albi.fr/nuclearcrisisevent/>
@@ -32,7 +32,7 @@ WHERE {
 	EVENT ?id2 {
 		?e2 rdf:type uccrisis:MeasureEvent .
 		?e2 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
-		?e1 uccrisis:unit "km/h" .
+		?e2 uccrisis:unit "km/h" .
 		?e2 uccrisis:localisation ?localisation .
 		?e2 uccrisis:value ?value2 .
 		}
@@ -41,7 +41,7 @@ WHERE {
 	EVENT ?id3 {
 		?e3 rdf:type uccrisis:MeasureEvent .
 		?e3 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
-		?e1 uccrisis:unit "km/h" .
+		?e3 uccrisis:unit "km/h" .
 		?e3 uccrisis:localisation ?localisation .
 		?e3 uccrisis:value ?value3 .
 		}
@@ -50,7 +50,7 @@ WHERE {
 	EVENT ?id4 {
 		?e4 rdf:type uccrisis:MeasureEvent .
 		?e4 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
-		?e1 uccrisis:unit "km/h" .
+		?e4 uccrisis:unit "km/h" .
 		?e4 uccrisis:localisation ?localisation .
 		?e4 uccrisis:value ?value4 .
 		}
@@ -59,9 +59,9 @@ WHERE {
 	EVENT ?id5 {
 		?e5 rdf:type uccrisis:MeasureEvent .
 		?e5 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
-		?e1 uccrisis:unit "km/h" .
+		?e5 uccrisis:unit "km/h" .
 		?e5 uccrisis:localisation ?localisation .
 		?e5 uccrisis:value ?value5 .
 		}
-		FILTER (?value5 > ?value4 && ?value5 > ?value1 + 10)
+		FILTER (?value5 > ?value4 && (?value5 > (?value1 + 10)))
 }

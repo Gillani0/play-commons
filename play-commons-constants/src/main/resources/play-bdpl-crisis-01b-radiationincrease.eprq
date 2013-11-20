@@ -28,7 +28,7 @@ WHERE {
 		?e1 uccrisis:localisation ?localisation .
 		?e1 uccrisis:value ?value1 .
 		}
-		FILTER (?value1 > 50.0)
+		FILTER (?value1 > 50)
 	SEQ
 	EVENT ?id2 {
 		?e2 rdf:type uccrisis:MeasureEvent .
@@ -37,7 +37,7 @@ WHERE {
 		?e2 uccrisis:localisation ?localisation .
 		?e2 uccrisis:value ?value2 .
 		}
-		FILTER (?value2 > 50.0 && ?value2 > ?value1)
+		FILTER (?value2 > 50 && ?value2 > ?value1)
 	SEQ
 	EVENT ?id3 {
 		?e3 rdf:type uccrisis:MeasureEvent .
@@ -46,7 +46,7 @@ WHERE {
 		?e3 uccrisis:localisation ?localisation .
 		?e3 uccrisis:value ?value3 .
 		}
-		FILTER (?value3 > 50.0 && ?value3 > ?value2)
+		FILTER (?value3 > 50 && ?value3 > ?value2)
 	SEQ
 	EVENT ?id4 {
 		?e4 rdf:type uccrisis:MeasureEvent .
@@ -55,7 +55,7 @@ WHERE {
 		?e4 uccrisis:localisation ?localisation .
 		?e4 uccrisis:value ?value4 .
 		}
-		FILTER (?value4 > 50.0 && ?value4 > ?value3)
+		FILTER (?value4 > 50 && ?value4 > ?value3)
 	SEQ
 	EVENT ?id5 {
 		?e5 rdf:type uccrisis:MeasureEvent .
@@ -64,5 +64,5 @@ WHERE {
 		?e5 uccrisis:localisation ?localisation .
 		?e5 uccrisis:value ?value5 .
 		}
-		FILTER (?value5 > 50.0 && ?value5 > ?value4 && ?value5 > ?value1 * 1.2)
+		FILTER (?value5 > 50 && ?value5 > ?value4 && ?value5 > ?value1 * 1.2)
 }
