@@ -64,5 +64,5 @@ WHERE {
 		?e5 uccrisis:localisation ?localisation .
 		?e5 uccrisis:value ?value5 .
 		}
-		FILTER (?value5 > 50 && ?value5 > ?value4 && ?value5 > ?value1 * 1.2)
+		FILTER (?value5 > 50 && ?value5 > ?value4 && ?value5 > (?value1 * 1.2))
 }
