@@ -1,4 +1,4 @@
-package eu.play_project.platformservices.eventformat;
+package eu.play_project.platformservices.eventtypes;
 
 import static eu.play_project.play_commons.constants.Event.EVENT_ID_SUFFIX;
 import static eu.play_project.play_commons.constants.Namespace.EVENTS;

@@ -77,7 +77,7 @@ The PLAY SDK provides Java event classes which are generated using [RDFReactor](
 		double latitude = 345;
 		EventHelpers.setLocationToEvent(event, longitude, latitude);
 ```
-Full examples: [EventTypesTest.java](src/test/java/eu/play_project/platformservices/eventformat/EventTypesTest.java)
+Full examples: [EventTypesTest.java](src/test/java/eu/play_project/platformservices/eventtypes/EventTypesTest.java)
 
 ### Creating events using the PLAY builder class
 There is a fluent interface **builder** class to create events. Example:
@@ -102,7 +102,7 @@ An example using an ad-hoc schema from the made-up namespace `MY`. The `addPrope
 				.build();
 ```
 
-Full examples: [EventBuilderTest.java](src/test/java/eu/play_project/platformservices/eventformat/EventBuilderTest.java)
+Full examples: [EventBuilderTest.java](src/test/java/eu/play_project/platformservices/eventtypes/EventBuilderTest.java)
 
 ### Creating events using a string template approach
 
@@ -147,3 +147,8 @@ A **combined approach** can be reasonable where *templates are used at runtime*,
 Sending Events and Receiving Events
 -----------------------------------
 See details at [play-eventadapters](https://github.com/play-project/play-eventadapters).
+
+Validating Events
+-----------------------------------
+The minimum features of event mentioned above as well as some sanity can be validated automatically using [Validator.java](src/main/java/eu/play_project/play_commons/eventtypes/eventvalidation/Validator.java). We typically only use this in Unit Testing. In productive environments we just discard malformed events.
+

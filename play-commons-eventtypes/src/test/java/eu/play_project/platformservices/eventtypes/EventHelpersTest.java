@@ -1,4 +1,4 @@
-package eu.play_project.platformservices.eventformat;
+package eu.play_project.platformservices.eventtypes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
