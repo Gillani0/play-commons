@@ -9,6 +9,7 @@ import java.util.Map;
 import org.junit.Test;
 import org.w3c.dom.Element;
 
+import eu.play_project.play_commons.constants.Event;
 import eu.play_project.play_commons.eventformat.EventFormatHelpers;
 
 /**
@@ -20,11 +21,11 @@ import eu.play_project.play_commons.eventformat.EventFormatHelpers;
  */
 public class EventFormatHelpersTest {
 
-	private String mimeType = "application/x-trig";
+	private String mimeType = Event.WSN_MSG_DEFAULT_SYNTAX;
 
 	private String eventId = "http://events.event-processing.org/ids/call-19";
 
-	private String payload = "@prefix :        <http://events.event-processing.org/types/> .\r\n"
+	private final String payload = "@prefix :        <http://events.event-processing.org/types/> .\r\n"
 			+ "@prefix e:       <http://events.event-processing.org/ids/> .\r\n"
 			+ "@prefix dsb:     <http://www.petalslink.org/dsb/topicsns/> .\r\n"
 			+ "@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .\r\n"

@@ -29,7 +29,7 @@ public class Event {
     public static final QName WSN_MSG_ELEMENT = new QName(WSN_MSG_NS, "nativeMessage", "mt");
     public static final String WSN_MSG_GRAPH_ATTRIBUTE = "graph";
     public static final String WSN_MSG_SYNTAX_ATTRIBUTE = "syntax";
-    public static final String WSN_MSG_DEFAULT_SYNTAX = "application/x-trig";
+    public static final String WSN_MSG_DEFAULT_SYNTAX = "application/trig";
     
     /**
      * Date format to be used with UTC information in events with {@code xsd:date}.

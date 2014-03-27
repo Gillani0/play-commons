@@ -17,16 +17,18 @@
 	<name>play-commons-eventtypes</name>
 	<description>Classes (SDK) for creating business events in the platform as RDF.</description>
 
+	<properties>
+		<semweb4j.version>5.0.0</semweb4j.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.semweb4j</groupId>
 			<artifactId>rdfreactor.runtime</artifactId>
-			<version>4.8.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.semweb4j</groupId>
 			<artifactId>rdf2go.impl.jena</artifactId>
-			<version>4.8.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.ow2.play</groupId>
@@ -79,7 +81,6 @@
 			<plugin>
 				<groupId>org.semweb4j</groupId>
 				<artifactId>rdfreactor-maven-plugin</artifactId>
-				<version>4.8.3</version>
 				<configuration>
 					<schemaFile>src/main/resources/types.n3</schemaFile>
 					<packageName>org.event_processing.events.types</packageName>

@@ -28,6 +28,36 @@
 		<module>play-commons-rest</module>
 	</modules>
 
+	<properties>
+		<semweb4j.version>5.0.1-SNAPSHOT</semweb4j.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.semweb4j</groupId>
+				<artifactId>rdfreactor.runtime</artifactId>
+				<version>${semweb4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.semweb4j</groupId>
+				<artifactId>rdf2go.api</artifactId>
+				<version>${semweb4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.semweb4j</groupId>
+				<artifactId>rdf2go.impl.jena</artifactId>
+				<version>${semweb4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.semweb4j</groupId>
+				<artifactId>rdf2go.impl.sesame</artifactId>
+				<version>${semweb4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+		
 	<scm>
 		<url>https://github.com/play-project/play-commons</url>
 		<connection>scm:git:git://github.com/play-project/play-commons.git</connection>
@@ -51,6 +81,11 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.semweb4j</groupId>
+					<artifactId>rdfreactor-maven-plugin</artifactId>
+					<version>${semweb4j.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
