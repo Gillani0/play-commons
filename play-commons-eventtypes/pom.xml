@@ -18,7 +18,7 @@
 	<description>Classes (SDK) for creating business events in the platform as RDF.</description>
 
 	<properties>
-		<semweb4j.version>5.0.0</semweb4j.version>
+		<semweb4j.version>5.0.1-SNAPSHOT</semweb4j.version>
 	</properties>
 
 	<dependencies>
