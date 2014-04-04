@@ -2,6 +2,7 @@ eu.play_project.play_commons.constants
 eu.play_project.play_commons.eventformat
 eu.play_project.play_commons.eventformat.xml
 eu.play_project.play_commons.eventtypes
+eu.play_project.play_commons.eventtypes.eventvalidation
 org.event_processing.events.types
 org.ow2.play.commons.accesscontrol
 org.ow2.play.commons.accesscontrol.api

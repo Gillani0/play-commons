@@ -1,4 +1,4 @@
-eu.play_project.platformservices.eventformat
+eu.play_project.platformservices.eventtypes
 eu.play_project.play_commons.constants.tests
 eu.play_project.play_commons.eventformat.tests
 org.ow2.play.commons.accesscontrol.tests
