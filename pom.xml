@@ -30,7 +30,6 @@
 	</modules>
 
 	<properties>
-		<semweb4j.version>5.0.1-SNAPSHOT</semweb4j.version>
 	</properties>
 
 	<dependencyManagement>
