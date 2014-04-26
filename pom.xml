@@ -37,23 +37,10 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.semweb4j</groupId>
-				<artifactId>rdfreactor.runtime</artifactId>
+				<artifactId>bom</artifactId>
 				<version>${semweb4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.semweb4j</groupId>
-				<artifactId>rdf2go.api</artifactId>
-				<version>${semweb4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.semweb4j</groupId>
-				<artifactId>rdf2go.impl.jena</artifactId>
-				<version>${semweb4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.semweb4j</groupId>
-				<artifactId>rdf2go.impl.sesame</artifactId>
-				<version>${semweb4j.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
