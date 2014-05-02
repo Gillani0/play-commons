@@ -49,8 +49,8 @@ WHERE {
 			?e3 ais:shipType "High Speed" .
 			?e3 ais:MMSI %MMSI_FROM_SAN% .
 			?e3 ais:distance ?distance .
-            }
 			FILTER (?distance <= %DISTANCE_FROM_SAN%)
+            }
     } ("PT5M"^^xsd:duration, sliding)
 	BIND(AVG(?speed) AS ?avgSpeed)
 	FILTER (?avgSpeed >= %AVG_SPEED_FROM_SAN%)

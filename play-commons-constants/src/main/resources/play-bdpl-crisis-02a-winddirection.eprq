@@ -33,6 +33,6 @@ WHERE {
 		?e2 uccrisis:unit "direction" .
 		?e2 uccrisis:localisation ?localisation .
 		?e2 uccrisis:value ?value2 .
+		FILTER (?value2 != ?value1)
 	}
-	FILTER (?value2 != ?value1)
 }

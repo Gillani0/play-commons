@@ -25,16 +25,16 @@ WHERE {
             ?e2 :stream <http://streams.event-processing.org/ids/TaxiUCGeoLocation#stream> .
 			?e2 :location [ geo:lat ?Latitude2; geo:long ?Longitude2 ] .
 			?e2 uctelco:phoneNumber ?alice .
-            }
 			FILTER (abs(?Latitude1 - ?Latitude2) < 0.1 && abs(?Longitude1 - ?Longitude2) < 0.5)
+            }
         SEQ
         EVENT ?id3 {
             ?e3 rdf:type :UcTelcoGeoLocation .
             ?e3 :stream <http://streams.event-processing.org/ids/TaxiUCGeoLocation#stream> .
 			?e3 :location [ geo:lat ?Latitude3; geo:long ?Longitude3 ] .
 			?e3 uctelco:phoneNumber ?bob .
-            }
-            FILTER (abs(?Latitude2 - ?Latitude3) < 0.1 && abs(?Longitude2 - ?Longitude3) < 0.5
+			FILTER (abs(?Latitude2 - ?Latitude3) < 0.1 && abs(?Longitude2 - ?Longitude3) < 0.5
 				&& ?alice != ?bob)
+            }
     } ("PT120M"^^xsd:duration, sliding)
 }

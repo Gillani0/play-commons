@@ -30,6 +30,7 @@ WHERE {
 		?e1 ais:nearbyMMSI ?nearbymmsi .
 		?e1 ais:nearbySpeed ?nearbySpeed .
 		?e1 ais:nearbyShipType ?nearbyShipType .
-        }
 		FILTER (?distance <= 5 * 1852)
+        }
+		
 }

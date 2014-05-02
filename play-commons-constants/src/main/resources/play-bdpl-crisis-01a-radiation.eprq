@@ -24,7 +24,7 @@ WHERE {
 		?e1 :stream <http://streams.event-processing.org/ids/situationalEvent#stream> .
 		?e1 uccrisis:value ?value .
 		?e1 uccrisis:unit "mSv" .
-		?e1 uccrisis:localisation ?localisation
-		}
+		?e1 uccrisis:localisation ?localisation.
 		FILTER (?value > "100")
+		}
 }
