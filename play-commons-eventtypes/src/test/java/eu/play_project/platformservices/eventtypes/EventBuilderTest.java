@@ -11,9 +11,11 @@ import java.util.Calendar;
 
 import org.event_processing.events.types.CrisisMeasureEvent;
 import org.event_processing.events.types.Event;
+import org.event_processing.events.types.FacebookStatusFeedEvent;
 import org.event_processing.events.types.Point;
 import org.event_processing.events.types.UcTelcoCall;
 import org.junit.Test;
+import org.ontoware.rdf2go.model.Syntax;
 import org.ontoware.rdf2go.model.node.Variable;
 import org.ontoware.rdf2go.model.node.impl.URIImpl;
 import org.ontoware.rdf2go.vocabulary.RDF;
@@ -151,8 +153,51 @@ public class EventBuilderTest {
 				.addProperty(CrisisMeasureEvent.CRISISCOMPONENTSEID, "someSEID")
 				.build();
 		
-		
 		assertTrue(event.getModel().isIsomorphicWith(event2.getModel()));
 	}
+
 	
+	   /**
+     * Create an event using the builder and also using the SDK. Comapre results.
+     */
+    @Test
+    public void testCompatibilityWithSdkForFacebookEvent() {
+        
+		String eventId = EventHelpers.createRandomEventId();
+		Calendar time = Calendar.getInstance();
+
+		FacebookStatusFeedEvent event = new FacebookStatusFeedEvent(
+				// set the RDF context part
+				EventHelpers.createEmptyModel(eventId),
+				// set the RDF subject
+				eventId + EVENT_ID_SUFFIX,
+				// automatically write the rdf:type statement
+				true);
+		event.setEndTime(time);
+		event.setStream(new URIImpl(Stream.FacebookStatusFeed.getUri()));
+		event.setStatus("I bought some JEANS this morning");
+		event.setFacebookId("100000058455726");
+		event.setFacebookLink(new URIImpl("http://graph.facebook.com/roland.stuehmer#"));
+		event.setFacebookLocation("Karlsruhe, Germany");
+		event.setFacebookName("Roland Stühmer");
+		System.out.println(event.getModel().serialize(Syntax.Trig));
+
+		// Define a namespace for some ad-hoc properties
+		final String USER = "http://graph.facebook.com/schema/user#";
+		Event event2 = EventHelpers.builder(eventId)
+				.type(FacebookStatusFeedEvent.RDFS_CLASS)
+				.endTime(time)
+				.stream(Stream.FacebookStatusFeed)
+				.addProperty("http://events.event-processing.org/types/status", "I bought some JEANS this morning")
+				.addProperty(USER + "id", "100000058455726")
+				.addProperty(USER + "link", new URIImpl("http://graph.facebook.com/roland.stuehmer#"))
+				.addProperty(USER + "location", "Karlsruhe, Germany")
+				.addProperty(USER + "name", "Roland Stühmer")
+				.build();
+		System.out.println(event2.getModel().serialize(Syntax.Trig));
+		
+		assertTrue(event.getModel().isIsomorphicWith(event2.getModel()));
+       
+    }
+    
 }

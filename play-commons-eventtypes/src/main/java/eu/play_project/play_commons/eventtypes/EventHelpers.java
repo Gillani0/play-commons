@@ -588,25 +588,37 @@ public final class EventHelpers {
 		}
 
 		/**
-		 * Set arbitrary String property.
+		 * Set arbitrary property.
 		 * 
 		 * DEFAULT: none
 		 * 
 		 * @see #addProperty(String, String)
 		 * 
 		 * @param property the name of the property (URI)
-		 * @param value the string literal value
+		 * @param value the object Node
+		 */
+		public Builder addProperty(String property, org.ontoware.rdf2go.model.node.Node value) {
+			return addProperty(new URIImpl(property), value);
+		}
+
+		/**
+		 * Set arbitrary property.
+		 * 
+		 * DEFAULT: none
+		 * 
+		 * @see #addProperty(String, String)
+		 * 
+		 * @param property the name of the property (URI)
+		 * @param value the object Node
 		 */
 		public Builder addProperty(URI property, org.ontoware.rdf2go.model.node.Node value) {
 			return addRdf(new URIImpl(eventId + EVENT_ID_SUFFIX), property, value);
 		}
 		
 		/**
-		 * Set arbitrary String property.
+		 * Set arbitrary RDF statement.
 		 * 
 		 * DEFAULT: none
-		 * 
-		 * @see #addProperty(String, String)
 		 * 
 		 * @param subject the name of the subject (URI)
 		 * @param property the name of the property (URI)
@@ -617,7 +629,7 @@ public final class EventHelpers {
 		}
 
 		/**
-		 * Set arbitrary String property.
+		 * Set arbitrary RDF statement.
 		 * 
 		 * DEFAULT: none
 		 * 
@@ -632,7 +644,7 @@ public final class EventHelpers {
 		}
 
 		/**
-		 * Set arbitrary property.
+		 * Set arbitrary RDF statement.
 		 * 
 		 * DEFAULT: none
 		 * 
