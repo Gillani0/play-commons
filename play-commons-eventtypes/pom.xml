@@ -51,31 +51,6 @@
 		</dependency>
 	</dependencies>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>semweb4j-repo</id>
-			<name>FZI Maven Repository</name>
-			<url>http://mavenrepo.fzi.de/semweb4j.org/repo</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>semweb4j-snapshots</id>
-			<name>FZI Maven Snapshot Repository</name>
-			<url>http://mavenrepo.fzi.de/semweb4j.org/snapshots</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -163,7 +138,6 @@
 		<url>https://github.com/play-project/play-commons</url>
 		<connection>scm:git:git@github.com:play-project/play-commons.git</connection>
 		<developerConnection>scm:git:git@github.com:play-project/play-commons.git</developerConnection>
-		<tag>play-commons-1.1</tag>
 	</scm>
 
 </project>
